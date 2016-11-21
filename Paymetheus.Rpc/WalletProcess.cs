@@ -15,7 +15,7 @@ namespace Paymetheus.Rpc
         // Error code taken from https://msdn.microsoft.com/en-us/library/cc231199.aspx
         private const int ErrorFileNotFound = 2;
 
-        public static Process Start(BlockChainIdentity intendedNetwork, string appDataDirectory, string executablePath = null)
+        public static Process Start(BlockChainIdentity intendedNetwork, string appDataDirectory, string executablePath = null, string extraArgs = null)
         {
             if (intendedNetwork == null)
                 throw new ArgumentNullException(nameof(intendedNetwork));
@@ -30,9 +30,11 @@ namespace Paymetheus.Rpc
 
             var v4ListenAddress = RpcListenAddress("127.0.0.1", intendedNetwork);
 
+            extraArgs = extraArgs ?? "";
+
             var processInfo = new ProcessStartInfo();
             processInfo.FileName = executablePath ?? ProcessName;
-            processInfo.Arguments = $"{networkFlag} --noinitialload --experimentalrpclisten={v4ListenAddress} --onetimetlskey --appdata=\"{appDataDirectory}\"";
+            processInfo.Arguments = $"{networkFlag} --noinitialload --experimentalrpclisten={v4ListenAddress} --onetimetlskey --appdata=\"{appDataDirectory}\" {extraArgs}";
             processInfo.UseShellExecute = false;
             processInfo.RedirectStandardError = true;
             processInfo.RedirectStandardOutput = true;

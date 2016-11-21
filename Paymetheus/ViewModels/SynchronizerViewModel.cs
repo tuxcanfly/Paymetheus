@@ -31,8 +31,16 @@ namespace Paymetheus.ViewModels
         public WalletClient WalletRpcClient { get; }
         public Mutex<Wallet> WalletMutex { get; private set; }
 
-        public static async Task<SynchronizerViewModel> Startup(BlockChainIdentity activeNetwork, string walletAppDataDir, bool searchPath)
+        public static async Task<SynchronizerViewModel> Startup(BlockChainIdentity activeNetwork, string walletAppDataDir,
+            bool searchPath, string extraArgs)
         {
+            if (activeNetwork == null)
+                throw new ArgumentNullException(nameof(activeNetwork));
+            if (walletAppDataDir == null)
+                throw new ArgumentNullException(nameof(walletAppDataDir));
+            if (extraArgs == null)
+                throw new ArgumentNullException(nameof(extraArgs));
+
             // Begin the asynchronous reading of the certificate before starting the wallet
             // process.  This uses filesystem events to know when to begin reading the certificate,
             // and if there is too much delay between wallet writing the cert and this process
@@ -46,7 +54,7 @@ namespace Paymetheus.ViewModels
                     Environment.OSVersion.Platform, AssemblyResources.Organization, WalletProcess.ProcessName);
             }
             KillLeftoverWalletProcess(activeNetwork);
-            var walletProcess = WalletProcess.Start(activeNetwork, walletAppDataDir, walletProcessPath);
+            var walletProcess = WalletProcess.Start(activeNetwork, walletAppDataDir, walletProcessPath, extraArgs);
 
             WalletClient walletClient;
             try

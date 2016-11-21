@@ -11,34 +11,50 @@ namespace Paymetheus
     {
         public BlockChainIdentity IntendedNetwork { get; }
         public bool SearchPathForWalletProcess { get; }
+        public string ExtraWalletArgs { get; }
 
-        private ProcessArguments(BlockChainIdentity intendedNetwork, bool searchPathForWalletProcess)
+        private ProcessArguments(BlockChainIdentity intendedNetwork, bool searchPathForWalletProcess, string extraWalletArgs)
         {
             IntendedNetwork = intendedNetwork;
             SearchPathForWalletProcess = searchPathForWalletProcess;
+            ExtraWalletArgs = extraWalletArgs;
         }
 
         public static ProcessArguments ParseArguments(string[] args)
         {
             var intendedNetwork = BlockChainIdentity.MainNet;
             var searchPathForWalletProcess = false;
+            var extraWalletArgs = "";
+
+            string rest;
 
             foreach (var arg in args)
             {
-                switch (arg)
-                {
-                    case "-testnet":
-                        intendedNetwork = BlockChainIdentity.TestNet;
-                        break;
-                    case "-searchpath":
-                        searchPathForWalletProcess = true;
-                        break;
-                    default:
-                        throw new Exception($"Unrecognized argument `{arg}`");
-                }
+                if (arg == "-testnet")
+                    intendedNetwork = BlockChainIdentity.TestNet;
+                else if (arg == "-searchpath")
+                    searchPathForWalletProcess = true;
+                else if (TryTrimPrefix(arg, "-extrawalletargs=", out rest))
+                    extraWalletArgs = rest;
+                else
+                    throw new Exception($"Unrecognized argument `{arg}`");
             }
 
-            return new ProcessArguments(intendedNetwork, searchPathForWalletProcess);
+            return new ProcessArguments(intendedNetwork, searchPathForWalletProcess, extraWalletArgs);
+        }
+
+        private static bool TryTrimPrefix(string s, string prefix, out string rest)
+        {
+            if (s.StartsWith(prefix))
+            {
+                rest = s.Substring(prefix.Length);
+                return true;
+            }
+            else
+            {
+                rest = null;
+                return false;
+            }
         }
     }
 }
