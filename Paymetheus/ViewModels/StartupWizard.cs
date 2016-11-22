@@ -130,7 +130,7 @@ namespace Paymetheus.ViewModels
                 var walletExists = await App.Current.Synchronizer.WalletRpcClient.WalletExistsAsync();
                 if (!walletExists)
                 {
-                    _wizard.CurrentDialog = new CreateOrImportSeedDialog(Wizard);
+                    _wizard.CurrentDialog = new PickCreateOrImportSeedDialog(Wizard);
                 }
                 else
                 {
@@ -154,52 +154,101 @@ namespace Paymetheus.ViewModels
         }
     }
 
-    sealed class CreateOrImportSeedDialog : ConnectionWizardDialog
+    sealed class PickCreateOrImportSeedDialog : ConnectionWizardDialog
     {
-        public CreateOrImportSeedDialog(StartupWizard wizard) : base(wizard)
+        public PickCreateOrImportSeedDialog(StartupWizard wizard) : base(wizard)
         {
-            _randomSeed = WalletSeed.GenerateRandomSeed();
+            CreateWalletCommand = new DelegateCommand(CreateWallet);
+            RestoreWalletCommand = new DelegateCommand(RestoreWallet);
+        }
 
+        PgpWordList _pgpWordList = new PgpWordList();
+
+        public DelegateCommand CreateWalletCommand { get; }
+        private void CreateWallet()
+        {
+            _wizard.CurrentDialog = new CreateSeedDialog(Wizard, _pgpWordList, this);
+        }
+
+        public DelegateCommand RestoreWalletCommand { get; }
+        private void RestoreWallet()
+        {
+            _wizard.CurrentDialog = new ImportSeedDialog(Wizard, _pgpWordList, this);
+        }
+    }
+
+    sealed class ImportSeedDialog : ConnectionWizardDialog
+    {
+        public ImportSeedDialog(StartupWizard wizard, PgpWordList pgpWordlist, ConnectionWizardDialog previousDialog) : base(wizard)
+        {
+            _previousDialog = previousDialog;
+            _pgpWordList = pgpWordlist;
+
+            BackCommand = new DelegateCommand(Back);
+            ContinueCommand = new DelegateCommand(Continue);
+        }
+
+        private readonly ConnectionWizardDialog _previousDialog;
+        private readonly PgpWordList _pgpWordList;
+
+        public string ImportedSeed { get; set; } = "";
+
+        public DelegateCommand BackCommand { get; }
+        private void Back()
+        {
+            // TODO: instead of passing around the previous dialog in ctors it would be nice
+            // for the wizard to keep track and provide that functionality.
+            Wizard.CurrentDialog = _previousDialog;
+        }
+
+        public DelegateCommand ContinueCommand { get; }
+        private void Continue()
+        {
+            try
+            {
+                ContinueCommand.Executable = false;
+                var seed = WalletSeed.DecodeAndValidateUserInput(ImportedSeed, _pgpWordList);
+                Wizard.CurrentDialog = new PromptPassphrasesDialog(Wizard, seed, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Invalid seed");
+            }
+            finally
+            {
+                ContinueCommand.Executable = true;
+            }
+        }
+    }
+
+    sealed class CreateSeedDialog : ConnectionWizardDialog
+    {
+        public CreateSeedDialog(StartupWizard wizard, PgpWordList pgpWordlist, ConnectionWizardDialog previousDialog) : base(wizard)
+        {
+            _previousDialog = previousDialog;
+            _pgpWordList = pgpWordlist;
+
+            BackCommand = new DelegateCommand(Back);
             ContinueCommand = new DelegateCommand(Continue);
 
             // false below and remove raise to require a selection.
             ContinueCommand.Executable = true;
         }
 
-        private byte[] _randomSeed;
-        private PgpWordList _pgpWordList = new PgpWordList();
+        private readonly ConnectionWizardDialog _previousDialog;
+        private readonly PgpWordList _pgpWordList;
+
+        private readonly byte[] _randomSeed = WalletSeed.GenerateRandomSeed();
 
         public string Bip0032SeedHex => Hexadecimal.Encode(_randomSeed);
         public string Bip0032SeedWordList => string.Join(" ", WalletSeed.EncodeWordList(_pgpWordList, _randomSeed));
 
-        // Do not initialize this as true to prevent automatic create 
-        // selection.
-        private bool _createChecked = true;
 
-        public bool CreateChecked
+        public DelegateCommand BackCommand { get; }
+        private void Back()
         {
-            get { return _createChecked; }
-            set
-            {
-                _createChecked = value;
-                RaisePropertyChanged();
-                ContinueCommand.Executable = true;
-            }
+            Wizard.CurrentDialog = _previousDialog;
         }
-
-        private bool _importChecked;
-        public bool ImportChecked
-        {
-            get { return _importChecked; }
-            set
-            {
-                _importChecked = value;
-                RaisePropertyChanged();
-                ContinueCommand.Executable = true;
-            }
-        }
-
-        public string ImportedSeed { get; set; }
 
         public DelegateCommand ContinueCommand { get; }
         private void Continue()
@@ -208,19 +257,11 @@ namespace Paymetheus.ViewModels
             {
                 ContinueCommand.Executable = false;
 
-                if (CreateChecked)
-                {
-                    Wizard.CurrentDialog = new ConfirmSeedBackupDialog(Wizard, this, _randomSeed, _pgpWordList);
-                }
-                else
-                {
-                    var seed = WalletSeed.DecodeAndValidateUserInput(ImportedSeed, _pgpWordList);
-                    Wizard.CurrentDialog = new PromptPassphrasesDialog(Wizard, seed);
-                }
+                Wizard.CurrentDialog = new ConfirmSeedBackupDialog(Wizard, this, _randomSeed, _pgpWordList);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error");
+                MessageBox.Show(ex.Message, "Invalid seed");
             }
             finally
             {
@@ -231,7 +272,7 @@ namespace Paymetheus.ViewModels
 
     sealed class ConfirmSeedBackupDialog : ConnectionWizardDialog
     {
-        public ConfirmSeedBackupDialog(StartupWizard wizard, CreateOrImportSeedDialog previousDialog,
+        public ConfirmSeedBackupDialog(StartupWizard wizard, CreateSeedDialog previousDialog,
             byte[] seed, PgpWordList pgpWordlist)
             : base(wizard)
         {
@@ -243,7 +284,7 @@ namespace Paymetheus.ViewModels
             BackCommand = new DelegateCommand(Back);
         }
 
-        private CreateOrImportSeedDialog _previousDialog;
+        private CreateSeedDialog _previousDialog;
         private byte[] _seed;
         private PgpWordList _pgpWordList;
 
@@ -261,7 +302,7 @@ namespace Paymetheus.ViewModels
                 {
                     if (Input.Length == 0)
                     {
-                        _wizard.CurrentDialog = new PromptPassphrasesDialog(Wizard, _seed);
+                        _wizard.CurrentDialog = new PromptPassphrasesDialog(Wizard, _seed, false);
                         return;
                     }
                 }
@@ -269,7 +310,7 @@ namespace Paymetheus.ViewModels
                 var decodedSeed = WalletSeed.DecodeAndValidateUserInput(Input, _pgpWordList);
                 if (ValueArray.ShallowEquals(_seed, decodedSeed))
                 {
-                    _wizard.CurrentDialog = new PromptPassphrasesDialog(Wizard, _seed);
+                    _wizard.CurrentDialog = new PromptPassphrasesDialog(Wizard, _seed, false);
                 }
                 else
                 {
@@ -295,14 +336,16 @@ namespace Paymetheus.ViewModels
 
     sealed class PromptPassphrasesDialog : ConnectionWizardDialog
     {
-        public PromptPassphrasesDialog(StartupWizard wizard, byte[] seed) : base(wizard)
+        public PromptPassphrasesDialog(StartupWizard wizard, byte[] seed, bool restore) : base(wizard)
         {
             _seed = seed;
+            _restore = restore;
 
             CreateWalletCommand = new DelegateCommand(CreateWallet);
         }
 
-        private byte[] _seed;
+        private readonly byte[] _seed;
+        private readonly bool _restore;
 
         private bool _usePublicEncryption;
         public bool UsePublicEncryption
@@ -363,10 +406,19 @@ namespace Paymetheus.ViewModels
                     }
                 }
 
-                await App.Current.Synchronizer.WalletRpcClient.CreateWallet(publicPassphrase, PrivatePassphrase, _seed);
-
+                var rpcClient = App.Current.Synchronizer.WalletRpcClient;
+                await rpcClient.CreateWallet(publicPassphrase, PrivatePassphrase, _seed);
                 ValueArray.Zero(_seed);
-                Wizard.OnFinished();
+
+                if (_restore)
+                {
+                    Wizard.CurrentDialog = new RestoreActivityProgress(Wizard, PrivatePassphrase);
+                    return;
+                }
+                else
+                {
+                    Wizard.OnFinished();
+                }
             }
             finally
             {
@@ -405,6 +457,96 @@ namespace Paymetheus.ViewModels
             {
                 OpenWalletCommand.Executable = true;
             }
+        }
+    }
+
+    sealed class RestoreActivityProgress : ConnectionWizardDialog
+    {
+        public RestoreActivityProgress(StartupWizard wizard, string privatePassphrase) : base(wizard)
+        {
+            _privatePassphrase = privatePassphrase;
+
+            Task.Run(RestoreAsync).ContinueWith(t =>
+            {
+                if (t.Exception != null)
+                {
+                    MessageBox.Show(t.Exception.Message, "Error");
+                }
+            });
+        }
+
+        private readonly string _privatePassphrase;
+
+        private string _actionText = "";
+        public string ActionText
+        {
+            get { return _actionText; }
+            set { _actionText = value; RaisePropertyChanged(); }
+        }
+
+        private bool _rescanning = false;
+        public bool Rescanning
+        {
+            get { return _rescanning; }
+            set { _rescanning = value; RaisePropertyChanged(); }
+        }
+
+        private int _rescannedBlocks = 0;
+        public int RescannedBlocks
+        {
+            get { return _rescannedBlocks; }
+            set { _rescannedBlocks = value; RaisePropertyChanged(); }
+        }
+
+        private double _rescanPercentCompletion = 0;
+        public double RescanPercentCompletion
+        {
+            get { return _rescanPercentCompletion; }
+            set { _rescanPercentCompletion = value; RaisePropertyChanged(); }
+        }
+
+        private async Task RestoreAsync()
+        {
+            var rpcClient = App.Current.Synchronizer.WalletRpcClient;
+
+            // Subscribing to block notifications is insignificant so don't bother reporting it.  Perform
+            // it concurrently with the accounts sync instead.
+            ActionText = "discovering addresses";
+            await Task.WhenAll(rpcClient.DiscoverAccountsAsync(_privatePassphrase),
+                rpcClient.SubscribeToBlockNotificationsAsync());
+
+            ActionText = "fetching headers";
+            var headersTask = rpcClient.FetchHeadersAsync();
+            var txFilterTask = rpcClient.LoadActiveDataFiltersAsync();
+            var completedTask = await Task.WhenAny(headersTask, txFilterTask);
+            if (completedTask == txFilterTask)
+            {
+                // Loading the tx filter is likely to finish first unless very many addresses were
+                // discovered.  Keep the same action text and wait to finish fetching all headers.
+                await headersTask;
+            }
+            else
+            {
+                // Headers finished downloading but tx filter hasn't finished being loaded, probably due
+                // to very many discovered addresses.  Change the action text to represent this, and then
+                // wait for the filter to be loaded before starting the rescan.
+                ActionText = "loading transaction filter";
+                await txFilterTask;
+            }
+
+            var fetchedHeaders = headersTask.Result.Item1;
+
+            ActionText = "rescanning";
+            Rescanning = true;
+            // TODO: allow user to provide a hint for where to begin rescan at.
+            await rpcClient.RescanFromBlockHeightAsync(0, rescannedThrough =>
+            {
+                var rescannedBlocks = rescannedThrough + 1;
+                RescannedBlocks = rescannedBlocks;
+                RescanPercentCompletion = (double)(rescannedBlocks * 100) / fetchedHeaders;
+            });
+
+            Wizard.OnFinished();
         }
     }
 }

@@ -1,8 +1,4 @@
-// Copyright (c) 2016 The btcsuite developers
-// Copyright (c) 2016 The Decred developers
-// Licensed under the ISC license.  See LICENSE file in the project root for full license information.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +16,11 @@ using System.Windows.Shapes;
 namespace Paymetheus
 {
     /// <summary>
-    /// Interaction logic for CreateOrImportSeedView.xaml
+    /// Interaction logic for PickCreateOrRestoreWalletView.xaml
     /// </summary>
-    public partial class CreateOrImportSeedView : UserControl
+    public partial class PickCreateOrRestoreWalletView : UserControl
     {
-        public CreateOrImportSeedView()
+        public PickCreateOrRestoreWalletView()
         {
             InitializeComponent();
         }

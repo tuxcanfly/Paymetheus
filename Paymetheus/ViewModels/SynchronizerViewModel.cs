@@ -96,7 +96,7 @@ namespace Paymetheus.ViewModels
         public Amount TotalBalance
         {
             get { return _totalBalance; }
-            set { _totalBalance = value;  RaisePropertyChanged(); }
+            set { _totalBalance = value; RaisePropertyChanged(); }
         }
 
         private int _transactionCount;
@@ -160,6 +160,7 @@ namespace Paymetheus.ViewModels
             {
                 MessageBox.Show("Unable to connect to wallet");
             }
+            catch (Grpc.Core.RpcException) when (WalletRpcClient.CancellationRequested) { }
             catch (Exception ex)
             {
                 var ae = ex as AggregateException;
@@ -170,7 +171,7 @@ namespace Paymetheus.ViewModels
                         ex = inner;
                 }
 
-                HandleSyncFault(ex);
+                await HandleSyncFault(ex);
             }
             finally
             {
@@ -187,7 +188,7 @@ namespace Paymetheus.ViewModels
             }
         }
 
-        private static void HandleSyncFault(Exception ex)
+        private static async Task HandleSyncFault(Exception ex)
         {
             string message;
             var shutdown = false;
@@ -214,7 +215,7 @@ namespace Paymetheus.ViewModels
                 shutdown = true;
             }
 
-            App.Current.Dispatcher.Invoke(() =>
+            await App.Current.Dispatcher.InvokeAsync(() =>
             {
                 MessageBox.Show(message, "Error");
                 if (shutdown)

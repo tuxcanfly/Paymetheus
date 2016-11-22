@@ -11,8 +11,14 @@
         <DataTemplate DataType="{x:Type vm:ConsensusServerRpcConnectionDialog}">
             <local:ConsensusServerConnectionOptionsView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:CreateOrImportSeedDialog}">
-            <local:CreateOrImportSeedView/>
+        <DataTemplate DataType="{x:Type vm:PickCreateOrImportSeedDialog}">
+            <local:PickCreateOrRestoreWalletView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ImportSeedDialog}">
+            <local:RestoreWalletImportSeedView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CreateSeedDialog}">
+            <local:BackupSeedView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:PromptPublicPassphraseDialog}">
             <local:PublicPassphrasePromptView/>
@@ -22,6 +28,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:PromptPassphrasesDialog}">
             <local:PromptPassphrasesView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:RestoreActivityProgress}">
+            <local:RestoreWalletProgressView/>
         </DataTemplate>
     </UserControl.Resources>
     

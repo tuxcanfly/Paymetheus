@@ -21,7 +21,7 @@ namespace Paymetheus.Rpc
 {
     public sealed class WalletClient : IDisposable
     {
-        private static readonly SemanticVersion RequiredRpcServerVersion = new SemanticVersion(3, 0, 0);
+        private static readonly SemanticVersion RequiredRpcServerVersion = new SemanticVersion(3, 0, 1);
 
         public static void Initialize()
         {
@@ -51,6 +51,8 @@ namespace Paymetheus.Rpc
         {
             await _channel.ShutdownAsync();
         }
+
+        public bool CancellationRequested => _tokenSource.IsCancellationRequested;
 
         public static async Task<WalletClient> ConnectAsync(string networkAddress, string rootCertificate)
         {
@@ -456,12 +458,15 @@ namespace Paymetheus.Rpc
             await client.LoadActiveDataFiltersAsync(request, cancellationToken: _tokenSource.Token);
         }
 
-        public async Task RescanFromBlockHeightAsync(int beginHeight)
+        public async Task RescanFromBlockHeightAsync(int beginHeight, Action<int> progressCallback = null)
         {
             var client = new WalletService.WalletServiceClient(_channel);
             var request = new RescanRequest { BeginHeight = beginHeight };
             var responseServer = client.Rescan(request, cancellationToken: _tokenSource.Token);
-            while (await responseServer.ResponseStream.MoveNext()) { }
+            while (await responseServer.ResponseStream.MoveNext())
+            {
+                progressCallback?.Invoke(responseServer.ResponseStream.Current.RescannedThrough);
+            }
         }
 
         /// <summary>

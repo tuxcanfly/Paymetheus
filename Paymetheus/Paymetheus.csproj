@@ -171,11 +171,20 @@
     <Compile Include="PassphraseDialogView.xaml.cs">
       <DependentUpon>PassphraseDialogView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PickCreateOrRestoreWalletView.xaml.cs">
+      <DependentUpon>PickCreateOrRestoreWalletView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseTickets.xaml.cs">
       <DependentUpon>PurchaseTickets.xaml</DependentUpon>
     </Compile>
     <Compile Include="RenameAccountDialogView.xaml.cs">
       <DependentUpon>RenameAccountDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RestoreWalletImportSeedView.xaml.cs">
+      <DependentUpon>RestoreWalletImportSeedView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RestoreWalletProgressView.xaml.cs">
+      <DependentUpon>RestoreWalletProgressView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scripts.xaml.cs">
       <DependentUpon>Scripts.xaml</DependentUpon>
@@ -200,8 +209,8 @@
     <Compile Include="ConfirmSeedView.xaml.cs">
       <DependentUpon>ConfirmSeedView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CreateOrImportSeedView.xaml.cs">
-      <DependentUpon>CreateOrImportSeedView.xaml</DependentUpon>
+    <Compile Include="BackupSeedView.xaml.cs">
+      <DependentUpon>BackupSeedView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PasswordBoxWaterMark.cs" />
     <Compile Include="Helpers\Watermark.cs" />
@@ -278,7 +287,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CreateOrImportSeedView.xaml">
+    <Page Include="BackupSeedView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -299,6 +308,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PassphraseDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PickCreateOrRestoreWalletView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -323,6 +336,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RestoreWalletImportSeedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RestoreWalletProgressView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

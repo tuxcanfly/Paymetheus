@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Paymetheus.PickCreateOrRestoreWalletView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Paymetheus"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="480"
+             Background="{StaticResource ColorDarkBlueFull}">
+    <StackPanel VerticalAlignment="Center" Width="480">
+        <StackPanel.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonBlue}">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Width" Value="200"/>
+            </Style>
+        </StackPanel.Resources>
+        <Button Content="Create a new wallet" Command="{Binding CreateWalletCommand}"/>
+        <Button Content="Restore wallet from seed" Command="{Binding RestoreWalletCommand}"/>
+    </StackPanel>
+</UserControl>
