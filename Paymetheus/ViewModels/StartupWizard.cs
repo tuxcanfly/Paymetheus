@@ -458,19 +458,11 @@ namespace Paymetheus.ViewModels
         }
     }
 
-    sealed class RestoreActivityProgress : ConnectionWizardDialog
+    sealed class RestoreActivityProgress : ConnectionWizardDialog, IWizardActivity
     {
         public RestoreActivityProgress(StartupWizard wizard, string privatePassphrase) : base(wizard)
         {
             _privatePassphrase = privatePassphrase;
-
-            Task.Run(RestoreAsync).ContinueWith(t =>
-            {
-                if (t.Exception != null)
-                {
-                    MessageBox.Show(t.Exception.Message, "Error");
-                }
-            });
         }
 
         private readonly string _privatePassphrase;
@@ -503,7 +495,7 @@ namespace Paymetheus.ViewModels
             set { _rescanPercentCompletion = value; RaisePropertyChanged(); }
         }
 
-        private async Task RestoreAsync()
+        public async Task RunActivityAsync()
         {
             var rpcClient = App.Current.Synchronizer.WalletRpcClient;
 
