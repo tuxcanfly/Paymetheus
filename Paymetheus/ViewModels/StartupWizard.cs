@@ -448,13 +448,11 @@ namespace Paymetheus.ViewModels
             catch (RpcException ex) when (ex.Status.StatusCode == StatusCode.InvalidArgument)
             {
                 MessageBox.Show("Incorrect passphrase");
+                OpenWalletCommand.Executable = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
                 OpenWalletCommand.Executable = true;
             }
         }
