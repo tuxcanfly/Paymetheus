@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Paymetheus.RestoreWalletProgressView"
+﻿<UserControl x:Class="Paymetheus.StartupActivityProgressView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,7 +13,7 @@
     </UserControl.Resources>
     <StackPanel Width="480">
         <TextBlock Style="{StaticResource wizardSubHeaderTextBlockStyle}"  HorizontalAlignment="Center" Margin="12">
-            Restoring wallet (<Run Text="{Binding ActionText, FallbackValue=action, Mode=OneWay}"/>)...
+            <Run Text="{Binding ActionName, FallbackValue='Action name', Mode=OneTime}"/> (<Run Text="{Binding ActionDetail, FallbackValue=detail, Mode=OneWay}"/>)...
         </TextBlock>
         <Grid Visibility="{Binding Rescanning, Converter={StaticResource visibilityConverter}}">
             <Border Background="Transparent" Width="300">

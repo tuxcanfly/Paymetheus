@@ -29,8 +29,14 @@
         <DataTemplate DataType="{x:Type vm:PromptPassphrasesDialog}">
             <local:PromptPassphrasesView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CreateNewWalletActivityProgress}">
+            <local:StartupActivityProgressView/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type vm:RestoreActivityProgress}">
-            <local:RestoreWalletProgressView/>
+            <local:StartupActivityProgressView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:OpenExistingWalletActivityProgress}">
+            <local:StartupActivityProgressView/>
         </DataTemplate>
     </UserControl.Resources>
     

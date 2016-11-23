@@ -413,11 +413,10 @@ namespace Paymetheus.ViewModels
                 if (_restore)
                 {
                     Wizard.CurrentDialog = new RestoreActivityProgress(Wizard, PrivatePassphrase);
-                    return;
                 }
                 else
                 {
-                    Wizard.OnFinished();
+                    Wizard.CurrentDialog = new CreateNewWalletActivityProgress(Wizard);
                 }
             }
             finally
@@ -443,7 +442,7 @@ namespace Paymetheus.ViewModels
             {
                 OpenWalletCommand.Executable = false;
                 await App.Current.Synchronizer.WalletRpcClient.OpenWallet(PublicPassphrase);
-                Wizard.OnFinished();
+                Wizard.CurrentDialog = new OpenExistingWalletActivityProgress(Wizard);
             }
             catch (RpcException ex) when (ex.Status.StatusCode == StatusCode.InvalidArgument)
             {
@@ -458,6 +457,15 @@ namespace Paymetheus.ViewModels
         }
     }
 
+    // Action string constants to display while waiting for the wallet to open.
+    internal static class ActionStrings
+    {
+        internal const string DiscoveringAddresses = "discovering addresses";
+        internal const string FetchingHeaders = "fetching headers";
+        internal const string LoadingTxFilter = "loading transaction filter";
+        internal const string Rescanning = "rescanning";
+    }
+
     sealed class RestoreActivityProgress : ConnectionWizardDialog, IWizardActivity
     {
         public RestoreActivityProgress(StartupWizard wizard, string privatePassphrase) : base(wizard)
@@ -467,11 +475,13 @@ namespace Paymetheus.ViewModels
 
         private readonly string _privatePassphrase;
 
-        private string _actionText = "";
-        public string ActionText
+        public string ActionName => "Restoring wallet";
+
+        private string _actionDetail = "";
+        public string ActionDetail
         {
-            get { return _actionText; }
-            set { _actionText = value; RaisePropertyChanged(); }
+            get { return _actionDetail; }
+            set { _actionDetail = value; RaisePropertyChanged(); }
         }
 
         private bool _rescanning = false;
@@ -501,11 +511,11 @@ namespace Paymetheus.ViewModels
 
             // Subscribing to block notifications is insignificant so don't bother reporting it.  Perform
             // it concurrently with the accounts sync instead.
-            ActionText = "discovering addresses";
+            ActionDetail = ActionStrings.DiscoveringAddresses;
             await Task.WhenAll(rpcClient.DiscoverAccountsAsync(_privatePassphrase),
                 rpcClient.SubscribeToBlockNotificationsAsync());
 
-            ActionText = "fetching headers";
+            ActionDetail = ActionStrings.FetchingHeaders;
             var headersTask = rpcClient.FetchHeadersAsync();
             var txFilterTask = rpcClient.LoadActiveDataFiltersAsync();
             var completedTask = await Task.WhenAny(headersTask, txFilterTask);
@@ -520,13 +530,13 @@ namespace Paymetheus.ViewModels
                 // Headers finished downloading but tx filter hasn't finished being loaded, probably due
                 // to very many discovered addresses.  Change the action text to represent this, and then
                 // wait for the filter to be loaded before starting the rescan.
-                ActionText = "loading transaction filter";
+                ActionDetail = ActionStrings.LoadingTxFilter;
                 await txFilterTask;
             }
 
             var fetchedHeaders = headersTask.Result.Item1;
 
-            ActionText = "rescanning";
+            ActionDetail = ActionStrings.Rescanning;
             Rescanning = true;
             // TODO: allow user to provide a hint for where to begin rescan at.
             await rpcClient.RescanFromBlockHeightAsync(0, rescannedThrough =>
@@ -535,6 +545,141 @@ namespace Paymetheus.ViewModels
                 RescannedBlocks = rescannedBlocks;
                 RescanPercentCompletion = (double)(rescannedBlocks * 100) / fetchedHeaders;
             });
+
+            Wizard.OnFinished();
+        }
+    }
+
+    sealed class CreateNewWalletActivityProgress : ConnectionWizardDialog, IWizardActivity
+    {
+        public CreateNewWalletActivityProgress(StartupWizard wizard) : base(wizard)
+        {
+        }
+
+        public string ActionName => "Creating wallet";
+
+        private string _actionDetail = "";
+        public string ActionDetail
+        {
+            get { return _actionDetail; }
+            set { _actionDetail = value; RaisePropertyChanged(); }
+        }
+
+        public bool Rescanning => false;
+        public int RescannedBlocks => 0;
+        public double RescanPercentCompletion => 0F;
+
+        public async Task RunActivityAsync()
+        {
+            // For newly created wallets, the only startup actions necessary are subscribing to
+            // block notifications from the consensus RPC server and fetching headers.  No
+            // address/account discovery and no rescanning is necessary because nothing is expected
+            // to be discovered for a wallet with a completely new random seed.
+            //
+            // Despite this, doing address discovery and loading the pregenerated addresses into the
+            // transaction filter is still needed, because this is the only way, at time of writing,
+            // to initialize the wallet's address pools and receive notifications for addresses the
+            // address pool will hand out.
+
+            var rpcClient = App.Current.Synchronizer.WalletRpcClient;
+
+            // Subscribing to block notifications is insignificant so don't bother reporting it.  Perform
+            // it concurrently with the address sync instead.
+            ActionDetail = ActionStrings.DiscoveringAddresses;
+            await Task.WhenAll(rpcClient.DiscoverAddressesAsync(), rpcClient.SubscribeToBlockNotificationsAsync());
+
+            // Loading the tx filter is insignificant compared to fetching headers on a new wallet,
+            // so don't bother reporting it.
+            ActionDetail = ActionStrings.FetchingHeaders;
+            await Task.WhenAll(rpcClient.FetchHeadersAsync(), rpcClient.LoadActiveDataFiltersAsync());
+
+            Wizard.OnFinished();
+        }
+    }
+
+    sealed class OpenExistingWalletActivityProgress : ConnectionWizardDialog, IWizardActivity
+    {
+        public OpenExistingWalletActivityProgress(StartupWizard wizard) : base(wizard)
+        {
+        }
+
+        public string ActionName => "Opening wallet";
+
+        private string _actionDetail = "";
+        public string ActionDetail
+        {
+            get { return _actionDetail; }
+            set { _actionDetail = value; RaisePropertyChanged(); }
+        }
+
+        private bool _rescanning = false;
+        public bool Rescanning
+        {
+            get { return _rescanning; }
+            set { _rescanning = value; RaisePropertyChanged(); }
+        }
+
+        private int _rescannedBlocks = 0;
+        public int RescannedBlocks
+        {
+            get { return _rescannedBlocks; }
+            set { _rescannedBlocks = value; RaisePropertyChanged(); }
+        }
+
+        private double _rescanPercentCompletion = 0;
+        public double RescanPercentCompletion
+        {
+            get { return _rescanPercentCompletion; }
+            set { _rescanPercentCompletion = value; RaisePropertyChanged(); }
+        }
+
+        public async Task RunActivityAsync()
+        {
+            var rpcClient = App.Current.Synchronizer.WalletRpcClient;
+
+            // Subscribing to block notifications is insignificant so don't bother reporting it.  Perform
+            // it concurrently with the address sync instead.
+            ActionDetail = ActionStrings.DiscoveringAddresses;
+            await Task.WhenAll(rpcClient.DiscoverAddressesAsync(), rpcClient.SubscribeToBlockNotificationsAsync());
+
+            ActionDetail = ActionStrings.FetchingHeaders;
+            var headersTask = rpcClient.FetchHeadersAsync();
+            var txFilterTask = rpcClient.LoadActiveDataFiltersAsync();
+            var completedTask = await Task.WhenAny(headersTask, txFilterTask);
+            if (completedTask == txFilterTask)
+            {
+                // Loading the tx filter is likely to finish first unless the wallet contains very
+                // many addresses and outpoints to watch.  Keep the same action text and wait to
+                // finish fetching all headers.
+                await headersTask;
+            }
+            else
+            {
+                // Headers finished downloading but tx filter hasn't finished being loaded, probably due
+                // to very many addresses and unspent outputs being managed by the wallet.  Change the
+                // action text to represent this, and then wait for the filter to be loaded before starting
+                // the rescan.
+                ActionDetail = ActionStrings.LoadingTxFilter;
+                await txFilterTask;
+            }
+
+            // Only rescan when there were newly fetched headers.
+            if (headersTask.Result.Item2 != null)
+            {
+                var firstNewBlock = headersTask.Result.Item2.Value;
+                var previouslySyncedThrough = firstNewBlock.Height - 1;
+                var totalBlockCount = previouslySyncedThrough + headersTask.Result.Item1;
+
+                ActionDetail = ActionStrings.Rescanning;
+                RescanPercentCompletion = (double)(previouslySyncedThrough * 100) / totalBlockCount;
+                Rescanning = true;
+
+                await rpcClient.RescanFromBlockHeightAsync(firstNewBlock.Height, rescannedThrough =>
+                {
+                    RescannedBlocks = rescannedThrough - previouslySyncedThrough;
+                    RescanPercentCompletion = (double)(rescannedThrough * 100) / totalBlockCount;
+                });
+            }
 
             Wizard.OnFinished();
         }

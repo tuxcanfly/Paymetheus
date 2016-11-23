@@ -26,7 +26,7 @@ namespace Paymetheus.Framework
                     {
                         if (t.Exception != null)
                         {
-                            MessageBox.Show(t.Exception.Message, "Error");
+                            MessageBox.Show(t.Exception.GetBaseException().Message, "Error");
                         }
                     });
                 }

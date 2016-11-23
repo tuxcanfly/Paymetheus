@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Paymetheus
 {
     /// <summary>
-    /// Interaction logic for RestoreWalletProgressView.xaml
+    /// Interaction logic for StartupActivityProgressView.xaml
     /// </summary>
-    public partial class RestoreWalletProgressView : UserControl
+    public partial class StartupActivityProgressView : UserControl
     {
-        public RestoreWalletProgressView()
+        public StartupActivityProgressView()
         {
             InitializeComponent();
         }

@@ -183,8 +183,8 @@
     <Compile Include="RestoreWalletImportSeedView.xaml.cs">
       <DependentUpon>RestoreWalletImportSeedView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RestoreWalletProgressView.xaml.cs">
-      <DependentUpon>RestoreWalletProgressView.xaml</DependentUpon>
+    <Compile Include="StartupActivityProgressView.xaml.cs">
+      <DependentUpon>StartupActivityProgressView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scripts.xaml.cs">
       <DependentUpon>Scripts.xaml</DependentUpon>
@@ -343,7 +343,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RestoreWalletProgressView.xaml">
+    <Page Include="StartupActivityProgressView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
