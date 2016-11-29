@@ -178,7 +178,7 @@ namespace Walletrpc {
         __Marshaller_BalanceResponse);
 
     static readonly Method<global::Walletrpc.GetTransactionsRequest, global::Walletrpc.GetTransactionsResponse> __Method_GetTransactions = new Method<global::Walletrpc.GetTransactionsRequest, global::Walletrpc.GetTransactionsResponse>(
-        MethodType.Unary,
+        MethodType.ServerStreaming,
         __ServiceName,
         "GetTransactions",
         __Marshaller_GetTransactionsRequest,
@@ -340,7 +340,7 @@ namespace Walletrpc {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.GetTransactionsResponse> GetTransactions(global::Walletrpc.GetTransactionsRequest request, ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task GetTransactions(global::Walletrpc.GetTransactionsRequest request, IServerStreamWriter<global::Walletrpc.GetTransactionsResponse> responseStream, ServerCallContext context)
       {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
       }
@@ -553,21 +553,13 @@ namespace Walletrpc {
       {
         return CallInvoker.AsyncUnaryCall(__Method_Balance, null, options, request);
       }
-      public virtual global::Walletrpc.GetTransactionsResponse GetTransactions(global::Walletrpc.GetTransactionsRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public virtual AsyncServerStreamingCall<global::Walletrpc.GetTransactionsResponse> GetTransactions(global::Walletrpc.GetTransactionsRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
         return GetTransactions(request, new CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::Walletrpc.GetTransactionsResponse GetTransactions(global::Walletrpc.GetTransactionsRequest request, CallOptions options)
+      public virtual AsyncServerStreamingCall<global::Walletrpc.GetTransactionsResponse> GetTransactions(global::Walletrpc.GetTransactionsRequest request, CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_GetTransactions, null, options, request);
-      }
-      public virtual AsyncUnaryCall<global::Walletrpc.GetTransactionsResponse> GetTransactionsAsync(global::Walletrpc.GetTransactionsRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
-      {
-        return GetTransactionsAsync(request, new CallOptions(headers, deadline, cancellationToken));
-      }
-      public virtual AsyncUnaryCall<global::Walletrpc.GetTransactionsResponse> GetTransactionsAsync(global::Walletrpc.GetTransactionsRequest request, CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_GetTransactions, null, options, request);
+        return CallInvoker.AsyncServerStreamingCall(__Method_GetTransactions, null, options, request);
       }
       public virtual global::Walletrpc.TicketPriceResponse TicketPrice(global::Walletrpc.TicketPriceRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {

@@ -21,7 +21,7 @@ namespace Paymetheus.Rpc
 {
     public sealed class WalletClient : IDisposable
     {
-        private static readonly SemanticVersion RequiredRpcServerVersion = new SemanticVersion(3, 0, 1);
+        private static readonly SemanticVersion RequiredRpcServerVersion = new SemanticVersion(4, 0, 0);
 
         public static void Initialize()
         {
@@ -173,10 +173,19 @@ namespace Paymetheus.Rpc
                 //StartingBlockHeight = -minRecentBlocks,
                 //MinimumRecentTransactions = minRecentTransactions
             };
-            var resp = await client.GetTransactionsAsync(request, cancellationToken: _tokenSource.Token);
-            var minedTransactions = resp.MinedTransactions.Select(MarshalBlock);
-            var unminedTransactions = resp.UnminedTransactions.Select(MarshalWalletTransaction);
-            return new TransactionSet(minedTransactions.ToList(), unminedTransactions.ToDictionary(tx => tx.Hash));
+
+            var responseStream = client.GetTransactions(request, cancellationToken: _tokenSource.Token).ResponseStream;
+            var minedTransactions = new List<Block>();
+            Dictionary<Blake256Hash, WalletTransaction> unminedTransactions = null;
+            while (await responseStream.MoveNext())
+            {
+                var msg = responseStream.Current;
+                if (msg.MinedTransactions != null)
+                    minedTransactions.Add(MarshalBlock(msg.MinedTransactions));
+                else
+                    unminedTransactions = msg.UnminedTransactions.Select(MarshalWalletTransaction).ToDictionary(tx => tx.Hash);
+            }
+            return new TransactionSet(minedTransactions, unminedTransactions ?? new Dictionary<Blake256Hash, WalletTransaction>());
         }
 
         /// <summary>
