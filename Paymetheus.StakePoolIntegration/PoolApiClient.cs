@@ -20,7 +20,6 @@ namespace Paymetheus.StakePoolIntegration
         static string GetDataValue(Dictionary<string, string> data, string key)
         {
             string value;
-            data.TryGetValue(key, out value);
             if (data.TryGetValue(key, out value) && value != null)
                 return value;
             else
