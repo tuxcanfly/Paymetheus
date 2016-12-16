@@ -17,8 +17,7 @@ namespace Paymetheus.StakePoolIntegration
         public static async Task<Dictionary<string, StakePoolInfo>> QueryStakePoolInfoAsync(HttpClient client, JsonSerializer serializer)
         {
             using (var stream = await client.GetStreamAsync(StakePoolInfoUri))
-            using (var streamReader = new StreamReader(stream))
-            using (var jsonReader = new JsonTextReader(streamReader))
+            using (var jsonReader = new JsonTextReader(new StreamReader(stream)))
             {
                 return serializer.Deserialize<Dictionary<string, StakePoolInfo>>(jsonReader);
             }

@@ -34,6 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DecimalPercentageConverter.cs" />
+    <Compile Include="StatusCode.cs" />
     <Compile Include="PoolApiClient.cs" />
     <Compile Include="PoolApiResponse.cs" />
     <Compile Include="PoolApiResponseException.cs" />

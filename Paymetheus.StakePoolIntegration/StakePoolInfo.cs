@@ -2,7 +2,6 @@
 // Licensed under the ISC license.  See LICENSE file in the project root for full license information.
 
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 
 namespace Paymetheus.StakePoolIntegration
@@ -10,53 +9,47 @@ namespace Paymetheus.StakePoolIntegration
     public sealed class StakePoolInfo
     {
         [JsonRequired]
-        [JsonProperty(PropertyName = "url")]
+        [JsonProperty(PropertyName = "APIEnabled")]
+        public bool ApiEnabled { get; set; }
+
+        [JsonRequired]
+        [JsonProperty(PropertyName = "APIVersionsSupported")]
+        public uint[] SupportedApiVersions { get; set; }
+
+        [JsonRequired]
+        [JsonProperty(PropertyName = "LastAttempt")]
+        public long LastAttempt { get; set; }
+
+        [JsonRequired]
+        [JsonProperty(PropertyName = "LastUpdated")]
+        public long LastUpdated { get; set; }
+
+        [JsonRequired]
+        [JsonProperty(PropertyName = "URL")]
         public Uri Uri { get; set; }
 
-        [JsonRequired]
+        // The following members are scraped from HTML and might be missing:
+
         [JsonProperty(PropertyName = "Immature")]
-        public int ImmatureTicketCount { get; set; }
+        public int? ImmatureTicketCount { get; set; }
 
-        [JsonRequired]
         [JsonProperty(PropertyName = "Live")]
-        public int LiveTicketCount { get; set; }
+        public int? LiveTicketCount { get; set; }
 
-        [JsonRequired]
         [JsonProperty(PropertyName = "Voted")]
-        public int TotalVotes { get; set; }
+        public int? TotalVotes { get; set; }
 
-        [JsonRequired]
         [JsonProperty(PropertyName = "Missed")]
-        public int TotalMissedTickets { get; set; }
+        public int? TotalMissedTickets { get; set; }
 
         [JsonProperty(PropertyName = "PoolFees")]
         [JsonConverter(typeof(DecimalPercentageConverter))]
-        public decimal Fee { get; set; }
+        public decimal? Fee { get; set; }
 
-        [JsonRequired]
-        public decimal ProportionLive { get; set; }
+        [JsonProperty(PropertyName = "ProportionLive")]
+        public decimal? ProportionLive { get; set; }
 
-        [JsonRequired]
-        public int UserCount { get; set; }
-
-        private class DecimalPercentageConverter : JsonConverter
-        {
-            public override bool CanRead => true;
-
-            public override bool CanConvert(Type objectType)
-            {
-                throw new NotImplementedException();
-            }
-
-            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-            {
-                return new JValue(reader.Value).ToObject<decimal>() / 100;
-            }
-
-            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-            {
-                throw new NotImplementedException();
-            }
-        }
+        [JsonProperty(PropertyName = "UserCount")]
+        public int? UserCount { get; set; }
     }
 }

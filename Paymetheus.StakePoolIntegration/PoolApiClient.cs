@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -13,100 +12,49 @@ namespace Paymetheus.StakePoolIntegration
 {
     public sealed class PoolApiClient
     {
-        const string Version = "v0.1";
+        const string Version = "v1";
 
         static Uri RequestUri(Uri poolUri, string request) => new Uri(poolUri, $"api/{Version}/{request}");
 
-        static string GetDataValue(Dictionary<string, string> data, string key)
-        {
-            string value;
-            if (data.TryGetValue(key, out value) && value != null)
-                return value;
-            else
-                throw new InvalidDataException($"API response missing expected value for key `{key}`.");
-        }
-
         readonly Uri _poolUri;
+        readonly string _apiToken;
         readonly HttpClient _httpClient;
-        readonly CookieContainer _cookieContainer;
         readonly JsonSerializer _jsonSerializer = new JsonSerializer();
 
-        string CsrfToken => _cookieContainer.GetCookies(_poolUri)?["XSRF-TOKEN"]?.Value ?? "";
-
-        PoolApiResponse UnmarshalResponse(Stream responseStream)
+        HttpRequestMessage CreateApiRequest(HttpMethod httpMethod, string apiMethod)
         {
-            using (var streamReader = new StreamReader(responseStream))
-            using (var jsonReader = new JsonTextReader(streamReader))
+            var requestUri = RequestUri(_poolUri, apiMethod);
+            var requestMessage = new HttpRequestMessage(httpMethod, requestUri);
+            requestMessage.Headers.Add("Authorization", "Bearer " + _apiToken);
+            return requestMessage;
+        }
+
+        async Task<T> UnmarshalContentAsync<T>(HttpContent content)
+        {
+            using (var stream = await content.ReadAsStreamAsync())
+            using (var jsonReader = new JsonTextReader(new StreamReader(stream)))
             {
-                return _jsonSerializer.Deserialize<PoolApiResponse>(jsonReader);
+                return _jsonSerializer.Deserialize<T>(jsonReader);
             }
         }
 
-        PoolApiClient(Uri poolUri, HttpClient httpClient, CookieContainer cookieContainer)
+        public PoolApiClient(Uri poolUri, string apiToken, HttpClient httpClient)
         {
+            if (poolUri == null)
+                throw new ArgumentNullException(nameof(poolUri));
+            if (apiToken == null)
+                throw new ArgumentNullException(nameof(apiToken));
+            if (httpClient == null)
+                throw new ArgumentNullException(nameof(httpClient));
+
+            if (poolUri.Scheme != "https")
+            {
+                throw new ArgumentException("In order to protect API tokens, stakepools must serve API over HTTPS.");
+            }
+
             _poolUri = poolUri;
+            _apiToken = apiToken;
             _httpClient = httpClient;
-            _cookieContainer = cookieContainer;
-        }
-
-        public static async Task<PoolApiClient> StartSessionAsync(Uri poolUri)
-        {
-            var cookieContainer = new CookieContainer();
-            var httpClient = new HttpClient(new HttpClientHandler { CookieContainer = cookieContainer });
-            var requestUri = RequestUri(poolUri, "startsession");
-            var httpResponse = await httpClient.GetAsync(requestUri);
-            httpResponse.EnsureSuccessStatusCode();
-            var apiClient = new PoolApiClient(poolUri, httpClient, cookieContainer);
-            using (var stream = await httpResponse.Content.ReadAsStreamAsync())
-            {
-                apiClient.UnmarshalResponse(stream).EnsureSuccess();
-            }
-            return apiClient;
-        }
-
-        public async Task SignUpAsync(string email, string password)
-        {
-            if (email == null)
-                throw new ArgumentNullException(nameof(email));
-            if (password == null)
-                throw new ArgumentNullException(nameof(password));
-
-            var requestUri = RequestUri(_poolUri, "signup");
-            var content = new FormUrlEncodedContent(new Dictionary<string, string>
-            {
-                ["csrf_token"] = CsrfToken,
-                ["email"] = email,
-                ["password"] = password,
-                ["passwordrepeat"] = password, // why? validation has to be done on the client side
-            });
-            var httpResponse = await _httpClient.PostAsync(requestUri, content);
-            httpResponse.EnsureSuccessStatusCode();
-            using (var stream = await httpResponse.Content.ReadAsStreamAsync())
-            {
-                UnmarshalResponse(stream).EnsureSuccess();
-            }
-        }
-
-        public async Task SignInAsync(string email, string password)
-        {
-            if (email == null)
-                throw new ArgumentNullException(nameof(email));
-            if (password == null)
-                throw new ArgumentNullException(nameof(password));
-
-            var requestUri = RequestUri(_poolUri, "signin");
-            var content = new FormUrlEncodedContent(new Dictionary<string, string>
-            {
-                ["csrf_token"] = CsrfToken,
-                ["email"] = email,
-                ["password"] = password,
-            });
-            var httpResponse = await _httpClient.PostAsync(requestUri, content);
-            httpResponse.EnsureSuccessStatusCode();
-            using (var stream = await httpResponse.Content.ReadAsStreamAsync())
-            {
-                UnmarshalResponse(stream).EnsureSuccess();
-            }
         }
 
         public async Task CreateVotingAddressAsync(string pubKeyAddress)
@@ -114,40 +62,28 @@ namespace Paymetheus.StakePoolIntegration
             if (pubKeyAddress == null)
                 throw new ArgumentNullException(nameof(pubKeyAddress));
 
-            var requestUri = RequestUri(_poolUri, "address");
-            var content = new FormUrlEncodedContent(new Dictionary<string, string>
+            var request = CreateApiRequest(HttpMethod.Post, "address");
+            request.Content = new FormUrlEncodedContent(new Dictionary<string, string>
             {
-                ["csrf_token"] = CsrfToken,
                 ["UserPubKeyAddr"] = pubKeyAddress,
             });
-            var httpResponse = await _httpClient.PostAsync(requestUri, content);
+            var httpResponse = await _httpClient.SendAsync(request);
             httpResponse.EnsureSuccessStatusCode();
-            using (var stream = await httpResponse.Content.ReadAsStreamAsync())
-            {
-                UnmarshalResponse(stream).EnsureSuccess();
-            }
+
+            var apiResponse = await UnmarshalContentAsync<PoolApiResponse>(httpResponse.Content);
+            apiResponse.EnsureSuccess();
         }
 
         public async Task<PoolUserInfo> GetPurchaseInfoAsync()
         {
-            var requestUri = RequestUri(_poolUri, "getPurchaseInfo");
-            var httpResponse = await _httpClient.GetAsync(requestUri);
+            var request = CreateApiRequest(HttpMethod.Get, "getpurchaseinfo");
+            var httpResponse = await _httpClient.SendAsync(request);
             httpResponse.EnsureSuccessStatusCode();
 
-            PoolApiResponse apiResponse;
-            using (var stream = await httpResponse.Content.ReadAsStreamAsync())
-            {
-                apiResponse = UnmarshalResponse(stream);
-            }
+            var apiResponse = await UnmarshalContentAsync<PoolApiResponse<PoolUserInfo>>(httpResponse.Content);
             apiResponse.EnsureSuccess();
-
-            return new PoolUserInfo
-            {
-                FeeAddress = GetDataValue(apiResponse.Data, "pooladdress"),
-                Fee = decimal.Parse(GetDataValue(apiResponse.Data, "poolfees")) / 100,
-                RedeemScriptHex = GetDataValue(apiResponse.Data, "script"),
-                VotingAddress = GetDataValue(apiResponse.Data, "ticketaddress"),
-            };
+            apiResponse.EnsureHasData();
+            return apiResponse.Data;
         }
     }
 }

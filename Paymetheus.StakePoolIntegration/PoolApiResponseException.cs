@@ -7,11 +7,13 @@ namespace Paymetheus.StakePoolIntegration
 {
     public class PoolApiResponseException : Exception
     {
-        public PoolApiResponseException(string status, string message) : base(message)
+        internal PoolApiResponseException(StatusCode code, string status, string message) : base($"{message} (code={code})")
         {
+            Code = code;
             Status = status;
         }
 
+        public StatusCode Code { get; }
         public string Status { get; }
     }
 }
