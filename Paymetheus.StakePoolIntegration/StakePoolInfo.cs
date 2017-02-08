@@ -25,6 +25,10 @@ namespace Paymetheus.StakePoolIntegration
         public long LastUpdated { get; set; }
 
         [JsonRequired]
+        [JsonProperty(PropertyName = "Network")]
+        public string Network { get; set; }
+
+        [JsonRequired]
         [JsonProperty(PropertyName = "URL")]
         public Uri Uri { get; set; }
 

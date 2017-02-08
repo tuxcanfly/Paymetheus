@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Paymetheus.Framework
@@ -21,7 +22,23 @@ namespace Paymetheus.Framework
             where TView : FrameworkElement
             where TViewModel : ViewModelBase, new()
         {
-            RegisterFactory<TView>(() => new TViewModel());
+            RegisterFactory<TView>(() =>
+            {
+                var vm = new TViewModel();
+
+                if (vm is IActivity)
+                {
+                    Task.Run(((IActivity)vm).RunActivityAsync).ContinueWith(t =>
+                    {
+                        if (t.IsFaulted)
+                        {
+                            MessageBox.Show(t.Exception.InnerException.Message);
+                        }
+                    });
+                }
+
+                return vm;
+            });
         }
 
         public static void RegisterInstance<TView>(ViewModelBase viewModel)

@@ -61,6 +61,9 @@ namespace Paymetheus
             Current = this;
         }
 
+        public string AppDataDir { get; } = Portability.LocalAppData(Environment.OSVersion.Platform,
+                AssemblyResources.Organization, AssemblyResources.ProductName);
+
         public BlockChainIdentity ActiveNetwork { get; private set; }
         internal SynchronizerViewModel Synchronizer { get; private set; }
 
@@ -86,10 +89,7 @@ namespace Paymetheus
 
             WalletClient.Initialize();
 
-            var appDataDir = Portability.LocalAppData(Environment.OSVersion.Platform,
-                AssemblyResources.Organization, AssemblyResources.ProductName);
-
-            Directory.CreateDirectory(appDataDir);
+            Directory.CreateDirectory(AppDataDir);
 
             // try to obtain some default rpc settings to autofill the startup dialogs with.
             // try paymetheus defaults first, and if that fails, look for a dcrd config.
@@ -97,7 +97,7 @@ namespace Paymetheus
             {
                 var iniParser = new FileIniDataParser();
                 IniData config = null;
-                string defaultsFile = Path.Combine(appDataDir, "defaults.ini");
+                string defaultsFile = Path.Combine(AppDataDir, "defaults.ini");
                 if (File.Exists(defaultsFile))
                 {
                     config = iniParser.ReadFile(defaultsFile);
@@ -145,7 +145,7 @@ namespace Paymetheus
 
             var syncTask = Task.Run(async () =>
             {
-                return await SynchronizerViewModel.Startup(activeNetwork, appDataDir, args.SearchPathForWalletProcess,
+                return await SynchronizerViewModel.Startup(activeNetwork, AppDataDir, args.SearchPathForWalletProcess,
                     args.ExtraWalletArgs);
             });
             var synchronizer = syncTask.Result;

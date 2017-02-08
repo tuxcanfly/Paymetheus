@@ -349,13 +349,13 @@ namespace Paymetheus.Rpc
         }
 
         public async Task<List<Blake256Hash>> PurchaseTicketsAsync(Account account, Amount spendLimit,
-            int reqConfs, Address ticketAddress, uint number, Address poolAddress, double poolFees,
+            int reqConfs, Address votingAddress, uint ticketCount, Address poolAddress, double poolFees,
             uint expiry, Amount txFee, Amount ticketFee, string passphrase)
         {
-            var ticketAddressStr = "";
-            if (ticketAddress != null)
+            var votingAddressStr = "";
+            if (votingAddress != null)
             {
-                ticketAddressStr = ticketAddress.ToString();
+                votingAddressStr = votingAddress.ToString();
             }
             var poolAddressStr = "";
             if (poolAddress != null)
@@ -374,8 +374,8 @@ namespace Paymetheus.Rpc
                 Account = account.AccountNumber,
                 SpendLimit = spendLimit,
                 RequiredConfirmations = (uint)reqConfs,
-                TicketAddress = ticketAddressStr,
-                NumTickets = number,
+                TicketAddress = votingAddressStr,
+                NumTickets = ticketCount,
                 PoolAddress = poolAddressStr,
                 PoolFees = poolFees,
                 Expiry = expiry,

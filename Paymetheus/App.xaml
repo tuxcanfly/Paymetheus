@@ -16,6 +16,7 @@
         <vc:BooleanToVisibilityConverter x:Key="visibilityConverter" />
         <vc:BooleanToVisibilityConverter x:Key="invertedVisibilityConverter" True="Collapsed" False="Visible" />
         <vc:BooleanToVisibilityConverter x:Key="hiddenConverter" False="Hidden" />
+        <vc:BooleanToInvertedBooleanConverter x:Key="invertedBooleanConverter" />
         <vc:NullToHiddenConverter x:Key="NullToHiddenConverter"/>
         <vc:AmountConverter x:Key="AmountConverter"/>
         <v:AmountValidator x:Key="AmountValidator"/>
@@ -32,6 +33,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:PassphraseDialogViewModel}">
             <local:PassphraseDialogView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ManageStakePoolsDialogViewModel}">
+            <local:ManageStakePoolsDialogView/>
         </DataTemplate>
 
         <!-- Text blocks -->

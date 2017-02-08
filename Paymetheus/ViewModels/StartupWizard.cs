@@ -466,7 +466,7 @@ namespace Paymetheus.ViewModels
         internal const string Rescanning = "rescanning";
     }
 
-    sealed class RestoreActivityProgress : ConnectionWizardDialog, IWizardActivity
+    sealed class RestoreActivityProgress : ConnectionWizardDialog, IActivity
     {
         public RestoreActivityProgress(StartupWizard wizard, string privatePassphrase) : base(wizard)
         {
@@ -550,7 +550,7 @@ namespace Paymetheus.ViewModels
         }
     }
 
-    sealed class CreateNewWalletActivityProgress : ConnectionWizardDialog, IWizardActivity
+    sealed class CreateNewWalletActivityProgress : ConnectionWizardDialog, IActivity
     {
         public CreateNewWalletActivityProgress(StartupWizard wizard) : base(wizard)
         {
@@ -597,7 +597,7 @@ namespace Paymetheus.ViewModels
         }
     }
 
-    sealed class OpenExistingWalletActivityProgress : ConnectionWizardDialog, IWizardActivity
+    sealed class OpenExistingWalletActivityProgress : ConnectionWizardDialog, IActivity
     {
         public OpenExistingWalletActivityProgress(StartupWizard wizard) : base(wizard)
         {

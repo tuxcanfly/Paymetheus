@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Paymetheus.ManageStakePoolsDialogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:f="clr-namespace:Paymetheus.Framework;assembly=Paymetheus.Framework"
+             xmlns:local="clr-namespace:Paymetheus"
+             mc:Ignorable="d" 
+             MaxWidth="320"
+             d:DesignWidth="320">
+    <StackPanel VerticalAlignment="Center">
+        <DockPanel FocusManager.FocusedElement="{Binding ElementName=XXX}">
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="SAVE" IsDefault="True" Command="{Binding SaveCommand}" Style="{DynamicResource ButtonBlue}" Width="100" Margin="5"/>
+                <Button Content="CLOSE" IsCancel="True" Command="{Binding HideDialogCommand}" Style="{DynamicResource ButtonWhite}" Width="100" Margin="5"/>
+            </StackPanel>
+            <StackPanel>
+                <Label>
+                    <TextBlock FontSize="18">
+                        <Run Text="Manage stake pools"/>
+                    </TextBlock>
+                </Label>
+                <TextBlock Text="Available pools" Margin="0 0 0 5"/>
+                <ComboBox SelectedIndex="0"
+                          ItemsSource="{Binding AvailablePools}"
+                          DisplayMemberPath="Uri.Host"
+                          SelectedItem="{Binding SelectedStakePool}"/>
+                <TextBlock Margin="0 10 0 0">
+                    <Run Text="Pool website:"/>
+                    <Hyperlink NavigateUri="{Binding SelectedStakePool.Uri, Mode=OneWay}" RequestNavigate="Hyperlink_RequestNavigate">
+                        <TextBlock Text="{Binding SelectedStakePool.Uri, Mode=OneWay}"/>
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock Text="API key" Margin="0 10 0 5"/>
+                <TextBox Text="{Binding SelectedPoolApiKey}" IsReadOnly="{Binding NeedsSaving, Converter={StaticResource invertedBooleanConverter}}"
+                         Height="70" TextWrapping="Wrap" f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
+
+                <TextBlock Text="Voting account" Margin="0 10 0 5"/>
+                <ComboBox HorizontalAlignment="Stretch"
+                          IsEnabled="{Binding NeedsSaving}"
+                          ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.Accounts}"
+                          DisplayMemberPath="AccountProperties.AccountName"
+                          SelectedItem="{Binding SelectedVotingAccount}"
+                          Style="{DynamicResource ComboBoxStyleWithCurrency}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}"/>
+
+                <TextBlock Text="1-of-2 multisig vote script" Margin="0 10 0 5"/>
+                <TextBox Text="{Binding SelectedConfiguredPool.MultisigVoteScript, Mode=OneWay}" IsReadOnly="True" Height="70" TextWrapping="Wrap"/>
+            </StackPanel>
+        </DockPanel>
+    </StackPanel>
+</UserControl>

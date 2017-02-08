@@ -12,9 +12,10 @@ namespace Paymetheus.StakePoolIntegration
 {
     public sealed class PoolApiClient
     {
-        const string Version = "v1";
+        public const uint Version = 1;
+        const string VersionString = "v1";
 
-        static Uri RequestUri(Uri poolUri, string request) => new Uri(poolUri, $"api/{Version}/{request}");
+        static Uri RequestUri(Uri poolUri, string request) => new Uri(poolUri, $"api/{VersionString}/{request}");
 
         readonly Uri _poolUri;
         readonly string _apiToken;

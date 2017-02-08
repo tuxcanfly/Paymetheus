@@ -84,7 +84,8 @@
     <Compile Include="ButtonCommand.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="DialogViewModelBase.cs" />
-    <Compile Include="IWizardActivity.cs" />
+    <Compile Include="IActivity.cs" />
+    <Compile Include="INotifyCompletion.cs" />
     <Compile Include="Messenger.cs" />
     <Compile Include="Navigator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -19,9 +19,9 @@ namespace Paymetheus.Framework
                 _currentDialog = value;
                 RaisePropertyChanged();
 
-                if (value is IWizardActivity)
+                if (value is IActivity)
                 {
-                    var activity = (IWizardActivity)value;
+                    var activity = (IActivity)value;
                     Task.Run(activity.RunActivityAsync).ContinueWith(t =>
                     {
                         if (t.Exception != null)

@@ -36,4 +36,9 @@ namespace Paymetheus.Framework.ValueConverters
     {
         public BooleanToVisibilityConverter() : base(Visibility.Visible, Visibility.Collapsed) { }
     }
+
+    public sealed class BooleanToInvertedBooleanConverter : BooleanConverter<bool>
+    {
+        public BooleanToInvertedBooleanConverter() : base(false, true) { }
+    }
 }

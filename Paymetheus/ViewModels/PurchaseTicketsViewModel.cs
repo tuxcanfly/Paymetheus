@@ -1,27 +1,84 @@
-﻿using Paymetheus.Decred;
-using Paymetheus.Decred.Util;
+﻿// Copyright (c) 2016-2017 The Decred developers
+// Licensed under the ISC license.  See LICENSE file in the project root for full license information.
+
+using Paymetheus.Decred;
 using Paymetheus.Decred.Wallet;
 using Paymetheus.Framework;
-using Grpc.Core;
+using Paymetheus.StakePoolIntegration;
 using System;
-using System.Windows;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using Newtonsoft.Json;
+using System.IO;
+using System.Text;
+using Paymetheus.Decred.Util;
 
 namespace Paymetheus.ViewModels
 {
-    class PurchaseTicketsViewModel : ViewModelBase
+    public interface IStakePoolSelection
     {
+        string DisplayName { get; }
+    }
+
+    public class NoStakePool : IStakePoolSelection
+    {
+        public string DisplayName => "None";
+    }
+
+    public class ManualStakePool : IStakePoolSelection
+    {
+        public string DisplayName => "Manual entry";
+    }
+
+    public class StakePoolSelection : IStakePoolSelection
+    {
+        public StakePoolInfo PoolInfo { get; }
+        public string ApiToken { get; }
+        public string DisplayName => PoolInfo.Uri.Host;
+        public byte[] MultisigVoteScript { get; }
+
+        public StakePoolSelection(StakePoolInfo poolInfo, string apiToken, byte[] multisigVoteScript)
+        {
+            if (poolInfo == null) throw new ArgumentNullException(nameof(poolInfo));
+            if (apiToken == null) throw new ArgumentNullException(nameof(apiToken));
+            if (multisigVoteScript == null) throw new ArgumentNullException(nameof(multisigVoteScript));
+
+            PoolInfo = poolInfo;
+            ApiToken = apiToken;
+            MultisigVoteScript = multisigVoteScript;
+        }
+    }
+
+    class PurchaseTicketsViewModel : ViewModelBase, IActivity
+    {
+        private readonly HttpClient _httpClient = new HttpClient();
+        private JsonSerializer _jsonSerializer = new JsonSerializer();
+        string _configPath = Path.Combine(App.Current.AppDataDir, "stakepoolcfg.json");
+
+        public List<StakePoolInfo> AvailablePools { get; } = new List<StakePoolInfo>();
+
         public PurchaseTicketsViewModel() : base()
         {
             var synchronizer = ViewModelLocator.SynchronizerViewModel as SynchronizerViewModel;
             if (synchronizer != null)
             {
-                SelectedAccount = synchronizer.Accounts[0];
+                SelectedSourceAccount = synchronizer.Accounts[0];
             }
+
+            ConfiguredStakePools = new ObservableCollection<IStakePoolSelection>(new List<IStakePoolSelection>
+            {
+                new NoStakePool(),
+                new ManualStakePool(),
+            });
+            _selectedStakePool = ConfiguredStakePools[0];
+
+            ManageStakePools = new DelegateCommandAsync(ManageStakePoolsActionAsync);
+            ManageStakePools.Executable = false; // Set true after pool listing is downloaded and configs are read.
 
             FetchStakeDifficultyCommand = new DelegateCommand(FetchStakeDifficultyAsync);
             FetchStakeDifficultyCommand.Execute(null);
@@ -30,72 +87,259 @@ namespace Paymetheus.ViewModels
             _purchaseTickets.Executable = false;
         }
 
-        private DelegateCommand _purchaseTickets;
-        public ICommand Execute => _purchaseTickets;
-
-        private bool _poolChecked = false;
-        public bool PoolChecked
+        public async Task RunActivityAsync()
         {
-            get { return _poolChecked; }
-            set { _poolChecked = value; RaisePropertyChanged(); }
+            var poolListing = await PoolListApi.QueryStakePoolInfoAsync(_httpClient, _jsonSerializer);
+            AvailablePools.AddRange(poolListing
+                .Select(p => p.Value)
+                .Where(p => p.ApiEnabled)
+                .Where(p => p.Uri.Scheme == "https")
+                .Where(p => p.Network == App.Current.ActiveNetwork.Name)
+                .Where(p => p.SupportedApiVersions.Contains(PoolApiClient.Version))
+                .OrderBy(p => p.Uri.Host));
+
+            if (File.Exists(_configPath))
+            {
+                var config = await ReadConfig(_configPath);
+                await App.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    foreach (var entry in config.Entries)
+                    {
+                        var entryInfo = AvailablePools.Where(p => p.Uri.Host == entry.Host).FirstOrDefault();
+                        if (entryInfo == null)
+                        {
+                            continue;
+                        }
+                        var stakePoolSelection = new StakePoolSelection(entryInfo, entry.ApiKey, Hexadecimal.Decode(entry.MultisigVoteScript));
+                        ConfiguredStakePools.Add(stakePoolSelection);
+
+                        // If only one pool is saved, use this as the default.
+                        if (config.Entries.Length == 1)
+                        {
+                            SelectedStakePool = stakePoolSelection;
+                        }
+                    }
+                });
+            }
+
+            await App.Current.Dispatcher.InvokeAsync(() =>
+            {
+                ManageStakePools.Executable = true;
+                CommandManager.InvalidateRequerySuggested();
+            });
         }
 
-        private bool _feesChecked = false;
-        public bool FeesChecked
+        async Task<StakePoolUserConfig> ReadConfig(string configPath)
         {
-            get { return _feesChecked; }
-            set { _feesChecked = value; RaisePropertyChanged(); }
+            using (var sr = new StreamReader(configPath, Encoding.UTF8))
+            {
+                return await StakePoolUserConfig.ReadConfig(_jsonSerializer, sr);
+            }
         }
 
-        private AccountViewModel _selectedAccount;
-        public AccountViewModel SelectedAccount
+        private AccountViewModel _selectedSourceAccount;
+        public AccountViewModel SelectedSourceAccount
         {
-            get { return _selectedAccount; }
-            set { _selectedAccount = value; RaisePropertyChanged(); }
+            get { return _selectedSourceAccount; }
+            set { _selectedSourceAccount = value; RaisePropertyChanged(); }
         }
 
-        private Address _ticketAddress = null;
-        public string TicketAddressString
+        public DelegateCommandAsync ManageStakePools { get; }
+        private async Task ManageStakePoolsActionAsync()
         {
-            get { return _ticketAddress?.ToString() ?? ""; }
+            // Open dialog that downloads stakepool listing and lets user enter their api key.
+            var shell = (ShellViewModel)ViewModelLocator.ShellViewModel;
+            var dialog = new ManageStakePoolsDialogViewModel(shell);
+            shell.ShowDialog(dialog);
+            await dialog.NotifyCompletionSource.Task; // Wait until dialog is hidden
+
+            await App.Current.Dispatcher.InvokeAsync(() =>
+            {
+                foreach (var configuredPool in dialog.ConfiguredPools)
+                {
+                    var poolInfo = configuredPool.Item1;
+                    var poolUserConfig = configuredPool.Item2;
+
+                    if (ConfiguredStakePools.OfType<StakePoolSelection>().Where(p => p.PoolInfo.Uri.Host == poolInfo.Uri.Host).Count() == 0)
+                    {
+                        var stakePoolSelection = new StakePoolSelection(poolInfo, poolUserConfig.ApiKey,
+                            Hexadecimal.Decode(poolUserConfig.MultisigVoteScript));
+                        ConfiguredStakePools.Add(stakePoolSelection);
+                    }
+                }
+            });
+        }
+
+        public ObservableCollection<IStakePoolSelection> ConfiguredStakePools { get; }
+
+        private Visibility _votingAddressOptionVisibility = Visibility.Visible;
+        public Visibility VotingAddressOptionVisibility
+        {
+            get { return _votingAddressOptionVisibility; }
+            set { _votingAddressOptionVisibility = value; RaisePropertyChanged(); }
+        }
+
+        private Visibility _manualPoolOptionsVisibility = Visibility.Collapsed;
+        public Visibility ManualPoolOptionsVisibility
+        {
+            get { return _manualPoolOptionsVisibility; }
+            set { _manualPoolOptionsVisibility = value; RaisePropertyChanged(); }
+        }
+
+        private IStakePoolSelection _selectedStakePool;
+        public IStakePoolSelection SelectedStakePool
+        {
+            get { return _selectedStakePool; }
             set
             {
-                _ticketAddress = null;
-                if (value == "")
-                    return;
+                _selectedStakePool = value;
+                RaisePropertyChanged();
 
+                if (value is NoStakePool)
+                {
+                    VotingAddressOptionVisibility = Visibility.Visible;
+                    ManualPoolOptionsVisibility = Visibility.Collapsed;
+                }
+                else if (value is ManualStakePool)
+                {
+                    VotingAddressOptionVisibility = Visibility.Visible;
+                    ManualPoolOptionsVisibility = Visibility.Visible;
+                }
+                else if (value is StakePoolSelection)
+                {
+                    VotingAddressOptionVisibility = Visibility.Collapsed;
+                    ManualPoolOptionsVisibility = Visibility.Collapsed;
+                }
+
+                EnableOrDisableSendCommand();
+            }
+        }
+
+        private uint _ticketsToPurchase = 1;
+        public uint TicketsToPurchase
+        {
+            get { return _ticketsToPurchase; }
+            set { _ticketsToPurchase = value; EnableOrDisableSendCommand(); }
+        }
+
+        private const long minFeePerKb = (long)1e6;
+        private const long maxFeePerKb = (long)1e8 - 1;
+
+        private Amount _ticketFee = minFeePerKb;
+        public string TicketFee
+        {
+            get { return _ticketFee.ToString(); }
+            set
+            {
                 try
                 {
-                    _ticketAddress = Address.Decode(value);
+                    var ticketFee = Denomination.Decred.AmountFromString(value);
+
+                    if (ticketFee < minFeePerKb)
+                        throw new ArgumentException($"Too small fee passed (must be >= {(Amount)minFeePerKb} DCR/kB)");
+                    if (ticketFee > maxFeePerKb)
+                        throw new ArgumentException($"Too big fee passed (must be <= {(Amount)minFeePerKb} DCR/kB)");
+
+                    _ticketFee = ticketFee;
                 }
                 finally
                 {
-                    enableOrDisableSendCommand();
+                    EnableOrDisableSendCommand();
                 }
             }
         }
 
-        private Address _poolAddress = null;
-        public string PoolAddressString
+
+        private Amount _splitFee = minFeePerKb;
+        public string SplitFee
         {
-            get { return _poolAddress?.ToString() ?? ""; }
+            get { return _splitFee.ToString(); }
             set
             {
-                _poolAddress = null;
-                if (value == "")
-                    return;
-
                 try
                 {
-                    _poolAddress = Address.Decode(value);
+                    var splitFee = Denomination.Decred.AmountFromString(value);
+
+                    if (splitFee < minFeePerKb)
+                        throw new ArgumentException($"Too small fee passed (must be >= {(Amount)minFeePerKb} DCR/kB)");
+                    if (splitFee > maxFeePerKb)
+                        throw new ArgumentException($"Too big fee passed (must be <= {(Amount)minFeePerKb} DCR/kB)");
+
+                    _splitFee = splitFee;
                 }
                 finally
                 {
-                    enableOrDisableSendCommand();
+                    EnableOrDisableSendCommand();
                 }
             }
         }
 
+        private const uint MinExpiry = 2;
+        private uint _expiry = 16; // The default expiry is 16.
+        public uint Expiry
+        {
+            get { return _expiry; }
+            set
+            {
+                try
+                {
+                    if (value < MinExpiry)
+                        throw new ArgumentException($"Expiry must be a minimum of {MinExpiry} blocks");
+
+                    _expiry = value;
+                }
+                finally
+                {
+                    EnableOrDisableSendCommand();
+                }
+            }
+        }
+
+        // manual
+        private Address _votingAddress;
+        public string VotingAddress
+        {
+            get { return _votingAddress?.Encode() ?? ""; }
+            set
+            {
+                try
+                {
+                    _votingAddress = Address.Decode(value);
+                }
+                catch
+                {
+                    _votingAddress = null;
+                }
+                finally
+                {
+                    EnableOrDisableSendCommand();
+                }
+            }
+        }
+
+        // manual
+        private Address _poolFeeAddress;
+        public string PoolFeeAddress
+        {
+            get { return _poolFeeAddress?.Encode() ?? ""; }
+            set
+            {
+                try
+                {
+                    _poolFeeAddress = Address.Decode(value);
+                }
+                catch
+                {
+                    _poolFeeAddress = null;
+                }
+                finally
+                {
+                    EnableOrDisableSendCommand();
+                }
+            }
+        }
+
+        // manual
         private decimal _poolFees = 0.0M;
         public decimal PoolFees
         {
@@ -104,157 +348,35 @@ namespace Paymetheus.ViewModels
             {
                 try
                 {
-                    var testPoolFees = value * 100.0M;
-                    if (testPoolFees != Math.Floor(testPoolFees))
+                    var _poolFees = value * 100.0M;
+                    if (_poolFees != Math.Floor(_poolFees))
                         throw new ArgumentException("pool fees must have two decimal points of precision maximum");
                     if (value > 100.0M)
                         throw new ArgumentException("pool fees must be less or equal too than 100.00%");
                     if (value < 0.01M)
                         throw new ArgumentException("pool fees must be greater than or equal to 0.01%");
-                    _poolFees = value;
                 }
                 catch
                 {
-                    _poolFees = 0.0M;
-                    throw;
+                    _poolFees = 0M;
                 }
                 finally
                 {
-                    enableOrDisableSendCommand();
+                    EnableOrDisableSendCommand();
                 }
             }
         }
 
-        private uint _ticketsToPurchase = 0;
-        public uint TicketsToPurchase
+        private void EnableOrDisableSendCommand()
         {
-            get { return _ticketsToPurchase; }
-            set
-            {
-                try
-                {
-                    _ticketsToPurchase = value;
-                }
-                catch
-                {
-                    _ticketsToPurchase = 0;
-                    throw;
-                }
-                finally
-                {
-                    enableOrDisableSendCommand();
-                }
-            }
-        }
-
-        // The default expiry is 16.
-        private uint _expiry = 16;
-        private uint minExpiry = 2;
-        public uint Expiry
-        {
-            get { return _expiry; }
-            set
-            {
-                try
-                {
-                    if (value < minExpiry)
-                        throw new ArgumentException("Expiry must be a minimum of 2 blocks");
-
-                    _expiry = value;
-                }
-                catch
-                {
-                    _expiry = 0;
-                    throw;
-                }
-                finally
-                {
-                    enableOrDisableSendCommand();
-                }
-            }
-        }
-
-        // TODO Declare this as a global somewhere?
-        private const long minFeePerKb = (long)1e6;
-        private const long maxFeePerKb = (long)1e8 - 1;
-
-        private Amount _splitFee = 0;
-        public Amount SplitFeeAmount => _splitFee;
-        public string SplitFeeString
-        {
-            get { return _splitFee.ToString(); }
-            set
-            {
-                try
-                {
-                    var testAmount = Denomination.Decred.AmountFromString(value);
-
-                    if (testAmount < minFeePerKb)
-                        throw new ArgumentException($"Too small fee passed (must be >= {(Amount)minFeePerKb} DCR/kB)");
-
-                    if (testAmount > maxFeePerKb)
-                        throw new ArgumentException($"Too big fee passed (must be <= {(Amount)minFeePerKb} DCR/kB)");
-
-                    _splitFee = testAmount;
-                }
-                catch
-                {
-                    _splitFee = 0;
-                    throw;
-                }
-                finally
-                {
-                    enableOrDisableSendCommand();
-                }
-            }
-        }
-
-        private Amount _ticketFee = 0;
-        public Amount TicketFeeAmount => _ticketFee;
-        public string TicketFeeString
-        {
-            get { return _ticketFee.ToString(); }
-            set
-            {
-                try
-                {
-                    var testAmount = Denomination.Decred.AmountFromString(value);
-
-                    if (testAmount < minFeePerKb)
-                        throw new ArgumentException($"Too small fee passed (must be >= {(Amount)minFeePerKb} DCR/kB)");
-
-                    if (testAmount > maxFeePerKb)
-                        throw new ArgumentException($"Too big fee passed (must be <= {(Amount)minFeePerKb} DCR/kB)");
-
-                    _ticketFee = testAmount;
-                }
-                catch
-                {
-                    _ticketFee = 0;
-                    throw;
-                }
-                finally
-                {
-                    enableOrDisableSendCommand();
-                }
-            }
-        }
-
-        private void enableOrDisableSendCommand()
-        {
-            if (_selectedAccount == null)
+            if (_selectedSourceAccount == null)
             {
                 _purchaseTickets.Executable = false;
                 return;
             }
 
-            if (_ticketAddress == null)
+            if (_expiry < MinExpiry)
             {
-                _purchaseTickets.Executable = false;
-                return;
-            }
-
-            if (_expiry < minExpiry) {
                 _purchaseTickets.Executable = false;
                 return;
             }
@@ -265,49 +387,31 @@ namespace Paymetheus.ViewModels
                 return;
             }
 
-            if (_poolChecked)
+            if (SelectedStakePool is ManualStakePool && (_poolFeeAddress == null || _poolFees == 0))
             {
-                if (_poolAddress == null)
-                {
-                    _purchaseTickets.Executable = false;
-                    return;
-                }
-
-                if (_poolFees == 0.0M)
-                {
-                    _purchaseTickets.Executable = false;
-                    return;
-                }
-            }
-
-            if (_feesChecked)
-            {
-                if (_splitFee == 0)
-                {
-                    _purchaseTickets.Executable = false;
-                    return;
-                }
-
-                if (_ticketFee == 0)
-                {
-                    _purchaseTickets.Executable = false;
-                    return;
-                }
-            }
-
-            // Not enough funds.
-            if ((_stakeDifficultyProperties.NextTicketPrice * (Amount)_ticketsToPurchase) > _selectedAccount.Balances.SpendableBalance)
-            {
-                // TODO: Better inform the user somehow of why it doesn't allow ticket 
-                // purchase?
-                //
-                // string errorString = "Not enough funds; have " +
-                //     _selectedAccount.Balances.SpendableBalance.ToString() + " want " +
-                //     ((Amount)(_stakeDifficultyProperties.NextTicketPrice * (Amount)_ticketsToPurchase)).ToString();
-                // MessageBox.Show(errorString);
                 _purchaseTickets.Executable = false;
                 return;
             }
+
+            if (!(SelectedStakePool is StakePoolSelection) && _votingAddress == null)
+            {
+                _purchaseTickets.Executable = false;
+                return;
+            }
+
+            // Not enough funds.
+            //if ((_stakeDifficultyProperties.NextTicketPrice * (Amount)_ticketsToPurchase) > _selectedSourceAccount.Balances.SpendableBalance)
+            //{
+            //    // TODO: Better inform the user somehow of why it doesn't allow ticket 
+            //    // purchase?
+            //    //
+            //    // string errorString = "Not enough funds; have " +
+            //    //     _selectedAccount.Balances.SpendableBalance.ToString() + " want " +
+            //    //     ((Amount)(_stakeDifficultyProperties.NextTicketPrice * (Amount)_ticketsToPurchase)).ToString();
+            //    // MessageBox.Show(errorString);
+            //    _purchaseTickets.Executable = false;
+            //    return
+            //}
 
             _purchaseTickets.Executable = true;
         }
@@ -343,6 +447,10 @@ namespace Paymetheus.ViewModels
             internal set { _blocksToRetarget = value; RaisePropertyChanged(); }
         }
 
+
+        private DelegateCommand _purchaseTickets;
+        public ICommand Execute => _purchaseTickets;
+
         private void PurchaseTicketsAction()
         {
             var shell = ViewModelLocator.ShellViewModel as ShellViewModel;
@@ -350,9 +458,9 @@ namespace Paymetheus.ViewModels
             {
                 Func<string, Task<bool>> action =
                     passphrase => PurchaseTicketsWithPassphrase(passphrase);
-                shell.VisibleDialogContent = new PassphraseDialogViewModel(shell, 
-                    "Enter passphrase to purchase tickets", 
-                    "PURCHASE", 
+                shell.VisibleDialogContent = new PassphraseDialogViewModel(shell,
+                    "Enter passphrase to purchase tickets",
+                    "PURCHASE",
                     action);
             }
         }
@@ -366,30 +474,56 @@ namespace Paymetheus.ViewModels
 
         private async Task<bool> PurchaseTicketsWithPassphrase(string passphrase)
         {
-            var account = SelectedAccount.Account;
+            var walletClient = App.Current.Synchronizer.WalletRpcClient;
+
+            var account = SelectedSourceAccount.Account;
             var spendLimit = StakeDifficultyProperties.NextTicketPrice;
             int requiredConfirms = 2; // TODO allow user to set
             uint expiryHeight = _expiry + (uint)StakeDifficultyProperties.HeightForTicketPrice;
 
-            Amount splitFeeLocal = 0;
-            Amount ticketFeeLocal = 0;
-            if (_feesChecked)
+            Amount splitFeeLocal = _splitFee;
+            Amount ticketFeeLocal = _ticketFee;
+
+            Address votingAddress;
+            Address poolFeeAddress;
+            decimal poolFees;
+            if (SelectedStakePool is StakePoolSelection)
             {
-                splitFeeLocal = _splitFee;
-               ticketFeeLocal = _ticketFee;
+                var selection = (StakePoolSelection)SelectedStakePool;
+                var client = new PoolApiClient(selection.PoolInfo.Uri, selection.ApiToken, _httpClient);
+                var purchaseInfo = await client.GetPurchaseInfoAsync();
+
+                // Import the 1-of-2 multisig vote script.  This has to be done here rather than from
+                // the pool management dialog since importing requires an unlocked wallet and we are
+                // unable to open nested dialog windows to prompt for a passphrase.
+                //
+                // This does not need to re-import the script every time ticktes are purchased using
+                // a pool, but for code simplicity it is done this way.  Also, in future versions of the
+                // API when it may be possible to generate a new reward address for each ticket, we will
+                // need to import these scripts ever time.
+                await walletClient.ImportScriptAsync(selection.MultisigVoteScript, false, 0, passphrase);
+
+                votingAddress = Address.Decode(purchaseInfo.VotingAddress);
+                poolFeeAddress = Address.Decode(purchaseInfo.FeeAddress);
+                poolFees = purchaseInfo.Fee;
+            }
+            else
+            {
+                votingAddress = _votingAddress;
+                poolFeeAddress = _poolFeeAddress;
+                poolFees = _poolFees;
             }
 
             List<Blake256Hash> purchaseResponse;
-            var walletClient = App.Current.Synchronizer.WalletRpcClient;
             try
             {
                 purchaseResponse = await walletClient.PurchaseTicketsAsync(account, spendLimit,
-                    requiredConfirms, _ticketAddress, _ticketsToPurchase, _poolAddress, 
-                    (double)_poolFees, expiryHeight, _splitFee, _ticketFee, passphrase);
+                    requiredConfirms, votingAddress, _ticketsToPurchase, poolFeeAddress,
+                    (double)poolFees, expiryHeight, _splitFee, _ticketFee, passphrase);
             }
-            catch (Exception ex)
+            catch (Grpc.Core.RpcException ex)
             {
-                ResponseString = "Unexpected error: " + ex.ToString();
+                MessageBox.Show(ex.Status.Detail, "Unexpected error");
                 return false;
             }
 

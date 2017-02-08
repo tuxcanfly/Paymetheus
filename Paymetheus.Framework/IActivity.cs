@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Paymetheus.Framework
 {
-    public interface IWizardActivity
+    public interface IActivity
     {
         Task RunActivityAsync();
     }

@@ -126,6 +126,10 @@
       <HintPath>..\packages\ini-parser.2.3.0\lib\net20\INIFileParser.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.2-beta2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PCLCrypto, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d4421c8a4786956c, processorArchitecture=MSIL">
       <HintPath>..\packages\PCLCrypto.1.0.86\lib\net40-Client\PCLCrypto.dll</HintPath>
       <Private>True</Private>
@@ -139,6 +143,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -167,6 +172,9 @@
     <Compile Include="AccountToNameConverter.cs" />
     <Compile Include="ImportScriptDialogView.xaml.cs">
       <DependentUpon>ImportScriptDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageStakePoolsDialogView.xaml.cs">
+      <DependentUpon>ManageStakePoolsDialogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="PassphraseDialogView.xaml.cs">
       <DependentUpon>PassphraseDialogView.xaml</DependentUpon>
@@ -199,6 +207,7 @@
       <DependentUpon>TransactionCategoryIcon.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ImportScriptDialogViewModel.cs" />
+    <Compile Include="ViewModels\ManageStakePoolsDialogViewModel.cs" />
     <Compile Include="ViewModels\PurchaseTicketsViewModel.cs" />
     <Compile Include="ViewModels\ScriptsViewModel.cs" />
     <Compile Include="ViewModels\StakeMiningViewModel.cs" />
@@ -300,6 +309,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ImportScriptDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageStakePoolsDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -457,6 +470,10 @@
     <ProjectReference Include="..\Paymetheus.Rpc\Paymetheus.Rpc.csproj">
       <Project>{4bd3b218-0cb0-49d5-8231-b24265ea98b9}</Project>
       <Name>Paymetheus.Rpc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Paymetheus.StakePoolIntegration\Paymetheus.StakePoolIntegration.csproj">
+      <Project>{94d8adf8-a053-4aca-8251-bfeb9126f366}</Project>
+      <Name>Paymetheus.StakePoolIntegration</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
