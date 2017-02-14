@@ -340,7 +340,7 @@ namespace Paymetheus.ViewModels
         }
 
         // manual
-        private decimal _poolFees = 0.0M;
+        private decimal _poolFees = 0.0m; // Percentage between 0-100 for display
         public decimal PoolFees
         {
             get { return _poolFees; }
@@ -348,17 +348,13 @@ namespace Paymetheus.ViewModels
             {
                 try
                 {
-                    var _poolFees = value * 100.0M;
-                    if (_poolFees != Math.Floor(_poolFees))
+                    _poolFees = value;
+                    if (value * 100m != Math.Floor(value * 100m))
                         throw new ArgumentException("pool fees must have two decimal points of precision maximum");
-                    if (value > 100.0M)
+                    if (value > 100.0m)
                         throw new ArgumentException("pool fees must be less or equal too than 100.00%");
-                    if (value < 0.01M)
+                    if (value < 0.01m)
                         throw new ArgumentException("pool fees must be greater than or equal to 0.01%");
-                }
-                catch
-                {
-                    _poolFees = 0M;
                 }
                 finally
                 {
@@ -387,7 +383,8 @@ namespace Paymetheus.ViewModels
                 return;
             }
 
-            if (SelectedStakePool is ManualStakePool && (_poolFeeAddress == null || _poolFees == 0))
+            if (SelectedStakePool is ManualStakePool &&
+                (_poolFeeAddress == null || _poolFees * 100m != Math.Floor(_poolFees * 100m) || _poolFees < 0.01m || _poolFees > 100m))
             {
                 _purchaseTickets.Executable = false;
                 return;
@@ -511,7 +508,7 @@ namespace Paymetheus.ViewModels
             {
                 votingAddress = _votingAddress;
                 poolFeeAddress = _poolFeeAddress;
-                poolFees = _poolFees;
+                poolFees = _poolFees / 100m;
             }
 
             List<Blake256Hash> purchaseResponse;
