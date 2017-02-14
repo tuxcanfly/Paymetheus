@@ -349,7 +349,7 @@ namespace Paymetheus.Rpc
         }
 
         public async Task<List<Blake256Hash>> PurchaseTicketsAsync(Account account, Amount spendLimit,
-            int reqConfs, Address votingAddress, uint ticketCount, Address poolAddress, double poolFees,
+            int reqConfs, Address votingAddress, uint ticketCount, Address poolAddress, decimal poolFees,
             uint expiry, Amount txFee, Amount ticketFee, string passphrase)
         {
             var votingAddressStr = "";
@@ -364,7 +364,7 @@ namespace Paymetheus.Rpc
             }
             if (poolAddressStr == "")
             {
-                poolFees = 0.0;
+                poolFees = 0m;
             }
 
             var client = new WalletService.WalletServiceClient(_channel);
@@ -377,7 +377,7 @@ namespace Paymetheus.Rpc
                 TicketAddress = votingAddressStr,
                 NumTickets = ticketCount,
                 PoolAddress = poolAddressStr,
-                PoolFees = poolFees,
+                PoolFees = (double)(poolFees * 100),
                 Expiry = expiry,
                 TxFee = txFee,
                 TicketFee = ticketFee,

@@ -519,7 +519,7 @@ namespace Paymetheus.ViewModels
             {
                 purchaseResponse = await walletClient.PurchaseTicketsAsync(account, spendLimit,
                     requiredConfirms, votingAddress, _ticketsToPurchase, poolFeeAddress,
-                    (double)poolFees, expiryHeight, _splitFee, _ticketFee, passphrase);
+                    poolFees, expiryHeight, _splitFee, _ticketFee, passphrase);
             }
             catch (Grpc.Core.RpcException ex)
             {
