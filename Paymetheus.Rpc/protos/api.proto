@@ -41,6 +41,7 @@ service WalletService {
 	rpc ImportPrivateKey (ImportPrivateKeyRequest) returns (ImportPrivateKeyResponse);
 	rpc ImportScript(ImportScriptRequest) returns (ImportScriptResponse);
 	rpc FundTransaction (FundTransactionRequest) returns (FundTransactionResponse);
+	rpc ConstructTransaction (ConstructTransactionRequest) returns (ConstructTransactionResponse);
 	rpc SignTransaction (SignTransactionRequest) returns (SignTransactionResponse);
 	rpc PublishTransaction (PublishTransactionRequest) returns (PublishTransactionResponse);
 	rpc PurchaseTickets(PurchaseTicketsRequest) returns (PurchaseTicketsResponse);
@@ -58,6 +59,16 @@ service WalletLoaderService {
 	rpc FetchHeaders(FetchHeadersRequest) returns (FetchHeadersResponse);
 }
 
+service TicketBuyerService {
+    rpc StartAutoBuyer (StartAutoBuyerRequest) returns (StartAutoBuyerResponse);
+    rpc StopAutoBuyer (StopAutoBuyerRequest) returns (StopAutoBuyerResponse);
+}
+
+service SeedService {
+	rpc GenerateRandomSeed (GenerateRandomSeedRequest) returns (GenerateRandomSeedResponse);
+	rpc DecodeSeed (DecodeSeedRequest) returns (DecodeSeedResponse);
+}
+
 message TransactionDetails {
 	message Input {
 		uint32 index = 1;
@@ -68,6 +79,9 @@ message TransactionDetails {
 		uint32 index = 1;
 		uint32 account = 2;
 		bool internal = 3;
+		int64 amount = 4;
+		string address = 5;
+		bytes output_script = 6;
 	}
 	bytes hash = 1;
 	bytes transaction = 2;
@@ -268,6 +282,35 @@ message FundTransactionResponse {
 	bytes change_pk_script = 3;
 }
 
+message ConstructTransactionRequest {
+	message OutputDestination {
+		string address = 1;
+
+		bytes script = 2;
+		uint32 script_version = 3;
+	}
+	message Output {
+		OutputDestination destination = 1;
+		int64 amount = 2;
+	}
+	enum OutputSelectionAlgorithm {
+		UNSPECIFIED = 0;
+		ALL = 1;
+	}
+	uint32 source_account = 1;
+	int32 required_confirmations = 2;
+	int32 fee_per_kb = 3;
+	OutputSelectionAlgorithm output_selection_algorithm = 4;
+	repeated Output non_change_outputs = 5;
+	OutputDestination change_destination = 6;
+}
+message ConstructTransactionResponse {
+	bytes unsigned_transaction = 1;
+	int64 total_previous_output_amount = 2;
+	int64 total_output_amount = 3;
+	uint32 estimated_signed_size = 4;
+}
+
 message SignTransactionRequest {
 	bytes passphrase = 1;
 	
@@ -402,4 +445,39 @@ message FetchHeadersResponse {
 	uint32 fetched_headers_count = 1;
 	bytes first_new_block_hash = 2;
 	int32 first_new_block_height = 3;
+	bytes main_chain_tip_block_hash = 4;
+	int32 main_chain_tip_block_height = 5;
 }
+
+message GenerateRandomSeedRequest {
+	uint32 seed_length = 1;
+}
+message GenerateRandomSeedResponse {
+	bytes seed_bytes = 1;
+	string seed_hex = 2;
+	string seed_mnemonic = 3;
+}
+
+message DecodeSeedRequest {
+	string user_input = 1;
+}
+message DecodeSeedResponse {
+	bytes decoded_seed = 1;
+}
+
+message StartAutoBuyerRequest {
+	bytes passphrase = 1;
+	uint32 account = 2;
+	int64 balance_to_maintain = 3;
+	int64 max_fee_per_kb = 4;
+	double max_price_relative = 5;
+	int64 max_price_absolute = 6;
+	string voting_address = 7;
+	string pool_address = 8;
+	double pool_fees = 9;
+	int64 max_per_block = 10;
+}
+message StartAutoBuyerResponse {}
+
+message StopAutoBuyerRequest {}
+message StopAutoBuyerResponse {}

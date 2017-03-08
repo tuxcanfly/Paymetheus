@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
@@ -641,6 +642,43 @@ namespace Paymetheus.Rpc
                 });
 
                 return Tuple.Create(walletMutex, syncTask);
+            }
+        }
+
+        public async Task StartAutoBuyer(AutoBuyerProperties properties)
+        {
+            try
+            {
+                var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+                var req = new StartAutoBuyerRequest();
+                req.Passphrase = ByteString.CopyFrom(properties.Passphrase);
+                req.Account = properties.Account;
+                req.BalanceToMaintain = properties.BalanceToMaintain;
+                req.MaxFeePerKb = properties.MaxFeePerKb;
+                req.MaxPriceRelative = properties.MaxPriceRelative;
+                req.MaxPriceAbsolute = properties.MaxPriceAbsolute;
+                req.VotingAddress = properties.VotingAddress;
+                req.PoolAddress = properties.PoolAddress;
+                req.PoolFees = properties.PoolFees;
+                req.MaxPerBlock = properties.MaxPerBlock;
+                await client.StartAutoBuyerAsync(req);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        public async Task StopAutoBuyer()
+        {
+            try
+            {
+                var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+                await client.StopAutoBuyerAsync(new StopAutoBuyerRequest());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
     }
