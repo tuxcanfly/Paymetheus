@@ -206,6 +206,7 @@
     <Compile Include="UserControls\TransactionCategoryIcon.xaml.cs">
       <DependentUpon>TransactionCategoryIcon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AutoBuyerViewModel.cs" />
     <Compile Include="ViewModels\ImportScriptDialogViewModel.cs" />
     <Compile Include="ViewModels\ManageStakePoolsDialogViewModel.cs" />
     <Compile Include="ViewModels\PurchaseTicketsViewModel.cs" />

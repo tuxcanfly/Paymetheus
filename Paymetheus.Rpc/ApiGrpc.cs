@@ -133,6 +133,8 @@ namespace Walletrpc {
     static readonly Marshaller<global::Walletrpc.ImportScriptResponse> __Marshaller_ImportScriptResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.ImportScriptResponse.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.FundTransactionRequest> __Marshaller_FundTransactionRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.FundTransactionRequest.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.FundTransactionResponse> __Marshaller_FundTransactionResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.FundTransactionResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.ConstructTransactionRequest> __Marshaller_ConstructTransactionRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.ConstructTransactionRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.ConstructTransactionResponse> __Marshaller_ConstructTransactionResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.ConstructTransactionResponse.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.SignTransactionRequest> __Marshaller_SignTransactionRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SignTransactionRequest.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.SignTransactionResponse> __Marshaller_SignTransactionResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SignTransactionResponse.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.PublishTransactionRequest> __Marshaller_PublishTransactionRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.PublishTransactionRequest.Parser.ParseFrom);
@@ -275,6 +277,13 @@ namespace Walletrpc {
         __Marshaller_FundTransactionRequest,
         __Marshaller_FundTransactionResponse);
 
+    static readonly Method<global::Walletrpc.ConstructTransactionRequest, global::Walletrpc.ConstructTransactionResponse> __Method_ConstructTransaction = new Method<global::Walletrpc.ConstructTransactionRequest, global::Walletrpc.ConstructTransactionResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "ConstructTransaction",
+        __Marshaller_ConstructTransactionRequest,
+        __Marshaller_ConstructTransactionResponse);
+
     static readonly Method<global::Walletrpc.SignTransactionRequest, global::Walletrpc.SignTransactionResponse> __Method_SignTransaction = new Method<global::Walletrpc.SignTransactionRequest, global::Walletrpc.SignTransactionResponse>(
         MethodType.Unary,
         __ServiceName,
@@ -412,6 +421,11 @@ namespace Walletrpc {
       }
 
       public virtual global::System.Threading.Tasks.Task<global::Walletrpc.FundTransactionResponse> FundTransaction(global::Walletrpc.FundTransactionRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.ConstructTransactionResponse> ConstructTransaction(global::Walletrpc.ConstructTransactionRequest request, ServerCallContext context)
       {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
       }
@@ -755,6 +769,22 @@ namespace Walletrpc {
       {
         return CallInvoker.AsyncUnaryCall(__Method_FundTransaction, null, options, request);
       }
+      public virtual global::Walletrpc.ConstructTransactionResponse ConstructTransaction(global::Walletrpc.ConstructTransactionRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return ConstructTransaction(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.ConstructTransactionResponse ConstructTransaction(global::Walletrpc.ConstructTransactionRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ConstructTransaction, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.ConstructTransactionResponse> ConstructTransactionAsync(global::Walletrpc.ConstructTransactionRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return ConstructTransactionAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.ConstructTransactionResponse> ConstructTransactionAsync(global::Walletrpc.ConstructTransactionRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ConstructTransaction, null, options, request);
+      }
       public virtual global::Walletrpc.SignTransactionResponse SignTransaction(global::Walletrpc.SignTransactionRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
         return SignTransaction(request, new CallOptions(headers, deadline, cancellationToken));
@@ -848,6 +878,7 @@ namespace Walletrpc {
           .AddMethod(__Method_ImportPrivateKey, serviceImpl.ImportPrivateKey)
           .AddMethod(__Method_ImportScript, serviceImpl.ImportScript)
           .AddMethod(__Method_FundTransaction, serviceImpl.FundTransaction)
+          .AddMethod(__Method_ConstructTransaction, serviceImpl.ConstructTransaction)
           .AddMethod(__Method_SignTransaction, serviceImpl.SignTransaction)
           .AddMethod(__Method_PublishTransaction, serviceImpl.PublishTransaction)
           .AddMethod(__Method_PurchaseTickets, serviceImpl.PurchaseTickets)
@@ -1152,6 +1183,234 @@ namespace Walletrpc {
           .AddMethod(__Method_DiscoverAddresses, serviceImpl.DiscoverAddresses)
           .AddMethod(__Method_SubscribeToBlockNotifications, serviceImpl.SubscribeToBlockNotifications)
           .AddMethod(__Method_FetchHeaders, serviceImpl.FetchHeaders).Build();
+    }
+
+  }
+  public static class TicketBuyerService
+  {
+    static readonly string __ServiceName = "walletrpc.TicketBuyerService";
+
+    static readonly Marshaller<global::Walletrpc.StartAutoBuyerRequest> __Marshaller_StartAutoBuyerRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.StartAutoBuyerRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.StartAutoBuyerResponse> __Marshaller_StartAutoBuyerResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.StartAutoBuyerResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.StopAutoBuyerRequest> __Marshaller_StopAutoBuyerRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.StopAutoBuyerRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.StopAutoBuyerResponse> __Marshaller_StopAutoBuyerResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.StopAutoBuyerResponse.Parser.ParseFrom);
+
+    static readonly Method<global::Walletrpc.StartAutoBuyerRequest, global::Walletrpc.StartAutoBuyerResponse> __Method_StartAutoBuyer = new Method<global::Walletrpc.StartAutoBuyerRequest, global::Walletrpc.StartAutoBuyerResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "StartAutoBuyer",
+        __Marshaller_StartAutoBuyerRequest,
+        __Marshaller_StartAutoBuyerResponse);
+
+    static readonly Method<global::Walletrpc.StopAutoBuyerRequest, global::Walletrpc.StopAutoBuyerResponse> __Method_StopAutoBuyer = new Method<global::Walletrpc.StopAutoBuyerRequest, global::Walletrpc.StopAutoBuyerResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "StopAutoBuyer",
+        __Marshaller_StopAutoBuyerRequest,
+        __Marshaller_StopAutoBuyerResponse);
+
+    /// <summary>Service descriptor</summary>
+    public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
+    {
+      get { return global::Walletrpc.ApiReflection.Descriptor.Services[3]; }
+    }
+
+    /// <summary>Base class for server-side implementations of TicketBuyerService</summary>
+    public abstract class TicketBuyerServiceBase
+    {
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.StartAutoBuyerResponse> StartAutoBuyer(global::Walletrpc.StartAutoBuyerRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.StopAutoBuyerResponse> StopAutoBuyer(global::Walletrpc.StopAutoBuyerRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+    }
+
+    /// <summary>Client for TicketBuyerService</summary>
+    public class TicketBuyerServiceClient : ClientBase<TicketBuyerServiceClient>
+    {
+      /// <summary>Creates a new client for TicketBuyerService</summary>
+      /// <param name="channel">The channel to use to make remote calls.</param>
+      public TicketBuyerServiceClient(Channel channel) : base(channel)
+      {
+      }
+      /// <summary>Creates a new client for TicketBuyerService that uses a custom <c>CallInvoker</c>.</summary>
+      /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+      public TicketBuyerServiceClient(CallInvoker callInvoker) : base(callInvoker)
+      {
+      }
+      /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+      protected TicketBuyerServiceClient() : base()
+      {
+      }
+      /// <summary>Protected constructor to allow creation of configured clients.</summary>
+      /// <param name="configuration">The client configuration.</param>
+      protected TicketBuyerServiceClient(ClientBaseConfiguration configuration) : base(configuration)
+      {
+      }
+
+      public virtual global::Walletrpc.StartAutoBuyerResponse StartAutoBuyer(global::Walletrpc.StartAutoBuyerRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return StartAutoBuyer(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.StartAutoBuyerResponse StartAutoBuyer(global::Walletrpc.StartAutoBuyerRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_StartAutoBuyer, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.StartAutoBuyerResponse> StartAutoBuyerAsync(global::Walletrpc.StartAutoBuyerRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return StartAutoBuyerAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.StartAutoBuyerResponse> StartAutoBuyerAsync(global::Walletrpc.StartAutoBuyerRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_StartAutoBuyer, null, options, request);
+      }
+      public virtual global::Walletrpc.StopAutoBuyerResponse StopAutoBuyer(global::Walletrpc.StopAutoBuyerRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return StopAutoBuyer(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.StopAutoBuyerResponse StopAutoBuyer(global::Walletrpc.StopAutoBuyerRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_StopAutoBuyer, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.StopAutoBuyerResponse> StopAutoBuyerAsync(global::Walletrpc.StopAutoBuyerRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return StopAutoBuyerAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.StopAutoBuyerResponse> StopAutoBuyerAsync(global::Walletrpc.StopAutoBuyerRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_StopAutoBuyer, null, options, request);
+      }
+      protected override TicketBuyerServiceClient NewInstance(ClientBaseConfiguration configuration)
+      {
+        return new TicketBuyerServiceClient(configuration);
+      }
+    }
+
+    /// <summary>Creates service definition that can be registered with a server</summary>
+    public static ServerServiceDefinition BindService(TicketBuyerServiceBase serviceImpl)
+    {
+      return ServerServiceDefinition.CreateBuilder()
+          .AddMethod(__Method_StartAutoBuyer, serviceImpl.StartAutoBuyer)
+          .AddMethod(__Method_StopAutoBuyer, serviceImpl.StopAutoBuyer).Build();
+    }
+
+  }
+  public static class SeedService
+  {
+    static readonly string __ServiceName = "walletrpc.SeedService";
+
+    static readonly Marshaller<global::Walletrpc.GenerateRandomSeedRequest> __Marshaller_GenerateRandomSeedRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.GenerateRandomSeedRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.GenerateRandomSeedResponse> __Marshaller_GenerateRandomSeedResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.GenerateRandomSeedResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.DecodeSeedRequest> __Marshaller_DecodeSeedRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.DecodeSeedRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.DecodeSeedResponse> __Marshaller_DecodeSeedResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.DecodeSeedResponse.Parser.ParseFrom);
+
+    static readonly Method<global::Walletrpc.GenerateRandomSeedRequest, global::Walletrpc.GenerateRandomSeedResponse> __Method_GenerateRandomSeed = new Method<global::Walletrpc.GenerateRandomSeedRequest, global::Walletrpc.GenerateRandomSeedResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "GenerateRandomSeed",
+        __Marshaller_GenerateRandomSeedRequest,
+        __Marshaller_GenerateRandomSeedResponse);
+
+    static readonly Method<global::Walletrpc.DecodeSeedRequest, global::Walletrpc.DecodeSeedResponse> __Method_DecodeSeed = new Method<global::Walletrpc.DecodeSeedRequest, global::Walletrpc.DecodeSeedResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "DecodeSeed",
+        __Marshaller_DecodeSeedRequest,
+        __Marshaller_DecodeSeedResponse);
+
+    /// <summary>Service descriptor</summary>
+    public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
+    {
+      get { return global::Walletrpc.ApiReflection.Descriptor.Services[4]; }
+    }
+
+    /// <summary>Base class for server-side implementations of SeedService</summary>
+    public abstract class SeedServiceBase
+    {
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.GenerateRandomSeedResponse> GenerateRandomSeed(global::Walletrpc.GenerateRandomSeedRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.DecodeSeedResponse> DecodeSeed(global::Walletrpc.DecodeSeedRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+    }
+
+    /// <summary>Client for SeedService</summary>
+    public class SeedServiceClient : ClientBase<SeedServiceClient>
+    {
+      /// <summary>Creates a new client for SeedService</summary>
+      /// <param name="channel">The channel to use to make remote calls.</param>
+      public SeedServiceClient(Channel channel) : base(channel)
+      {
+      }
+      /// <summary>Creates a new client for SeedService that uses a custom <c>CallInvoker</c>.</summary>
+      /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+      public SeedServiceClient(CallInvoker callInvoker) : base(callInvoker)
+      {
+      }
+      /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+      protected SeedServiceClient() : base()
+      {
+      }
+      /// <summary>Protected constructor to allow creation of configured clients.</summary>
+      /// <param name="configuration">The client configuration.</param>
+      protected SeedServiceClient(ClientBaseConfiguration configuration) : base(configuration)
+      {
+      }
+
+      public virtual global::Walletrpc.GenerateRandomSeedResponse GenerateRandomSeed(global::Walletrpc.GenerateRandomSeedRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return GenerateRandomSeed(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.GenerateRandomSeedResponse GenerateRandomSeed(global::Walletrpc.GenerateRandomSeedRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GenerateRandomSeed, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.GenerateRandomSeedResponse> GenerateRandomSeedAsync(global::Walletrpc.GenerateRandomSeedRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return GenerateRandomSeedAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.GenerateRandomSeedResponse> GenerateRandomSeedAsync(global::Walletrpc.GenerateRandomSeedRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GenerateRandomSeed, null, options, request);
+      }
+      public virtual global::Walletrpc.DecodeSeedResponse DecodeSeed(global::Walletrpc.DecodeSeedRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return DecodeSeed(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.DecodeSeedResponse DecodeSeed(global::Walletrpc.DecodeSeedRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DecodeSeed, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.DecodeSeedResponse> DecodeSeedAsync(global::Walletrpc.DecodeSeedRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return DecodeSeedAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.DecodeSeedResponse> DecodeSeedAsync(global::Walletrpc.DecodeSeedRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DecodeSeed, null, options, request);
+      }
+      protected override SeedServiceClient NewInstance(ClientBaseConfiguration configuration)
+      {
+        return new SeedServiceClient(configuration);
+      }
+    }
+
+    /// <summary>Creates service definition that can be registered with a server</summary>
+    public static ServerServiceDefinition BindService(SeedServiceBase serviceImpl)
+    {
+      return ServerServiceDefinition.CreateBuilder()
+          .AddMethod(__Method_GenerateRandomSeed, serviceImpl.GenerateRandomSeed)
+          .AddMethod(__Method_DecodeSeed, serviceImpl.DecodeSeed).Build();
     }
 
   }
