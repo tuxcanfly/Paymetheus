@@ -682,14 +682,14 @@ namespace Paymetheus.Rpc
             }
         }
 
-        public async Task SetAccountName(string accountName)
+        public async Task SetAccount(uint account)
         {
             try
             {
                 var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
-                var req = new SetAccountNameRequest();
-                req.AccountName = accountName;
-                await client.SetAccountNameAsync(req);
+                var req = new SetAccountRequest();
+                req.Account = account;
+                await client.SetAccountAsync(req);
             }
             catch (Exception ex)
             {
@@ -704,7 +704,7 @@ namespace Paymetheus.Rpc
             var response = await client.TicketBuyerConfigAsync(request, cancellationToken: _tokenSource.Token);
             var properties = new AutoBuyerProperties
             {
-                // Account = response.AccountName; TODO: Use Account uint
+                Account = response.Account,
                 BalanceToMaintain = response.BalanceToMaintain,
                 MaxFeePerKb = response.MaxFee,
                 MaxPriceRelative = response.MaxPriceRelative,

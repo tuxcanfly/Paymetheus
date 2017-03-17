@@ -47,9 +47,9 @@ namespace Paymetheus.ViewModels
             return autobuyerProperites;
         }
 
-        private async void SetAccountName(string accountName)
+        private async void SetAccoun(uint account)
         {
-            await App.Current.Synchronizer.WalletRpcClient.SetAccountName(accountName);
+            await App.Current.Synchronizer.WalletRpcClient.SetAccount(account);
         }
 
         private async void SetBalanceToMaintain(long balance)
