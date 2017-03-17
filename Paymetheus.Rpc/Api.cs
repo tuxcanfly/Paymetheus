@@ -179,81 +179,128 @@ namespace Walletrpc {
             "Z19hZGRyZXNzGAcgASgJEhQKDHBvb2xfYWRkcmVzcxgIIAEoCRIRCglwb29s",
             "X2ZlZXMYCSABKAESFQoNbWF4X3Blcl9ibG9jaxgKIAEoAyIYChZTdGFydEF1",
             "dG9CdXllclJlc3BvbnNlIhYKFFN0b3BBdXRvQnV5ZXJSZXF1ZXN0IhcKFVN0",
-            "b3BBdXRvQnV5ZXJSZXNwb25zZTJSCg5WZXJzaW9uU2VydmljZRJACgdWZXJz",
-            "aW9uEhkud2FsbGV0cnBjLlZlcnNpb25SZXF1ZXN0Ghoud2FsbGV0cnBjLlZl",
-            "cnNpb25SZXNwb25zZTKsEAoNV2FsbGV0U2VydmljZRI3CgRQaW5nEhYud2Fs",
-            "bGV0cnBjLlBpbmdSZXF1ZXN0Ghcud2FsbGV0cnBjLlBpbmdSZXNwb25zZRJA",
-            "CgdOZXR3b3JrEhkud2FsbGV0cnBjLk5ldHdvcmtSZXF1ZXN0Ghoud2FsbGV0",
-            "cnBjLk5ldHdvcmtSZXNwb25zZRJSCg1BY2NvdW50TnVtYmVyEh8ud2FsbGV0",
-            "cnBjLkFjY291bnROdW1iZXJSZXF1ZXN0GiAud2FsbGV0cnBjLkFjY291bnRO",
-            "dW1iZXJSZXNwb25zZRJDCghBY2NvdW50cxIaLndhbGxldHJwYy5BY2NvdW50",
-            "c1JlcXVlc3QaGy53YWxsZXRycGMuQWNjb3VudHNSZXNwb25zZRJACgdCYWxh",
-            "bmNlEhkud2FsbGV0cnBjLkJhbGFuY2VSZXF1ZXN0Ghoud2FsbGV0cnBjLkJh",
-            "bGFuY2VSZXNwb25zZRJaCg9HZXRUcmFuc2FjdGlvbnMSIS53YWxsZXRycGMu",
-            "R2V0VHJhbnNhY3Rpb25zUmVxdWVzdBoiLndhbGxldHJwYy5HZXRUcmFuc2Fj",
-            "dGlvbnNSZXNwb25zZTABEkwKC1RpY2tldFByaWNlEh0ud2FsbGV0cnBjLlRp",
-            "Y2tldFByaWNlUmVxdWVzdBoeLndhbGxldHJwYy5UaWNrZXRQcmljZVJlc3Bv",
-            "bnNlEkYKCVN0YWtlSW5mbxIbLndhbGxldHJwYy5TdGFrZUluZm9SZXF1ZXN0",
-            "Ghwud2FsbGV0cnBjLlN0YWtlSW5mb1Jlc3BvbnNlEnUKGFRyYW5zYWN0aW9u",
-            "Tm90aWZpY2F0aW9ucxIqLndhbGxldHJwYy5UcmFuc2FjdGlvbk5vdGlmaWNh",
-            "dGlvbnNSZXF1ZXN0Gisud2FsbGV0cnBjLlRyYW5zYWN0aW9uTm90aWZpY2F0",
-            "aW9uc1Jlc3BvbnNlMAESbwoWU3BlbnRuZXNzTm90aWZpY2F0aW9ucxIoLndh",
-            "bGxldHJwYy5TcGVudG5lc3NOb3RpZmljYXRpb25zUmVxdWVzdBopLndhbGxl",
-            "dHJwYy5TcGVudG5lc3NOb3RpZmljYXRpb25zUmVzcG9uc2UwARJpChRBY2Nv",
-            "dW50Tm90aWZpY2F0aW9ucxImLndhbGxldHJwYy5BY2NvdW50Tm90aWZpY2F0",
-            "aW9uc1JlcXVlc3QaJy53YWxsZXRycGMuQWNjb3VudE5vdGlmaWNhdGlvbnNS",
-            "ZXNwb25zZTABElsKEENoYW5nZVBhc3NwaHJhc2USIi53YWxsZXRycGMuQ2hh",
-            "bmdlUGFzc3BocmFzZVJlcXVlc3QaIy53YWxsZXRycGMuQ2hhbmdlUGFzc3Bo",
-            "cmFzZVJlc3BvbnNlElIKDVJlbmFtZUFjY291bnQSHy53YWxsZXRycGMuUmVu",
-            "YW1lQWNjb3VudFJlcXVlc3QaIC53YWxsZXRycGMuUmVuYW1lQWNjb3VudFJl",
-            "c3BvbnNlEj8KBlJlc2NhbhIYLndhbGxldHJwYy5SZXNjYW5SZXF1ZXN0Ghku",
-            "d2FsbGV0cnBjLlJlc2NhblJlc3BvbnNlMAESTAoLTmV4dEFjY291bnQSHS53",
-            "YWxsZXRycGMuTmV4dEFjY291bnRSZXF1ZXN0Gh4ud2FsbGV0cnBjLk5leHRB",
-            "Y2NvdW50UmVzcG9uc2USTAoLTmV4dEFkZHJlc3MSHS53YWxsZXRycGMuTmV4",
-            "dEFkZHJlc3NSZXF1ZXN0Gh4ud2FsbGV0cnBjLk5leHRBZGRyZXNzUmVzcG9u",
-            "c2USWwoQSW1wb3J0UHJpdmF0ZUtleRIiLndhbGxldHJwYy5JbXBvcnRQcml2",
-            "YXRlS2V5UmVxdWVzdBojLndhbGxldHJwYy5JbXBvcnRQcml2YXRlS2V5UmVz",
-            "cG9uc2USTwoMSW1wb3J0U2NyaXB0Eh4ud2FsbGV0cnBjLkltcG9ydFNjcmlw",
-            "dFJlcXVlc3QaHy53YWxsZXRycGMuSW1wb3J0U2NyaXB0UmVzcG9uc2USWAoP",
-            "RnVuZFRyYW5zYWN0aW9uEiEud2FsbGV0cnBjLkZ1bmRUcmFuc2FjdGlvblJl",
-            "cXVlc3QaIi53YWxsZXRycGMuRnVuZFRyYW5zYWN0aW9uUmVzcG9uc2USZwoU",
-            "Q29uc3RydWN0VHJhbnNhY3Rpb24SJi53YWxsZXRycGMuQ29uc3RydWN0VHJh",
-            "bnNhY3Rpb25SZXF1ZXN0Gicud2FsbGV0cnBjLkNvbnN0cnVjdFRyYW5zYWN0",
-            "aW9uUmVzcG9uc2USWAoPU2lnblRyYW5zYWN0aW9uEiEud2FsbGV0cnBjLlNp",
-            "Z25UcmFuc2FjdGlvblJlcXVlc3QaIi53YWxsZXRycGMuU2lnblRyYW5zYWN0",
-            "aW9uUmVzcG9uc2USYQoSUHVibGlzaFRyYW5zYWN0aW9uEiQud2FsbGV0cnBj",
-            "LlB1Ymxpc2hUcmFuc2FjdGlvblJlcXVlc3QaJS53YWxsZXRycGMuUHVibGlz",
-            "aFRyYW5zYWN0aW9uUmVzcG9uc2USWAoPUHVyY2hhc2VUaWNrZXRzEiEud2Fs",
-            "bGV0cnBjLlB1cmNoYXNlVGlja2V0c1JlcXVlc3QaIi53YWxsZXRycGMuUHVy",
-            "Y2hhc2VUaWNrZXRzUmVzcG9uc2USagoVTG9hZEFjdGl2ZURhdGFGaWx0ZXJz",
-            "Eicud2FsbGV0cnBjLkxvYWRBY3RpdmVEYXRhRmlsdGVyc1JlcXVlc3QaKC53",
-            "YWxsZXRycGMuTG9hZEFjdGl2ZURhdGFGaWx0ZXJzUmVzcG9uc2Uy5gUKE1dh",
-            "bGxldExvYWRlclNlcnZpY2USTwoMV2FsbGV0RXhpc3RzEh4ud2FsbGV0cnBj",
-            "LldhbGxldEV4aXN0c1JlcXVlc3QaHy53YWxsZXRycGMuV2FsbGV0RXhpc3Rz",
-            "UmVzcG9uc2USTwoMQ3JlYXRlV2FsbGV0Eh4ud2FsbGV0cnBjLkNyZWF0ZVdh",
-            "bGxldFJlcXVlc3QaHy53YWxsZXRycGMuQ3JlYXRlV2FsbGV0UmVzcG9uc2US",
-            "SQoKT3BlbldhbGxldBIcLndhbGxldHJwYy5PcGVuV2FsbGV0UmVxdWVzdBod",
-            "LndhbGxldHJwYy5PcGVuV2FsbGV0UmVzcG9uc2USTAoLQ2xvc2VXYWxsZXQS",
-            "HS53YWxsZXRycGMuQ2xvc2VXYWxsZXRSZXF1ZXN0Gh4ud2FsbGV0cnBjLkNs",
-            "b3NlV2FsbGV0UmVzcG9uc2USXgoRU3RhcnRDb25zZW5zdXNScGMSIy53YWxs",
-            "ZXRycGMuU3RhcnRDb25zZW5zdXNScGNSZXF1ZXN0GiQud2FsbGV0cnBjLlN0",
-            "YXJ0Q29uc2Vuc3VzUnBjUmVzcG9uc2USXgoRRGlzY292ZXJBZGRyZXNzZXMS",
-            "Iy53YWxsZXRycGMuRGlzY292ZXJBZGRyZXNzZXNSZXF1ZXN0GiQud2FsbGV0",
-            "cnBjLkRpc2NvdmVyQWRkcmVzc2VzUmVzcG9uc2USggEKHVN1YnNjcmliZVRv",
-            "QmxvY2tOb3RpZmljYXRpb25zEi8ud2FsbGV0cnBjLlN1YnNjcmliZVRvQmxv",
-            "Y2tOb3RpZmljYXRpb25zUmVxdWVzdBowLndhbGxldHJwYy5TdWJzY3JpYmVU",
-            "b0Jsb2NrTm90aWZpY2F0aW9uc1Jlc3BvbnNlEk8KDEZldGNoSGVhZGVycxIe",
-            "LndhbGxldHJwYy5GZXRjaEhlYWRlcnNSZXF1ZXN0Gh8ud2FsbGV0cnBjLkZl",
-            "dGNoSGVhZGVyc1Jlc3BvbnNlMr8BChJUaWNrZXRCdXllclNlcnZpY2USVQoO",
-            "U3RhcnRBdXRvQnV5ZXISIC53YWxsZXRycGMuU3RhcnRBdXRvQnV5ZXJSZXF1",
-            "ZXN0GiEud2FsbGV0cnBjLlN0YXJ0QXV0b0J1eWVyUmVzcG9uc2USUgoNU3Rv",
-            "cEF1dG9CdXllchIfLndhbGxldHJwYy5TdG9wQXV0b0J1eWVyUmVxdWVzdBog",
-            "LndhbGxldHJwYy5TdG9wQXV0b0J1eWVyUmVzcG9uc2UyuwEKC1NlZWRTZXJ2",
-            "aWNlEmEKEkdlbmVyYXRlUmFuZG9tU2VlZBIkLndhbGxldHJwYy5HZW5lcmF0",
-            "ZVJhbmRvbVNlZWRSZXF1ZXN0GiUud2FsbGV0cnBjLkdlbmVyYXRlUmFuZG9t",
-            "U2VlZFJlc3BvbnNlEkkKCkRlY29kZVNlZWQSHC53YWxsZXRycGMuRGVjb2Rl",
-            "U2VlZFJlcXVlc3QaHS53YWxsZXRycGMuRGVjb2RlU2VlZFJlc3BvbnNlYgZw",
-            "cm90bzM="));
+            "b3BBdXRvQnV5ZXJSZXNwb25zZSIaChhUaWNrZXRCdXllckNvbmZpZ1JlcXVl",
+            "c3Qi+gMKGVRpY2tldEJ1eWVyQ29uZmlnUmVzcG9uc2USFAoMYWNjb3VudF9u",
+            "YW1lGAEgASgJEhYKDmF2Z19wcmljZV9tb2RlGAIgASgJEhsKE2F2Z19wcmlj",
+            "ZVZXQVBfZGVsdGEYAyABKAMSGwoTYmFsYW5jZV90b19tYWludGFpbhgEIAEo",
+            "AxIVCg1ibG9ja3NfdG9fYXZnGAUgASgDEh0KFWRvbnRfd2FpdF9mb3JfdGlj",
+            "a2V0cxgGIAEoCBIUCgxleHBpcnlfZGVsdGEYByABKAMSEgoKZmVlX3NvdXJj",
+            "ZRgIIAEoCRIaChJmZWVfdGFyZ2V0X3NjYWxpbmcYCSABKAESDwoHbWluX2Zl",
+            "ZRgKIAEoAxIPCgdtYXhfZmVlGAwgASgDEhUKDW1heF9wZXJfYmxvY2sYDSAB",
+            "KAMSGgoSbWF4X3ByaWNlX2Fic29sdXRlGA4gASgDEhoKEm1heF9wcmljZV9y",
+            "ZWxhdGl2ZRgPIAEoARIWCg5tYXhfaW5fbWVtcG9vbBgRIAEoAxIUCgxwb29s",
+            "X2FkZHJlc3MYEiABKAkSEQoJcG9vbF9mZWVzGBMgASgBEh8KF3NwcmVhZF90",
+            "aWNrZXRfcHVyY2hhc2VzGBQgASgIEhYKDnRpY2tldF9hZGRyZXNzGBUgASgJ",
+            "Eg4KBnR4X2ZlZRgWIAEoAyItChVTZXRBY2NvdW50TmFtZVJlcXVlc3QSFAoM",
+            "YWNjb3VudF9uYW1lGAEgASgJIhgKFlNldEFjY291bnROYW1lUmVzcG9uc2Ui",
+            "OgobU2V0QmFsYW5jZVRvTWFpbnRhaW5SZXF1ZXN0EhsKE2JhbGFuY2VfdG9f",
+            "bWFpbnRhaW4YASABKAMiHgocU2V0QmFsYW5jZVRvTWFpbnRhaW5SZXNwb25z",
+            "ZSIjChBTZXRNYXhGZWVSZXF1ZXN0Eg8KB21heF9mZWUYASABKAMiEwoRU2V0",
+            "TWF4RmVlUmVzcG9uc2UiOAoaU2V0TWF4UHJpY2VSZWxhdGl2ZVJlcXVlc3QS",
+            "GgoSbWF4X3ByaWNlX3JlbGF0aXZlGAEgASgBIh0KG1NldE1heFByaWNlUmVs",
+            "YXRpdmVSZXNwb25zZSI4ChpTZXRNYXhQcmljZUFic29sdXRlUmVxdWVzdBIa",
+            "ChJtYXhfcHJpY2VfYWJzb2x1dGUYASABKAMiHQobU2V0TWF4UHJpY2VBYnNv",
+            "bHV0ZVJlc3BvbnNlIjEKF1NldFRpY2tldEFkZHJlc3NSZXF1ZXN0EhYKDnRp",
+            "Y2tldF9hZGRyZXNzGAEgASgJIhoKGFNldFRpY2tldEFkZHJlc3NSZXNwb25z",
+            "ZSItChVTZXRQb29sQWRkcmVzc1JlcXVlc3QSFAoMcG9vbF9hZGRyZXNzGAEg",
+            "ASgJIhgKFlNldFBvb2xBZGRyZXNzUmVzcG9uc2UiJwoSU2V0UG9vbEZlZXNS",
+            "ZXF1ZXN0EhEKCXBvb2xfZmVlcxgBIAEoASIVChNTZXRQb29sRmVlc1Jlc3Bv",
+            "bnNlIi4KFVNldE1heFBlckJsb2NrUmVxdWVzdBIVCg1tYXhfcGVyX2Jsb2Nr",
+            "GAEgASgDIhgKFlNldE1heFBlckJsb2NrUmVzcG9uc2UyUgoOVmVyc2lvblNl",
+            "cnZpY2USQAoHVmVyc2lvbhIZLndhbGxldHJwYy5WZXJzaW9uUmVxdWVzdBoa",
+            "LndhbGxldHJwYy5WZXJzaW9uUmVzcG9uc2UyrBAKDVdhbGxldFNlcnZpY2US",
+            "NwoEUGluZxIWLndhbGxldHJwYy5QaW5nUmVxdWVzdBoXLndhbGxldHJwYy5Q",
+            "aW5nUmVzcG9uc2USQAoHTmV0d29yaxIZLndhbGxldHJwYy5OZXR3b3JrUmVx",
+            "dWVzdBoaLndhbGxldHJwYy5OZXR3b3JrUmVzcG9uc2USUgoNQWNjb3VudE51",
+            "bWJlchIfLndhbGxldHJwYy5BY2NvdW50TnVtYmVyUmVxdWVzdBogLndhbGxl",
+            "dHJwYy5BY2NvdW50TnVtYmVyUmVzcG9uc2USQwoIQWNjb3VudHMSGi53YWxs",
+            "ZXRycGMuQWNjb3VudHNSZXF1ZXN0Ghsud2FsbGV0cnBjLkFjY291bnRzUmVz",
+            "cG9uc2USQAoHQmFsYW5jZRIZLndhbGxldHJwYy5CYWxhbmNlUmVxdWVzdBoa",
+            "LndhbGxldHJwYy5CYWxhbmNlUmVzcG9uc2USWgoPR2V0VHJhbnNhY3Rpb25z",
+            "EiEud2FsbGV0cnBjLkdldFRyYW5zYWN0aW9uc1JlcXVlc3QaIi53YWxsZXRy",
+            "cGMuR2V0VHJhbnNhY3Rpb25zUmVzcG9uc2UwARJMCgtUaWNrZXRQcmljZRId",
+            "LndhbGxldHJwYy5UaWNrZXRQcmljZVJlcXVlc3QaHi53YWxsZXRycGMuVGlj",
+            "a2V0UHJpY2VSZXNwb25zZRJGCglTdGFrZUluZm8SGy53YWxsZXRycGMuU3Rh",
+            "a2VJbmZvUmVxdWVzdBocLndhbGxldHJwYy5TdGFrZUluZm9SZXNwb25zZRJ1",
+            "ChhUcmFuc2FjdGlvbk5vdGlmaWNhdGlvbnMSKi53YWxsZXRycGMuVHJhbnNh",
+            "Y3Rpb25Ob3RpZmljYXRpb25zUmVxdWVzdBorLndhbGxldHJwYy5UcmFuc2Fj",
+            "dGlvbk5vdGlmaWNhdGlvbnNSZXNwb25zZTABEm8KFlNwZW50bmVzc05vdGlm",
+            "aWNhdGlvbnMSKC53YWxsZXRycGMuU3BlbnRuZXNzTm90aWZpY2F0aW9uc1Jl",
+            "cXVlc3QaKS53YWxsZXRycGMuU3BlbnRuZXNzTm90aWZpY2F0aW9uc1Jlc3Bv",
+            "bnNlMAESaQoUQWNjb3VudE5vdGlmaWNhdGlvbnMSJi53YWxsZXRycGMuQWNj",
+            "b3VudE5vdGlmaWNhdGlvbnNSZXF1ZXN0Gicud2FsbGV0cnBjLkFjY291bnRO",
+            "b3RpZmljYXRpb25zUmVzcG9uc2UwARJbChBDaGFuZ2VQYXNzcGhyYXNlEiIu",
+            "d2FsbGV0cnBjLkNoYW5nZVBhc3NwaHJhc2VSZXF1ZXN0GiMud2FsbGV0cnBj",
+            "LkNoYW5nZVBhc3NwaHJhc2VSZXNwb25zZRJSCg1SZW5hbWVBY2NvdW50Eh8u",
+            "d2FsbGV0cnBjLlJlbmFtZUFjY291bnRSZXF1ZXN0GiAud2FsbGV0cnBjLlJl",
+            "bmFtZUFjY291bnRSZXNwb25zZRI/CgZSZXNjYW4SGC53YWxsZXRycGMuUmVz",
+            "Y2FuUmVxdWVzdBoZLndhbGxldHJwYy5SZXNjYW5SZXNwb25zZTABEkwKC05l",
+            "eHRBY2NvdW50Eh0ud2FsbGV0cnBjLk5leHRBY2NvdW50UmVxdWVzdBoeLndh",
+            "bGxldHJwYy5OZXh0QWNjb3VudFJlc3BvbnNlEkwKC05leHRBZGRyZXNzEh0u",
+            "d2FsbGV0cnBjLk5leHRBZGRyZXNzUmVxdWVzdBoeLndhbGxldHJwYy5OZXh0",
+            "QWRkcmVzc1Jlc3BvbnNlElsKEEltcG9ydFByaXZhdGVLZXkSIi53YWxsZXRy",
+            "cGMuSW1wb3J0UHJpdmF0ZUtleVJlcXVlc3QaIy53YWxsZXRycGMuSW1wb3J0",
+            "UHJpdmF0ZUtleVJlc3BvbnNlEk8KDEltcG9ydFNjcmlwdBIeLndhbGxldHJw",
+            "Yy5JbXBvcnRTY3JpcHRSZXF1ZXN0Gh8ud2FsbGV0cnBjLkltcG9ydFNjcmlw",
+            "dFJlc3BvbnNlElgKD0Z1bmRUcmFuc2FjdGlvbhIhLndhbGxldHJwYy5GdW5k",
+            "VHJhbnNhY3Rpb25SZXF1ZXN0GiIud2FsbGV0cnBjLkZ1bmRUcmFuc2FjdGlv",
+            "blJlc3BvbnNlEmcKFENvbnN0cnVjdFRyYW5zYWN0aW9uEiYud2FsbGV0cnBj",
+            "LkNvbnN0cnVjdFRyYW5zYWN0aW9uUmVxdWVzdBonLndhbGxldHJwYy5Db25z",
+            "dHJ1Y3RUcmFuc2FjdGlvblJlc3BvbnNlElgKD1NpZ25UcmFuc2FjdGlvbhIh",
+            "LndhbGxldHJwYy5TaWduVHJhbnNhY3Rpb25SZXF1ZXN0GiIud2FsbGV0cnBj",
+            "LlNpZ25UcmFuc2FjdGlvblJlc3BvbnNlEmEKElB1Ymxpc2hUcmFuc2FjdGlv",
+            "bhIkLndhbGxldHJwYy5QdWJsaXNoVHJhbnNhY3Rpb25SZXF1ZXN0GiUud2Fs",
+            "bGV0cnBjLlB1Ymxpc2hUcmFuc2FjdGlvblJlc3BvbnNlElgKD1B1cmNoYXNl",
+            "VGlja2V0cxIhLndhbGxldHJwYy5QdXJjaGFzZVRpY2tldHNSZXF1ZXN0GiIu",
+            "d2FsbGV0cnBjLlB1cmNoYXNlVGlja2V0c1Jlc3BvbnNlEmoKFUxvYWRBY3Rp",
+            "dmVEYXRhRmlsdGVycxInLndhbGxldHJwYy5Mb2FkQWN0aXZlRGF0YUZpbHRl",
+            "cnNSZXF1ZXN0Gigud2FsbGV0cnBjLkxvYWRBY3RpdmVEYXRhRmlsdGVyc1Jl",
+            "c3BvbnNlMuYFChNXYWxsZXRMb2FkZXJTZXJ2aWNlEk8KDFdhbGxldEV4aXN0",
+            "cxIeLndhbGxldHJwYy5XYWxsZXRFeGlzdHNSZXF1ZXN0Gh8ud2FsbGV0cnBj",
+            "LldhbGxldEV4aXN0c1Jlc3BvbnNlEk8KDENyZWF0ZVdhbGxldBIeLndhbGxl",
+            "dHJwYy5DcmVhdGVXYWxsZXRSZXF1ZXN0Gh8ud2FsbGV0cnBjLkNyZWF0ZVdh",
+            "bGxldFJlc3BvbnNlEkkKCk9wZW5XYWxsZXQSHC53YWxsZXRycGMuT3Blbldh",
+            "bGxldFJlcXVlc3QaHS53YWxsZXRycGMuT3BlbldhbGxldFJlc3BvbnNlEkwK",
+            "C0Nsb3NlV2FsbGV0Eh0ud2FsbGV0cnBjLkNsb3NlV2FsbGV0UmVxdWVzdBoe",
+            "LndhbGxldHJwYy5DbG9zZVdhbGxldFJlc3BvbnNlEl4KEVN0YXJ0Q29uc2Vu",
+            "c3VzUnBjEiMud2FsbGV0cnBjLlN0YXJ0Q29uc2Vuc3VzUnBjUmVxdWVzdBok",
+            "LndhbGxldHJwYy5TdGFydENvbnNlbnN1c1JwY1Jlc3BvbnNlEl4KEURpc2Nv",
+            "dmVyQWRkcmVzc2VzEiMud2FsbGV0cnBjLkRpc2NvdmVyQWRkcmVzc2VzUmVx",
+            "dWVzdBokLndhbGxldHJwYy5EaXNjb3ZlckFkZHJlc3Nlc1Jlc3BvbnNlEoIB",
+            "Ch1TdWJzY3JpYmVUb0Jsb2NrTm90aWZpY2F0aW9ucxIvLndhbGxldHJwYy5T",
+            "dWJzY3JpYmVUb0Jsb2NrTm90aWZpY2F0aW9uc1JlcXVlc3QaMC53YWxsZXRy",
+            "cGMuU3Vic2NyaWJlVG9CbG9ja05vdGlmaWNhdGlvbnNSZXNwb25zZRJPCgxG",
+            "ZXRjaEhlYWRlcnMSHi53YWxsZXRycGMuRmV0Y2hIZWFkZXJzUmVxdWVzdBof",
+            "LndhbGxldHJwYy5GZXRjaEhlYWRlcnNSZXNwb25zZTLMCAoSVGlja2V0QnV5",
+            "ZXJTZXJ2aWNlElUKDlN0YXJ0QXV0b0J1eWVyEiAud2FsbGV0cnBjLlN0YXJ0",
+            "QXV0b0J1eWVyUmVxdWVzdBohLndhbGxldHJwYy5TdGFydEF1dG9CdXllclJl",
+            "c3BvbnNlElIKDVN0b3BBdXRvQnV5ZXISHy53YWxsZXRycGMuU3RvcEF1dG9C",
+            "dXllclJlcXVlc3QaIC53YWxsZXRycGMuU3RvcEF1dG9CdXllclJlc3BvbnNl",
+            "El4KEVRpY2tldEJ1eWVyQ29uZmlnEiMud2FsbGV0cnBjLlRpY2tldEJ1eWVy",
+            "Q29uZmlnUmVxdWVzdBokLndhbGxldHJwYy5UaWNrZXRCdXllckNvbmZpZ1Jl",
+            "c3BvbnNlElUKDlNldEFjY291bnROYW1lEiAud2FsbGV0cnBjLlNldEFjY291",
+            "bnROYW1lUmVxdWVzdBohLndhbGxldHJwYy5TZXRBY2NvdW50TmFtZVJlc3Bv",
+            "bnNlEmcKFFNldEJhbGFuY2VUb01haW50YWluEiYud2FsbGV0cnBjLlNldEJh",
+            "bGFuY2VUb01haW50YWluUmVxdWVzdBonLndhbGxldHJwYy5TZXRCYWxhbmNl",
+            "VG9NYWludGFpblJlc3BvbnNlEkYKCVNldE1heEZlZRIbLndhbGxldHJwYy5T",
+            "ZXRNYXhGZWVSZXF1ZXN0Ghwud2FsbGV0cnBjLlNldE1heEZlZVJlc3BvbnNl",
+            "EmQKE1NldE1heFByaWNlUmVsYXRpdmUSJS53YWxsZXRycGMuU2V0TWF4UHJp",
+            "Y2VSZWxhdGl2ZVJlcXVlc3QaJi53YWxsZXRycGMuU2V0TWF4UHJpY2VSZWxh",
+            "dGl2ZVJlc3BvbnNlEmQKE1NldE1heFByaWNlQWJzb2x1dGUSJS53YWxsZXRy",
+            "cGMuU2V0TWF4UHJpY2VBYnNvbHV0ZVJlcXVlc3QaJi53YWxsZXRycGMuU2V0",
+            "TWF4UHJpY2VBYnNvbHV0ZVJlc3BvbnNlElsKEFNldFRpY2tldEFkZHJlc3MS",
+            "Ii53YWxsZXRycGMuU2V0VGlja2V0QWRkcmVzc1JlcXVlc3QaIy53YWxsZXRy",
+            "cGMuU2V0VGlja2V0QWRkcmVzc1Jlc3BvbnNlElUKDlNldFBvb2xBZGRyZXNz",
+            "EiAud2FsbGV0cnBjLlNldFBvb2xBZGRyZXNzUmVxdWVzdBohLndhbGxldHJw",
+            "Yy5TZXRQb29sQWRkcmVzc1Jlc3BvbnNlEkwKC1NldFBvb2xGZWVzEh0ud2Fs",
+            "bGV0cnBjLlNldFBvb2xGZWVzUmVxdWVzdBoeLndhbGxldHJwYy5TZXRQb29s",
+            "RmVlc1Jlc3BvbnNlElUKDlNldE1heFBlckJsb2NrEiAud2FsbGV0cnBjLlNl",
+            "dE1heFBlckJsb2NrUmVxdWVzdBohLndhbGxldHJwYy5TZXRNYXhQZXJCbG9j",
+            "a1Jlc3BvbnNlMrsBCgtTZWVkU2VydmljZRJhChJHZW5lcmF0ZVJhbmRvbVNl",
+            "ZWQSJC53YWxsZXRycGMuR2VuZXJhdGVSYW5kb21TZWVkUmVxdWVzdBolLndh",
+            "bGxldHJwYy5HZW5lcmF0ZVJhbmRvbVNlZWRSZXNwb25zZRJJCgpEZWNvZGVT",
+            "ZWVkEhwud2FsbGV0cnBjLkRlY29kZVNlZWRSZXF1ZXN0Gh0ud2FsbGV0cnBj",
+            "LkRlY29kZVNlZWRSZXNwb25zZWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -335,7 +382,27 @@ namespace Walletrpc {
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.StartAutoBuyerRequest), global::Walletrpc.StartAutoBuyerRequest.Parser, new[]{ "Passphrase", "Account", "BalanceToMaintain", "MaxFeePerKb", "MaxPriceRelative", "MaxPriceAbsolute", "VotingAddress", "PoolAddress", "PoolFees", "MaxPerBlock" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.StartAutoBuyerResponse), global::Walletrpc.StartAutoBuyerResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.StopAutoBuyerRequest), global::Walletrpc.StopAutoBuyerRequest.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.StopAutoBuyerResponse), global::Walletrpc.StopAutoBuyerResponse.Parser, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.StopAutoBuyerResponse), global::Walletrpc.StopAutoBuyerResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.TicketBuyerConfigRequest), global::Walletrpc.TicketBuyerConfigRequest.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.TicketBuyerConfigResponse), global::Walletrpc.TicketBuyerConfigResponse.Parser, new[]{ "AccountName", "AvgPriceMode", "AvgPriceVWAPDelta", "BalanceToMaintain", "BlocksToAvg", "DontWaitForTickets", "ExpiryDelta", "FeeSource", "FeeTargetScaling", "MinFee", "MaxFee", "MaxPerBlock", "MaxPriceAbsolute", "MaxPriceRelative", "MaxInMempool", "PoolAddress", "PoolFees", "SpreadTicketPurchases", "TicketAddress", "TxFee" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetAccountNameRequest), global::Walletrpc.SetAccountNameRequest.Parser, new[]{ "AccountName" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetAccountNameResponse), global::Walletrpc.SetAccountNameResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetBalanceToMaintainRequest), global::Walletrpc.SetBalanceToMaintainRequest.Parser, new[]{ "BalanceToMaintain" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetBalanceToMaintainResponse), global::Walletrpc.SetBalanceToMaintainResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxFeeRequest), global::Walletrpc.SetMaxFeeRequest.Parser, new[]{ "MaxFee" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxFeeResponse), global::Walletrpc.SetMaxFeeResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxPriceRelativeRequest), global::Walletrpc.SetMaxPriceRelativeRequest.Parser, new[]{ "MaxPriceRelative" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxPriceRelativeResponse), global::Walletrpc.SetMaxPriceRelativeResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxPriceAbsoluteRequest), global::Walletrpc.SetMaxPriceAbsoluteRequest.Parser, new[]{ "MaxPriceAbsolute" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxPriceAbsoluteResponse), global::Walletrpc.SetMaxPriceAbsoluteResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetTicketAddressRequest), global::Walletrpc.SetTicketAddressRequest.Parser, new[]{ "TicketAddress" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetTicketAddressResponse), global::Walletrpc.SetTicketAddressResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetPoolAddressRequest), global::Walletrpc.SetPoolAddressRequest.Parser, new[]{ "PoolAddress" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetPoolAddressResponse), global::Walletrpc.SetPoolAddressResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetPoolFeesRequest), global::Walletrpc.SetPoolFeesRequest.Parser, new[]{ "PoolFees" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetPoolFeesResponse), global::Walletrpc.SetPoolFeesResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxPerBlockRequest), global::Walletrpc.SetMaxPerBlockRequest.Parser, new[]{ "MaxPerBlock" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxPerBlockResponse), global::Walletrpc.SetMaxPerBlockResponse.Parser, null, null, null, null)
           }));
     }
     #endregion
@@ -11705,6 +11772,2309 @@ namespace Walletrpc {
     }
 
     public void MergeFrom(StopAutoBuyerResponse other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class TicketBuyerConfigRequest : pb::IMessage<TicketBuyerConfigRequest> {
+    private static readonly pb::MessageParser<TicketBuyerConfigRequest> _parser = new pb::MessageParser<TicketBuyerConfigRequest>(() => new TicketBuyerConfigRequest());
+    public static pb::MessageParser<TicketBuyerConfigRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[77]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public TicketBuyerConfigRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public TicketBuyerConfigRequest(TicketBuyerConfigRequest other) : this() {
+    }
+
+    public TicketBuyerConfigRequest Clone() {
+      return new TicketBuyerConfigRequest(this);
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as TicketBuyerConfigRequest);
+    }
+
+    public bool Equals(TicketBuyerConfigRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    public void MergeFrom(TicketBuyerConfigRequest other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class TicketBuyerConfigResponse : pb::IMessage<TicketBuyerConfigResponse> {
+    private static readonly pb::MessageParser<TicketBuyerConfigResponse> _parser = new pb::MessageParser<TicketBuyerConfigResponse>(() => new TicketBuyerConfigResponse());
+    public static pb::MessageParser<TicketBuyerConfigResponse> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[78]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public TicketBuyerConfigResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public TicketBuyerConfigResponse(TicketBuyerConfigResponse other) : this() {
+      accountName_ = other.accountName_;
+      avgPriceMode_ = other.avgPriceMode_;
+      avgPriceVWAPDelta_ = other.avgPriceVWAPDelta_;
+      balanceToMaintain_ = other.balanceToMaintain_;
+      blocksToAvg_ = other.blocksToAvg_;
+      dontWaitForTickets_ = other.dontWaitForTickets_;
+      expiryDelta_ = other.expiryDelta_;
+      feeSource_ = other.feeSource_;
+      feeTargetScaling_ = other.feeTargetScaling_;
+      minFee_ = other.minFee_;
+      maxFee_ = other.maxFee_;
+      maxPerBlock_ = other.maxPerBlock_;
+      maxPriceAbsolute_ = other.maxPriceAbsolute_;
+      maxPriceRelative_ = other.maxPriceRelative_;
+      maxInMempool_ = other.maxInMempool_;
+      poolAddress_ = other.poolAddress_;
+      poolFees_ = other.poolFees_;
+      spreadTicketPurchases_ = other.spreadTicketPurchases_;
+      ticketAddress_ = other.ticketAddress_;
+      txFee_ = other.txFee_;
+    }
+
+    public TicketBuyerConfigResponse Clone() {
+      return new TicketBuyerConfigResponse(this);
+    }
+
+    /// <summary>Field number for the "account_name" field.</summary>
+    public const int AccountNameFieldNumber = 1;
+    private string accountName_ = "";
+    public string AccountName {
+      get { return accountName_; }
+      set {
+        accountName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "avg_price_mode" field.</summary>
+    public const int AvgPriceModeFieldNumber = 2;
+    private string avgPriceMode_ = "";
+    public string AvgPriceMode {
+      get { return avgPriceMode_; }
+      set {
+        avgPriceMode_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "avg_priceVWAP_delta" field.</summary>
+    public const int AvgPriceVWAPDeltaFieldNumber = 3;
+    private long avgPriceVWAPDelta_;
+    public long AvgPriceVWAPDelta {
+      get { return avgPriceVWAPDelta_; }
+      set {
+        avgPriceVWAPDelta_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "balance_to_maintain" field.</summary>
+    public const int BalanceToMaintainFieldNumber = 4;
+    private long balanceToMaintain_;
+    public long BalanceToMaintain {
+      get { return balanceToMaintain_; }
+      set {
+        balanceToMaintain_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "blocks_to_avg" field.</summary>
+    public const int BlocksToAvgFieldNumber = 5;
+    private long blocksToAvg_;
+    public long BlocksToAvg {
+      get { return blocksToAvg_; }
+      set {
+        blocksToAvg_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "dont_wait_for_tickets" field.</summary>
+    public const int DontWaitForTicketsFieldNumber = 6;
+    private bool dontWaitForTickets_;
+    public bool DontWaitForTickets {
+      get { return dontWaitForTickets_; }
+      set {
+        dontWaitForTickets_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "expiry_delta" field.</summary>
+    public const int ExpiryDeltaFieldNumber = 7;
+    private long expiryDelta_;
+    public long ExpiryDelta {
+      get { return expiryDelta_; }
+      set {
+        expiryDelta_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fee_source" field.</summary>
+    public const int FeeSourceFieldNumber = 8;
+    private string feeSource_ = "";
+    public string FeeSource {
+      get { return feeSource_; }
+      set {
+        feeSource_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "fee_target_scaling" field.</summary>
+    public const int FeeTargetScalingFieldNumber = 9;
+    private double feeTargetScaling_;
+    public double FeeTargetScaling {
+      get { return feeTargetScaling_; }
+      set {
+        feeTargetScaling_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "min_fee" field.</summary>
+    public const int MinFeeFieldNumber = 10;
+    private long minFee_;
+    public long MinFee {
+      get { return minFee_; }
+      set {
+        minFee_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_fee" field.</summary>
+    public const int MaxFeeFieldNumber = 12;
+    private long maxFee_;
+    public long MaxFee {
+      get { return maxFee_; }
+      set {
+        maxFee_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_per_block" field.</summary>
+    public const int MaxPerBlockFieldNumber = 13;
+    private long maxPerBlock_;
+    public long MaxPerBlock {
+      get { return maxPerBlock_; }
+      set {
+        maxPerBlock_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_price_absolute" field.</summary>
+    public const int MaxPriceAbsoluteFieldNumber = 14;
+    private long maxPriceAbsolute_;
+    public long MaxPriceAbsolute {
+      get { return maxPriceAbsolute_; }
+      set {
+        maxPriceAbsolute_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_price_relative" field.</summary>
+    public const int MaxPriceRelativeFieldNumber = 15;
+    private double maxPriceRelative_;
+    public double MaxPriceRelative {
+      get { return maxPriceRelative_; }
+      set {
+        maxPriceRelative_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_in_mempool" field.</summary>
+    public const int MaxInMempoolFieldNumber = 17;
+    private long maxInMempool_;
+    public long MaxInMempool {
+      get { return maxInMempool_; }
+      set {
+        maxInMempool_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "pool_address" field.</summary>
+    public const int PoolAddressFieldNumber = 18;
+    private string poolAddress_ = "";
+    public string PoolAddress {
+      get { return poolAddress_; }
+      set {
+        poolAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "pool_fees" field.</summary>
+    public const int PoolFeesFieldNumber = 19;
+    private double poolFees_;
+    public double PoolFees {
+      get { return poolFees_; }
+      set {
+        poolFees_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "spread_ticket_purchases" field.</summary>
+    public const int SpreadTicketPurchasesFieldNumber = 20;
+    private bool spreadTicketPurchases_;
+    public bool SpreadTicketPurchases {
+      get { return spreadTicketPurchases_; }
+      set {
+        spreadTicketPurchases_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ticket_address" field.</summary>
+    public const int TicketAddressFieldNumber = 21;
+    private string ticketAddress_ = "";
+    public string TicketAddress {
+      get { return ticketAddress_; }
+      set {
+        ticketAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "tx_fee" field.</summary>
+    public const int TxFeeFieldNumber = 22;
+    private long txFee_;
+    public long TxFee {
+      get { return txFee_; }
+      set {
+        txFee_ = value;
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as TicketBuyerConfigResponse);
+    }
+
+    public bool Equals(TicketBuyerConfigResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (AccountName != other.AccountName) return false;
+      if (AvgPriceMode != other.AvgPriceMode) return false;
+      if (AvgPriceVWAPDelta != other.AvgPriceVWAPDelta) return false;
+      if (BalanceToMaintain != other.BalanceToMaintain) return false;
+      if (BlocksToAvg != other.BlocksToAvg) return false;
+      if (DontWaitForTickets != other.DontWaitForTickets) return false;
+      if (ExpiryDelta != other.ExpiryDelta) return false;
+      if (FeeSource != other.FeeSource) return false;
+      if (FeeTargetScaling != other.FeeTargetScaling) return false;
+      if (MinFee != other.MinFee) return false;
+      if (MaxFee != other.MaxFee) return false;
+      if (MaxPerBlock != other.MaxPerBlock) return false;
+      if (MaxPriceAbsolute != other.MaxPriceAbsolute) return false;
+      if (MaxPriceRelative != other.MaxPriceRelative) return false;
+      if (MaxInMempool != other.MaxInMempool) return false;
+      if (PoolAddress != other.PoolAddress) return false;
+      if (PoolFees != other.PoolFees) return false;
+      if (SpreadTicketPurchases != other.SpreadTicketPurchases) return false;
+      if (TicketAddress != other.TicketAddress) return false;
+      if (TxFee != other.TxFee) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (AccountName.Length != 0) hash ^= AccountName.GetHashCode();
+      if (AvgPriceMode.Length != 0) hash ^= AvgPriceMode.GetHashCode();
+      if (AvgPriceVWAPDelta != 0L) hash ^= AvgPriceVWAPDelta.GetHashCode();
+      if (BalanceToMaintain != 0L) hash ^= BalanceToMaintain.GetHashCode();
+      if (BlocksToAvg != 0L) hash ^= BlocksToAvg.GetHashCode();
+      if (DontWaitForTickets != false) hash ^= DontWaitForTickets.GetHashCode();
+      if (ExpiryDelta != 0L) hash ^= ExpiryDelta.GetHashCode();
+      if (FeeSource.Length != 0) hash ^= FeeSource.GetHashCode();
+      if (FeeTargetScaling != 0D) hash ^= FeeTargetScaling.GetHashCode();
+      if (MinFee != 0L) hash ^= MinFee.GetHashCode();
+      if (MaxFee != 0L) hash ^= MaxFee.GetHashCode();
+      if (MaxPerBlock != 0L) hash ^= MaxPerBlock.GetHashCode();
+      if (MaxPriceAbsolute != 0L) hash ^= MaxPriceAbsolute.GetHashCode();
+      if (MaxPriceRelative != 0D) hash ^= MaxPriceRelative.GetHashCode();
+      if (MaxInMempool != 0L) hash ^= MaxInMempool.GetHashCode();
+      if (PoolAddress.Length != 0) hash ^= PoolAddress.GetHashCode();
+      if (PoolFees != 0D) hash ^= PoolFees.GetHashCode();
+      if (SpreadTicketPurchases != false) hash ^= SpreadTicketPurchases.GetHashCode();
+      if (TicketAddress.Length != 0) hash ^= TicketAddress.GetHashCode();
+      if (TxFee != 0L) hash ^= TxFee.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (AccountName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(AccountName);
+      }
+      if (AvgPriceMode.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(AvgPriceMode);
+      }
+      if (AvgPriceVWAPDelta != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(AvgPriceVWAPDelta);
+      }
+      if (BalanceToMaintain != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(BalanceToMaintain);
+      }
+      if (BlocksToAvg != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(BlocksToAvg);
+      }
+      if (DontWaitForTickets != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(DontWaitForTickets);
+      }
+      if (ExpiryDelta != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(ExpiryDelta);
+      }
+      if (FeeSource.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(FeeSource);
+      }
+      if (FeeTargetScaling != 0D) {
+        output.WriteRawTag(73);
+        output.WriteDouble(FeeTargetScaling);
+      }
+      if (MinFee != 0L) {
+        output.WriteRawTag(80);
+        output.WriteInt64(MinFee);
+      }
+      if (MaxFee != 0L) {
+        output.WriteRawTag(96);
+        output.WriteInt64(MaxFee);
+      }
+      if (MaxPerBlock != 0L) {
+        output.WriteRawTag(104);
+        output.WriteInt64(MaxPerBlock);
+      }
+      if (MaxPriceAbsolute != 0L) {
+        output.WriteRawTag(112);
+        output.WriteInt64(MaxPriceAbsolute);
+      }
+      if (MaxPriceRelative != 0D) {
+        output.WriteRawTag(121);
+        output.WriteDouble(MaxPriceRelative);
+      }
+      if (MaxInMempool != 0L) {
+        output.WriteRawTag(136, 1);
+        output.WriteInt64(MaxInMempool);
+      }
+      if (PoolAddress.Length != 0) {
+        output.WriteRawTag(146, 1);
+        output.WriteString(PoolAddress);
+      }
+      if (PoolFees != 0D) {
+        output.WriteRawTag(153, 1);
+        output.WriteDouble(PoolFees);
+      }
+      if (SpreadTicketPurchases != false) {
+        output.WriteRawTag(160, 1);
+        output.WriteBool(SpreadTicketPurchases);
+      }
+      if (TicketAddress.Length != 0) {
+        output.WriteRawTag(170, 1);
+        output.WriteString(TicketAddress);
+      }
+      if (TxFee != 0L) {
+        output.WriteRawTag(176, 1);
+        output.WriteInt64(TxFee);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (AccountName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AccountName);
+      }
+      if (AvgPriceMode.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AvgPriceMode);
+      }
+      if (AvgPriceVWAPDelta != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(AvgPriceVWAPDelta);
+      }
+      if (BalanceToMaintain != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BalanceToMaintain);
+      }
+      if (BlocksToAvg != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BlocksToAvg);
+      }
+      if (DontWaitForTickets != false) {
+        size += 1 + 1;
+      }
+      if (ExpiryDelta != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ExpiryDelta);
+      }
+      if (FeeSource.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FeeSource);
+      }
+      if (FeeTargetScaling != 0D) {
+        size += 1 + 8;
+      }
+      if (MinFee != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MinFee);
+      }
+      if (MaxFee != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxFee);
+      }
+      if (MaxPerBlock != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxPerBlock);
+      }
+      if (MaxPriceAbsolute != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxPriceAbsolute);
+      }
+      if (MaxPriceRelative != 0D) {
+        size += 1 + 8;
+      }
+      if (MaxInMempool != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(MaxInMempool);
+      }
+      if (PoolAddress.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(PoolAddress);
+      }
+      if (PoolFees != 0D) {
+        size += 2 + 8;
+      }
+      if (SpreadTicketPurchases != false) {
+        size += 2 + 1;
+      }
+      if (TicketAddress.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(TicketAddress);
+      }
+      if (TxFee != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(TxFee);
+      }
+      return size;
+    }
+
+    public void MergeFrom(TicketBuyerConfigResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.AccountName.Length != 0) {
+        AccountName = other.AccountName;
+      }
+      if (other.AvgPriceMode.Length != 0) {
+        AvgPriceMode = other.AvgPriceMode;
+      }
+      if (other.AvgPriceVWAPDelta != 0L) {
+        AvgPriceVWAPDelta = other.AvgPriceVWAPDelta;
+      }
+      if (other.BalanceToMaintain != 0L) {
+        BalanceToMaintain = other.BalanceToMaintain;
+      }
+      if (other.BlocksToAvg != 0L) {
+        BlocksToAvg = other.BlocksToAvg;
+      }
+      if (other.DontWaitForTickets != false) {
+        DontWaitForTickets = other.DontWaitForTickets;
+      }
+      if (other.ExpiryDelta != 0L) {
+        ExpiryDelta = other.ExpiryDelta;
+      }
+      if (other.FeeSource.Length != 0) {
+        FeeSource = other.FeeSource;
+      }
+      if (other.FeeTargetScaling != 0D) {
+        FeeTargetScaling = other.FeeTargetScaling;
+      }
+      if (other.MinFee != 0L) {
+        MinFee = other.MinFee;
+      }
+      if (other.MaxFee != 0L) {
+        MaxFee = other.MaxFee;
+      }
+      if (other.MaxPerBlock != 0L) {
+        MaxPerBlock = other.MaxPerBlock;
+      }
+      if (other.MaxPriceAbsolute != 0L) {
+        MaxPriceAbsolute = other.MaxPriceAbsolute;
+      }
+      if (other.MaxPriceRelative != 0D) {
+        MaxPriceRelative = other.MaxPriceRelative;
+      }
+      if (other.MaxInMempool != 0L) {
+        MaxInMempool = other.MaxInMempool;
+      }
+      if (other.PoolAddress.Length != 0) {
+        PoolAddress = other.PoolAddress;
+      }
+      if (other.PoolFees != 0D) {
+        PoolFees = other.PoolFees;
+      }
+      if (other.SpreadTicketPurchases != false) {
+        SpreadTicketPurchases = other.SpreadTicketPurchases;
+      }
+      if (other.TicketAddress.Length != 0) {
+        TicketAddress = other.TicketAddress;
+      }
+      if (other.TxFee != 0L) {
+        TxFee = other.TxFee;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            AccountName = input.ReadString();
+            break;
+          }
+          case 18: {
+            AvgPriceMode = input.ReadString();
+            break;
+          }
+          case 24: {
+            AvgPriceVWAPDelta = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            BalanceToMaintain = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            BlocksToAvg = input.ReadInt64();
+            break;
+          }
+          case 48: {
+            DontWaitForTickets = input.ReadBool();
+            break;
+          }
+          case 56: {
+            ExpiryDelta = input.ReadInt64();
+            break;
+          }
+          case 66: {
+            FeeSource = input.ReadString();
+            break;
+          }
+          case 73: {
+            FeeTargetScaling = input.ReadDouble();
+            break;
+          }
+          case 80: {
+            MinFee = input.ReadInt64();
+            break;
+          }
+          case 96: {
+            MaxFee = input.ReadInt64();
+            break;
+          }
+          case 104: {
+            MaxPerBlock = input.ReadInt64();
+            break;
+          }
+          case 112: {
+            MaxPriceAbsolute = input.ReadInt64();
+            break;
+          }
+          case 121: {
+            MaxPriceRelative = input.ReadDouble();
+            break;
+          }
+          case 136: {
+            MaxInMempool = input.ReadInt64();
+            break;
+          }
+          case 146: {
+            PoolAddress = input.ReadString();
+            break;
+          }
+          case 153: {
+            PoolFees = input.ReadDouble();
+            break;
+          }
+          case 160: {
+            SpreadTicketPurchases = input.ReadBool();
+            break;
+          }
+          case 170: {
+            TicketAddress = input.ReadString();
+            break;
+          }
+          case 176: {
+            TxFee = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetAccountNameRequest : pb::IMessage<SetAccountNameRequest> {
+    private static readonly pb::MessageParser<SetAccountNameRequest> _parser = new pb::MessageParser<SetAccountNameRequest>(() => new SetAccountNameRequest());
+    public static pb::MessageParser<SetAccountNameRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[79]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetAccountNameRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetAccountNameRequest(SetAccountNameRequest other) : this() {
+      accountName_ = other.accountName_;
+    }
+
+    public SetAccountNameRequest Clone() {
+      return new SetAccountNameRequest(this);
+    }
+
+    /// <summary>Field number for the "account_name" field.</summary>
+    public const int AccountNameFieldNumber = 1;
+    private string accountName_ = "";
+    public string AccountName {
+      get { return accountName_; }
+      set {
+        accountName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetAccountNameRequest);
+    }
+
+    public bool Equals(SetAccountNameRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (AccountName != other.AccountName) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (AccountName.Length != 0) hash ^= AccountName.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (AccountName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(AccountName);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (AccountName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AccountName);
+      }
+      return size;
+    }
+
+    public void MergeFrom(SetAccountNameRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.AccountName.Length != 0) {
+        AccountName = other.AccountName;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            AccountName = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetAccountNameResponse : pb::IMessage<SetAccountNameResponse> {
+    private static readonly pb::MessageParser<SetAccountNameResponse> _parser = new pb::MessageParser<SetAccountNameResponse>(() => new SetAccountNameResponse());
+    public static pb::MessageParser<SetAccountNameResponse> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[80]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetAccountNameResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetAccountNameResponse(SetAccountNameResponse other) : this() {
+    }
+
+    public SetAccountNameResponse Clone() {
+      return new SetAccountNameResponse(this);
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetAccountNameResponse);
+    }
+
+    public bool Equals(SetAccountNameResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    public void MergeFrom(SetAccountNameResponse other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetBalanceToMaintainRequest : pb::IMessage<SetBalanceToMaintainRequest> {
+    private static readonly pb::MessageParser<SetBalanceToMaintainRequest> _parser = new pb::MessageParser<SetBalanceToMaintainRequest>(() => new SetBalanceToMaintainRequest());
+    public static pb::MessageParser<SetBalanceToMaintainRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[81]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetBalanceToMaintainRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetBalanceToMaintainRequest(SetBalanceToMaintainRequest other) : this() {
+      balanceToMaintain_ = other.balanceToMaintain_;
+    }
+
+    public SetBalanceToMaintainRequest Clone() {
+      return new SetBalanceToMaintainRequest(this);
+    }
+
+    /// <summary>Field number for the "balance_to_maintain" field.</summary>
+    public const int BalanceToMaintainFieldNumber = 1;
+    private long balanceToMaintain_;
+    public long BalanceToMaintain {
+      get { return balanceToMaintain_; }
+      set {
+        balanceToMaintain_ = value;
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetBalanceToMaintainRequest);
+    }
+
+    public bool Equals(SetBalanceToMaintainRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (BalanceToMaintain != other.BalanceToMaintain) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (BalanceToMaintain != 0L) hash ^= BalanceToMaintain.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (BalanceToMaintain != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(BalanceToMaintain);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (BalanceToMaintain != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BalanceToMaintain);
+      }
+      return size;
+    }
+
+    public void MergeFrom(SetBalanceToMaintainRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.BalanceToMaintain != 0L) {
+        BalanceToMaintain = other.BalanceToMaintain;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            BalanceToMaintain = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetBalanceToMaintainResponse : pb::IMessage<SetBalanceToMaintainResponse> {
+    private static readonly pb::MessageParser<SetBalanceToMaintainResponse> _parser = new pb::MessageParser<SetBalanceToMaintainResponse>(() => new SetBalanceToMaintainResponse());
+    public static pb::MessageParser<SetBalanceToMaintainResponse> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[82]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetBalanceToMaintainResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetBalanceToMaintainResponse(SetBalanceToMaintainResponse other) : this() {
+    }
+
+    public SetBalanceToMaintainResponse Clone() {
+      return new SetBalanceToMaintainResponse(this);
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetBalanceToMaintainResponse);
+    }
+
+    public bool Equals(SetBalanceToMaintainResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    public void MergeFrom(SetBalanceToMaintainResponse other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetMaxFeeRequest : pb::IMessage<SetMaxFeeRequest> {
+    private static readonly pb::MessageParser<SetMaxFeeRequest> _parser = new pb::MessageParser<SetMaxFeeRequest>(() => new SetMaxFeeRequest());
+    public static pb::MessageParser<SetMaxFeeRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[83]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetMaxFeeRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetMaxFeeRequest(SetMaxFeeRequest other) : this() {
+      maxFee_ = other.maxFee_;
+    }
+
+    public SetMaxFeeRequest Clone() {
+      return new SetMaxFeeRequest(this);
+    }
+
+    /// <summary>Field number for the "max_fee" field.</summary>
+    public const int MaxFeeFieldNumber = 1;
+    private long maxFee_;
+    public long MaxFee {
+      get { return maxFee_; }
+      set {
+        maxFee_ = value;
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetMaxFeeRequest);
+    }
+
+    public bool Equals(SetMaxFeeRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MaxFee != other.MaxFee) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MaxFee != 0L) hash ^= MaxFee.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (MaxFee != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(MaxFee);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (MaxFee != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxFee);
+      }
+      return size;
+    }
+
+    public void MergeFrom(SetMaxFeeRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MaxFee != 0L) {
+        MaxFee = other.MaxFee;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            MaxFee = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetMaxFeeResponse : pb::IMessage<SetMaxFeeResponse> {
+    private static readonly pb::MessageParser<SetMaxFeeResponse> _parser = new pb::MessageParser<SetMaxFeeResponse>(() => new SetMaxFeeResponse());
+    public static pb::MessageParser<SetMaxFeeResponse> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[84]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetMaxFeeResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetMaxFeeResponse(SetMaxFeeResponse other) : this() {
+    }
+
+    public SetMaxFeeResponse Clone() {
+      return new SetMaxFeeResponse(this);
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetMaxFeeResponse);
+    }
+
+    public bool Equals(SetMaxFeeResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    public void MergeFrom(SetMaxFeeResponse other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetMaxPriceRelativeRequest : pb::IMessage<SetMaxPriceRelativeRequest> {
+    private static readonly pb::MessageParser<SetMaxPriceRelativeRequest> _parser = new pb::MessageParser<SetMaxPriceRelativeRequest>(() => new SetMaxPriceRelativeRequest());
+    public static pb::MessageParser<SetMaxPriceRelativeRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[85]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetMaxPriceRelativeRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetMaxPriceRelativeRequest(SetMaxPriceRelativeRequest other) : this() {
+      maxPriceRelative_ = other.maxPriceRelative_;
+    }
+
+    public SetMaxPriceRelativeRequest Clone() {
+      return new SetMaxPriceRelativeRequest(this);
+    }
+
+    /// <summary>Field number for the "max_price_relative" field.</summary>
+    public const int MaxPriceRelativeFieldNumber = 1;
+    private double maxPriceRelative_;
+    public double MaxPriceRelative {
+      get { return maxPriceRelative_; }
+      set {
+        maxPriceRelative_ = value;
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetMaxPriceRelativeRequest);
+    }
+
+    public bool Equals(SetMaxPriceRelativeRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MaxPriceRelative != other.MaxPriceRelative) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MaxPriceRelative != 0D) hash ^= MaxPriceRelative.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (MaxPriceRelative != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(MaxPriceRelative);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (MaxPriceRelative != 0D) {
+        size += 1 + 8;
+      }
+      return size;
+    }
+
+    public void MergeFrom(SetMaxPriceRelativeRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MaxPriceRelative != 0D) {
+        MaxPriceRelative = other.MaxPriceRelative;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 9: {
+            MaxPriceRelative = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetMaxPriceRelativeResponse : pb::IMessage<SetMaxPriceRelativeResponse> {
+    private static readonly pb::MessageParser<SetMaxPriceRelativeResponse> _parser = new pb::MessageParser<SetMaxPriceRelativeResponse>(() => new SetMaxPriceRelativeResponse());
+    public static pb::MessageParser<SetMaxPriceRelativeResponse> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[86]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetMaxPriceRelativeResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetMaxPriceRelativeResponse(SetMaxPriceRelativeResponse other) : this() {
+    }
+
+    public SetMaxPriceRelativeResponse Clone() {
+      return new SetMaxPriceRelativeResponse(this);
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetMaxPriceRelativeResponse);
+    }
+
+    public bool Equals(SetMaxPriceRelativeResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    public void MergeFrom(SetMaxPriceRelativeResponse other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetMaxPriceAbsoluteRequest : pb::IMessage<SetMaxPriceAbsoluteRequest> {
+    private static readonly pb::MessageParser<SetMaxPriceAbsoluteRequest> _parser = new pb::MessageParser<SetMaxPriceAbsoluteRequest>(() => new SetMaxPriceAbsoluteRequest());
+    public static pb::MessageParser<SetMaxPriceAbsoluteRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[87]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetMaxPriceAbsoluteRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetMaxPriceAbsoluteRequest(SetMaxPriceAbsoluteRequest other) : this() {
+      maxPriceAbsolute_ = other.maxPriceAbsolute_;
+    }
+
+    public SetMaxPriceAbsoluteRequest Clone() {
+      return new SetMaxPriceAbsoluteRequest(this);
+    }
+
+    /// <summary>Field number for the "max_price_absolute" field.</summary>
+    public const int MaxPriceAbsoluteFieldNumber = 1;
+    private long maxPriceAbsolute_;
+    public long MaxPriceAbsolute {
+      get { return maxPriceAbsolute_; }
+      set {
+        maxPriceAbsolute_ = value;
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetMaxPriceAbsoluteRequest);
+    }
+
+    public bool Equals(SetMaxPriceAbsoluteRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MaxPriceAbsolute != other.MaxPriceAbsolute) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MaxPriceAbsolute != 0L) hash ^= MaxPriceAbsolute.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (MaxPriceAbsolute != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(MaxPriceAbsolute);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (MaxPriceAbsolute != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxPriceAbsolute);
+      }
+      return size;
+    }
+
+    public void MergeFrom(SetMaxPriceAbsoluteRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MaxPriceAbsolute != 0L) {
+        MaxPriceAbsolute = other.MaxPriceAbsolute;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            MaxPriceAbsolute = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetMaxPriceAbsoluteResponse : pb::IMessage<SetMaxPriceAbsoluteResponse> {
+    private static readonly pb::MessageParser<SetMaxPriceAbsoluteResponse> _parser = new pb::MessageParser<SetMaxPriceAbsoluteResponse>(() => new SetMaxPriceAbsoluteResponse());
+    public static pb::MessageParser<SetMaxPriceAbsoluteResponse> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[88]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetMaxPriceAbsoluteResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetMaxPriceAbsoluteResponse(SetMaxPriceAbsoluteResponse other) : this() {
+    }
+
+    public SetMaxPriceAbsoluteResponse Clone() {
+      return new SetMaxPriceAbsoluteResponse(this);
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetMaxPriceAbsoluteResponse);
+    }
+
+    public bool Equals(SetMaxPriceAbsoluteResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    public void MergeFrom(SetMaxPriceAbsoluteResponse other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetTicketAddressRequest : pb::IMessage<SetTicketAddressRequest> {
+    private static readonly pb::MessageParser<SetTicketAddressRequest> _parser = new pb::MessageParser<SetTicketAddressRequest>(() => new SetTicketAddressRequest());
+    public static pb::MessageParser<SetTicketAddressRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[89]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetTicketAddressRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetTicketAddressRequest(SetTicketAddressRequest other) : this() {
+      ticketAddress_ = other.ticketAddress_;
+    }
+
+    public SetTicketAddressRequest Clone() {
+      return new SetTicketAddressRequest(this);
+    }
+
+    /// <summary>Field number for the "ticket_address" field.</summary>
+    public const int TicketAddressFieldNumber = 1;
+    private string ticketAddress_ = "";
+    public string TicketAddress {
+      get { return ticketAddress_; }
+      set {
+        ticketAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetTicketAddressRequest);
+    }
+
+    public bool Equals(SetTicketAddressRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (TicketAddress != other.TicketAddress) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (TicketAddress.Length != 0) hash ^= TicketAddress.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (TicketAddress.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(TicketAddress);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (TicketAddress.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TicketAddress);
+      }
+      return size;
+    }
+
+    public void MergeFrom(SetTicketAddressRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.TicketAddress.Length != 0) {
+        TicketAddress = other.TicketAddress;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            TicketAddress = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetTicketAddressResponse : pb::IMessage<SetTicketAddressResponse> {
+    private static readonly pb::MessageParser<SetTicketAddressResponse> _parser = new pb::MessageParser<SetTicketAddressResponse>(() => new SetTicketAddressResponse());
+    public static pb::MessageParser<SetTicketAddressResponse> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[90]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetTicketAddressResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetTicketAddressResponse(SetTicketAddressResponse other) : this() {
+    }
+
+    public SetTicketAddressResponse Clone() {
+      return new SetTicketAddressResponse(this);
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetTicketAddressResponse);
+    }
+
+    public bool Equals(SetTicketAddressResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    public void MergeFrom(SetTicketAddressResponse other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetPoolAddressRequest : pb::IMessage<SetPoolAddressRequest> {
+    private static readonly pb::MessageParser<SetPoolAddressRequest> _parser = new pb::MessageParser<SetPoolAddressRequest>(() => new SetPoolAddressRequest());
+    public static pb::MessageParser<SetPoolAddressRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[91]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetPoolAddressRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetPoolAddressRequest(SetPoolAddressRequest other) : this() {
+      poolAddress_ = other.poolAddress_;
+    }
+
+    public SetPoolAddressRequest Clone() {
+      return new SetPoolAddressRequest(this);
+    }
+
+    /// <summary>Field number for the "pool_address" field.</summary>
+    public const int PoolAddressFieldNumber = 1;
+    private string poolAddress_ = "";
+    public string PoolAddress {
+      get { return poolAddress_; }
+      set {
+        poolAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetPoolAddressRequest);
+    }
+
+    public bool Equals(SetPoolAddressRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (PoolAddress != other.PoolAddress) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PoolAddress.Length != 0) hash ^= PoolAddress.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (PoolAddress.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(PoolAddress);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (PoolAddress.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PoolAddress);
+      }
+      return size;
+    }
+
+    public void MergeFrom(SetPoolAddressRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PoolAddress.Length != 0) {
+        PoolAddress = other.PoolAddress;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            PoolAddress = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetPoolAddressResponse : pb::IMessage<SetPoolAddressResponse> {
+    private static readonly pb::MessageParser<SetPoolAddressResponse> _parser = new pb::MessageParser<SetPoolAddressResponse>(() => new SetPoolAddressResponse());
+    public static pb::MessageParser<SetPoolAddressResponse> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[92]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetPoolAddressResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetPoolAddressResponse(SetPoolAddressResponse other) : this() {
+    }
+
+    public SetPoolAddressResponse Clone() {
+      return new SetPoolAddressResponse(this);
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetPoolAddressResponse);
+    }
+
+    public bool Equals(SetPoolAddressResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    public void MergeFrom(SetPoolAddressResponse other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetPoolFeesRequest : pb::IMessage<SetPoolFeesRequest> {
+    private static readonly pb::MessageParser<SetPoolFeesRequest> _parser = new pb::MessageParser<SetPoolFeesRequest>(() => new SetPoolFeesRequest());
+    public static pb::MessageParser<SetPoolFeesRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[93]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetPoolFeesRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetPoolFeesRequest(SetPoolFeesRequest other) : this() {
+      poolFees_ = other.poolFees_;
+    }
+
+    public SetPoolFeesRequest Clone() {
+      return new SetPoolFeesRequest(this);
+    }
+
+    /// <summary>Field number for the "pool_fees" field.</summary>
+    public const int PoolFeesFieldNumber = 1;
+    private double poolFees_;
+    public double PoolFees {
+      get { return poolFees_; }
+      set {
+        poolFees_ = value;
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetPoolFeesRequest);
+    }
+
+    public bool Equals(SetPoolFeesRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (PoolFees != other.PoolFees) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PoolFees != 0D) hash ^= PoolFees.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (PoolFees != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(PoolFees);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (PoolFees != 0D) {
+        size += 1 + 8;
+      }
+      return size;
+    }
+
+    public void MergeFrom(SetPoolFeesRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PoolFees != 0D) {
+        PoolFees = other.PoolFees;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 9: {
+            PoolFees = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetPoolFeesResponse : pb::IMessage<SetPoolFeesResponse> {
+    private static readonly pb::MessageParser<SetPoolFeesResponse> _parser = new pb::MessageParser<SetPoolFeesResponse>(() => new SetPoolFeesResponse());
+    public static pb::MessageParser<SetPoolFeesResponse> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[94]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetPoolFeesResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetPoolFeesResponse(SetPoolFeesResponse other) : this() {
+    }
+
+    public SetPoolFeesResponse Clone() {
+      return new SetPoolFeesResponse(this);
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetPoolFeesResponse);
+    }
+
+    public bool Equals(SetPoolFeesResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    public void MergeFrom(SetPoolFeesResponse other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetMaxPerBlockRequest : pb::IMessage<SetMaxPerBlockRequest> {
+    private static readonly pb::MessageParser<SetMaxPerBlockRequest> _parser = new pb::MessageParser<SetMaxPerBlockRequest>(() => new SetMaxPerBlockRequest());
+    public static pb::MessageParser<SetMaxPerBlockRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[95]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetMaxPerBlockRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetMaxPerBlockRequest(SetMaxPerBlockRequest other) : this() {
+      maxPerBlock_ = other.maxPerBlock_;
+    }
+
+    public SetMaxPerBlockRequest Clone() {
+      return new SetMaxPerBlockRequest(this);
+    }
+
+    /// <summary>Field number for the "max_per_block" field.</summary>
+    public const int MaxPerBlockFieldNumber = 1;
+    private long maxPerBlock_;
+    public long MaxPerBlock {
+      get { return maxPerBlock_; }
+      set {
+        maxPerBlock_ = value;
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetMaxPerBlockRequest);
+    }
+
+    public bool Equals(SetMaxPerBlockRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MaxPerBlock != other.MaxPerBlock) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MaxPerBlock != 0L) hash ^= MaxPerBlock.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (MaxPerBlock != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(MaxPerBlock);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (MaxPerBlock != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxPerBlock);
+      }
+      return size;
+    }
+
+    public void MergeFrom(SetMaxPerBlockRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MaxPerBlock != 0L) {
+        MaxPerBlock = other.MaxPerBlock;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            MaxPerBlock = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SetMaxPerBlockResponse : pb::IMessage<SetMaxPerBlockResponse> {
+    private static readonly pb::MessageParser<SetMaxPerBlockResponse> _parser = new pb::MessageParser<SetMaxPerBlockResponse>(() => new SetMaxPerBlockResponse());
+    public static pb::MessageParser<SetMaxPerBlockResponse> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[96]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SetMaxPerBlockResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SetMaxPerBlockResponse(SetMaxPerBlockResponse other) : this() {
+    }
+
+    public SetMaxPerBlockResponse Clone() {
+      return new SetMaxPerBlockResponse(this);
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SetMaxPerBlockResponse);
+    }
+
+    public bool Equals(SetMaxPerBlockResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    public void MergeFrom(SetMaxPerBlockResponse other) {
       if (other == null) {
         return;
       }

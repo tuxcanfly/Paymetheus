@@ -1194,6 +1194,26 @@ namespace Walletrpc {
     static readonly Marshaller<global::Walletrpc.StartAutoBuyerResponse> __Marshaller_StartAutoBuyerResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.StartAutoBuyerResponse.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.StopAutoBuyerRequest> __Marshaller_StopAutoBuyerRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.StopAutoBuyerRequest.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.StopAutoBuyerResponse> __Marshaller_StopAutoBuyerResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.StopAutoBuyerResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.TicketBuyerConfigRequest> __Marshaller_TicketBuyerConfigRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.TicketBuyerConfigRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.TicketBuyerConfigResponse> __Marshaller_TicketBuyerConfigResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.TicketBuyerConfigResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetAccountNameRequest> __Marshaller_SetAccountNameRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetAccountNameRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetAccountNameResponse> __Marshaller_SetAccountNameResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetAccountNameResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetBalanceToMaintainRequest> __Marshaller_SetBalanceToMaintainRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetBalanceToMaintainRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetBalanceToMaintainResponse> __Marshaller_SetBalanceToMaintainResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetBalanceToMaintainResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetMaxFeeRequest> __Marshaller_SetMaxFeeRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetMaxFeeRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetMaxFeeResponse> __Marshaller_SetMaxFeeResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetMaxFeeResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetMaxPriceRelativeRequest> __Marshaller_SetMaxPriceRelativeRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetMaxPriceRelativeRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetMaxPriceRelativeResponse> __Marshaller_SetMaxPriceRelativeResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetMaxPriceRelativeResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetMaxPriceAbsoluteRequest> __Marshaller_SetMaxPriceAbsoluteRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetMaxPriceAbsoluteRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetMaxPriceAbsoluteResponse> __Marshaller_SetMaxPriceAbsoluteResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetMaxPriceAbsoluteResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetTicketAddressRequest> __Marshaller_SetTicketAddressRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetTicketAddressRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetTicketAddressResponse> __Marshaller_SetTicketAddressResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetTicketAddressResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetPoolAddressRequest> __Marshaller_SetPoolAddressRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetPoolAddressRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetPoolAddressResponse> __Marshaller_SetPoolAddressResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetPoolAddressResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetPoolFeesRequest> __Marshaller_SetPoolFeesRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetPoolFeesRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetPoolFeesResponse> __Marshaller_SetPoolFeesResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetPoolFeesResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetMaxPerBlockRequest> __Marshaller_SetMaxPerBlockRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetMaxPerBlockRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetMaxPerBlockResponse> __Marshaller_SetMaxPerBlockResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetMaxPerBlockResponse.Parser.ParseFrom);
 
     static readonly Method<global::Walletrpc.StartAutoBuyerRequest, global::Walletrpc.StartAutoBuyerResponse> __Method_StartAutoBuyer = new Method<global::Walletrpc.StartAutoBuyerRequest, global::Walletrpc.StartAutoBuyerResponse>(
         MethodType.Unary,
@@ -1208,6 +1228,76 @@ namespace Walletrpc {
         "StopAutoBuyer",
         __Marshaller_StopAutoBuyerRequest,
         __Marshaller_StopAutoBuyerResponse);
+
+    static readonly Method<global::Walletrpc.TicketBuyerConfigRequest, global::Walletrpc.TicketBuyerConfigResponse> __Method_TicketBuyerConfig = new Method<global::Walletrpc.TicketBuyerConfigRequest, global::Walletrpc.TicketBuyerConfigResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "TicketBuyerConfig",
+        __Marshaller_TicketBuyerConfigRequest,
+        __Marshaller_TicketBuyerConfigResponse);
+
+    static readonly Method<global::Walletrpc.SetAccountNameRequest, global::Walletrpc.SetAccountNameResponse> __Method_SetAccountName = new Method<global::Walletrpc.SetAccountNameRequest, global::Walletrpc.SetAccountNameResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "SetAccountName",
+        __Marshaller_SetAccountNameRequest,
+        __Marshaller_SetAccountNameResponse);
+
+    static readonly Method<global::Walletrpc.SetBalanceToMaintainRequest, global::Walletrpc.SetBalanceToMaintainResponse> __Method_SetBalanceToMaintain = new Method<global::Walletrpc.SetBalanceToMaintainRequest, global::Walletrpc.SetBalanceToMaintainResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "SetBalanceToMaintain",
+        __Marshaller_SetBalanceToMaintainRequest,
+        __Marshaller_SetBalanceToMaintainResponse);
+
+    static readonly Method<global::Walletrpc.SetMaxFeeRequest, global::Walletrpc.SetMaxFeeResponse> __Method_SetMaxFee = new Method<global::Walletrpc.SetMaxFeeRequest, global::Walletrpc.SetMaxFeeResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "SetMaxFee",
+        __Marshaller_SetMaxFeeRequest,
+        __Marshaller_SetMaxFeeResponse);
+
+    static readonly Method<global::Walletrpc.SetMaxPriceRelativeRequest, global::Walletrpc.SetMaxPriceRelativeResponse> __Method_SetMaxPriceRelative = new Method<global::Walletrpc.SetMaxPriceRelativeRequest, global::Walletrpc.SetMaxPriceRelativeResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "SetMaxPriceRelative",
+        __Marshaller_SetMaxPriceRelativeRequest,
+        __Marshaller_SetMaxPriceRelativeResponse);
+
+    static readonly Method<global::Walletrpc.SetMaxPriceAbsoluteRequest, global::Walletrpc.SetMaxPriceAbsoluteResponse> __Method_SetMaxPriceAbsolute = new Method<global::Walletrpc.SetMaxPriceAbsoluteRequest, global::Walletrpc.SetMaxPriceAbsoluteResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "SetMaxPriceAbsolute",
+        __Marshaller_SetMaxPriceAbsoluteRequest,
+        __Marshaller_SetMaxPriceAbsoluteResponse);
+
+    static readonly Method<global::Walletrpc.SetTicketAddressRequest, global::Walletrpc.SetTicketAddressResponse> __Method_SetTicketAddress = new Method<global::Walletrpc.SetTicketAddressRequest, global::Walletrpc.SetTicketAddressResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "SetTicketAddress",
+        __Marshaller_SetTicketAddressRequest,
+        __Marshaller_SetTicketAddressResponse);
+
+    static readonly Method<global::Walletrpc.SetPoolAddressRequest, global::Walletrpc.SetPoolAddressResponse> __Method_SetPoolAddress = new Method<global::Walletrpc.SetPoolAddressRequest, global::Walletrpc.SetPoolAddressResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "SetPoolAddress",
+        __Marshaller_SetPoolAddressRequest,
+        __Marshaller_SetPoolAddressResponse);
+
+    static readonly Method<global::Walletrpc.SetPoolFeesRequest, global::Walletrpc.SetPoolFeesResponse> __Method_SetPoolFees = new Method<global::Walletrpc.SetPoolFeesRequest, global::Walletrpc.SetPoolFeesResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "SetPoolFees",
+        __Marshaller_SetPoolFeesRequest,
+        __Marshaller_SetPoolFeesResponse);
+
+    static readonly Method<global::Walletrpc.SetMaxPerBlockRequest, global::Walletrpc.SetMaxPerBlockResponse> __Method_SetMaxPerBlock = new Method<global::Walletrpc.SetMaxPerBlockRequest, global::Walletrpc.SetMaxPerBlockResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "SetMaxPerBlock",
+        __Marshaller_SetMaxPerBlockRequest,
+        __Marshaller_SetMaxPerBlockResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -1224,6 +1314,56 @@ namespace Walletrpc {
       }
 
       public virtual global::System.Threading.Tasks.Task<global::Walletrpc.StopAutoBuyerResponse> StopAutoBuyer(global::Walletrpc.StopAutoBuyerRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.TicketBuyerConfigResponse> TicketBuyerConfig(global::Walletrpc.TicketBuyerConfigRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.SetAccountNameResponse> SetAccountName(global::Walletrpc.SetAccountNameRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.SetBalanceToMaintainResponse> SetBalanceToMaintain(global::Walletrpc.SetBalanceToMaintainRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.SetMaxFeeResponse> SetMaxFee(global::Walletrpc.SetMaxFeeRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.SetMaxPriceRelativeResponse> SetMaxPriceRelative(global::Walletrpc.SetMaxPriceRelativeRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.SetMaxPriceAbsoluteResponse> SetMaxPriceAbsolute(global::Walletrpc.SetMaxPriceAbsoluteRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.SetTicketAddressResponse> SetTicketAddress(global::Walletrpc.SetTicketAddressRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.SetPoolAddressResponse> SetPoolAddress(global::Walletrpc.SetPoolAddressRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.SetPoolFeesResponse> SetPoolFees(global::Walletrpc.SetPoolFeesRequest request, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.SetMaxPerBlockResponse> SetMaxPerBlock(global::Walletrpc.SetMaxPerBlockRequest request, ServerCallContext context)
       {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
       }
@@ -1285,6 +1425,166 @@ namespace Walletrpc {
       {
         return CallInvoker.AsyncUnaryCall(__Method_StopAutoBuyer, null, options, request);
       }
+      public virtual global::Walletrpc.TicketBuyerConfigResponse TicketBuyerConfig(global::Walletrpc.TicketBuyerConfigRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return TicketBuyerConfig(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.TicketBuyerConfigResponse TicketBuyerConfig(global::Walletrpc.TicketBuyerConfigRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_TicketBuyerConfig, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.TicketBuyerConfigResponse> TicketBuyerConfigAsync(global::Walletrpc.TicketBuyerConfigRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return TicketBuyerConfigAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.TicketBuyerConfigResponse> TicketBuyerConfigAsync(global::Walletrpc.TicketBuyerConfigRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_TicketBuyerConfig, null, options, request);
+      }
+      public virtual global::Walletrpc.SetAccountNameResponse SetAccountName(global::Walletrpc.SetAccountNameRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetAccountName(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.SetAccountNameResponse SetAccountName(global::Walletrpc.SetAccountNameRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetAccountName, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetAccountNameResponse> SetAccountNameAsync(global::Walletrpc.SetAccountNameRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetAccountNameAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetAccountNameResponse> SetAccountNameAsync(global::Walletrpc.SetAccountNameRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetAccountName, null, options, request);
+      }
+      public virtual global::Walletrpc.SetBalanceToMaintainResponse SetBalanceToMaintain(global::Walletrpc.SetBalanceToMaintainRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetBalanceToMaintain(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.SetBalanceToMaintainResponse SetBalanceToMaintain(global::Walletrpc.SetBalanceToMaintainRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetBalanceToMaintain, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetBalanceToMaintainResponse> SetBalanceToMaintainAsync(global::Walletrpc.SetBalanceToMaintainRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetBalanceToMaintainAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetBalanceToMaintainResponse> SetBalanceToMaintainAsync(global::Walletrpc.SetBalanceToMaintainRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetBalanceToMaintain, null, options, request);
+      }
+      public virtual global::Walletrpc.SetMaxFeeResponse SetMaxFee(global::Walletrpc.SetMaxFeeRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetMaxFee(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.SetMaxFeeResponse SetMaxFee(global::Walletrpc.SetMaxFeeRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetMaxFee, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetMaxFeeResponse> SetMaxFeeAsync(global::Walletrpc.SetMaxFeeRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetMaxFeeAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetMaxFeeResponse> SetMaxFeeAsync(global::Walletrpc.SetMaxFeeRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetMaxFee, null, options, request);
+      }
+      public virtual global::Walletrpc.SetMaxPriceRelativeResponse SetMaxPriceRelative(global::Walletrpc.SetMaxPriceRelativeRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetMaxPriceRelative(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.SetMaxPriceRelativeResponse SetMaxPriceRelative(global::Walletrpc.SetMaxPriceRelativeRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetMaxPriceRelative, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetMaxPriceRelativeResponse> SetMaxPriceRelativeAsync(global::Walletrpc.SetMaxPriceRelativeRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetMaxPriceRelativeAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetMaxPriceRelativeResponse> SetMaxPriceRelativeAsync(global::Walletrpc.SetMaxPriceRelativeRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetMaxPriceRelative, null, options, request);
+      }
+      public virtual global::Walletrpc.SetMaxPriceAbsoluteResponse SetMaxPriceAbsolute(global::Walletrpc.SetMaxPriceAbsoluteRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetMaxPriceAbsolute(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.SetMaxPriceAbsoluteResponse SetMaxPriceAbsolute(global::Walletrpc.SetMaxPriceAbsoluteRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetMaxPriceAbsolute, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetMaxPriceAbsoluteResponse> SetMaxPriceAbsoluteAsync(global::Walletrpc.SetMaxPriceAbsoluteRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetMaxPriceAbsoluteAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetMaxPriceAbsoluteResponse> SetMaxPriceAbsoluteAsync(global::Walletrpc.SetMaxPriceAbsoluteRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetMaxPriceAbsolute, null, options, request);
+      }
+      public virtual global::Walletrpc.SetTicketAddressResponse SetTicketAddress(global::Walletrpc.SetTicketAddressRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetTicketAddress(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.SetTicketAddressResponse SetTicketAddress(global::Walletrpc.SetTicketAddressRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetTicketAddress, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetTicketAddressResponse> SetTicketAddressAsync(global::Walletrpc.SetTicketAddressRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetTicketAddressAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetTicketAddressResponse> SetTicketAddressAsync(global::Walletrpc.SetTicketAddressRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetTicketAddress, null, options, request);
+      }
+      public virtual global::Walletrpc.SetPoolAddressResponse SetPoolAddress(global::Walletrpc.SetPoolAddressRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetPoolAddress(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.SetPoolAddressResponse SetPoolAddress(global::Walletrpc.SetPoolAddressRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetPoolAddress, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetPoolAddressResponse> SetPoolAddressAsync(global::Walletrpc.SetPoolAddressRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetPoolAddressAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetPoolAddressResponse> SetPoolAddressAsync(global::Walletrpc.SetPoolAddressRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetPoolAddress, null, options, request);
+      }
+      public virtual global::Walletrpc.SetPoolFeesResponse SetPoolFees(global::Walletrpc.SetPoolFeesRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetPoolFees(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.SetPoolFeesResponse SetPoolFees(global::Walletrpc.SetPoolFeesRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetPoolFees, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetPoolFeesResponse> SetPoolFeesAsync(global::Walletrpc.SetPoolFeesRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetPoolFeesAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetPoolFeesResponse> SetPoolFeesAsync(global::Walletrpc.SetPoolFeesRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetPoolFees, null, options, request);
+      }
+      public virtual global::Walletrpc.SetMaxPerBlockResponse SetMaxPerBlock(global::Walletrpc.SetMaxPerBlockRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetMaxPerBlock(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Walletrpc.SetMaxPerBlockResponse SetMaxPerBlock(global::Walletrpc.SetMaxPerBlockRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetMaxPerBlock, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetMaxPerBlockResponse> SetMaxPerBlockAsync(global::Walletrpc.SetMaxPerBlockRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return SetMaxPerBlockAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Walletrpc.SetMaxPerBlockResponse> SetMaxPerBlockAsync(global::Walletrpc.SetMaxPerBlockRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetMaxPerBlock, null, options, request);
+      }
       protected override TicketBuyerServiceClient NewInstance(ClientBaseConfiguration configuration)
       {
         return new TicketBuyerServiceClient(configuration);
@@ -1296,7 +1596,17 @@ namespace Walletrpc {
     {
       return ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_StartAutoBuyer, serviceImpl.StartAutoBuyer)
-          .AddMethod(__Method_StopAutoBuyer, serviceImpl.StopAutoBuyer).Build();
+          .AddMethod(__Method_StopAutoBuyer, serviceImpl.StopAutoBuyer)
+          .AddMethod(__Method_TicketBuyerConfig, serviceImpl.TicketBuyerConfig)
+          .AddMethod(__Method_SetAccountName, serviceImpl.SetAccountName)
+          .AddMethod(__Method_SetBalanceToMaintain, serviceImpl.SetBalanceToMaintain)
+          .AddMethod(__Method_SetMaxFee, serviceImpl.SetMaxFee)
+          .AddMethod(__Method_SetMaxPriceRelative, serviceImpl.SetMaxPriceRelative)
+          .AddMethod(__Method_SetMaxPriceAbsolute, serviceImpl.SetMaxPriceAbsolute)
+          .AddMethod(__Method_SetTicketAddress, serviceImpl.SetTicketAddress)
+          .AddMethod(__Method_SetPoolAddress, serviceImpl.SetPoolAddress)
+          .AddMethod(__Method_SetPoolFees, serviceImpl.SetPoolFees)
+          .AddMethod(__Method_SetMaxPerBlock, serviceImpl.SetMaxPerBlock).Build();
     }
 
   }

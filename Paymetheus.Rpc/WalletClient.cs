@@ -681,5 +681,164 @@ namespace Paymetheus.Rpc
                 Console.WriteLine(ex);
             }
         }
+
+        public async Task SetAccountName(string accountName)
+        {
+            try
+            {
+                var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+                var req = new SetAccountNameRequest();
+                req.AccountName = accountName;
+                await client.SetAccountNameAsync(req);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        public async Task<AutoBuyerProperties> AutoBuyerPropertiesAsync()
+        {
+            var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+            var request = new TicketBuyerConfigRequest { };
+            var response = await client.TicketBuyerConfigAsync(request, cancellationToken: _tokenSource.Token);
+            var properties = new AutoBuyerProperties
+            {
+                // Account = response.AccountName; TODO: Use Account uint
+                BalanceToMaintain = response.BalanceToMaintain,
+                MaxFeePerKb = response.MaxFee,
+                MaxPriceRelative = response.MaxPriceRelative,
+                MaxPriceAbsolute = response.MaxPriceAbsolute,
+                VotingAddress = response.TicketAddress,
+                PoolAddress = response.PoolAddress,
+                PoolFees = response.PoolFees,
+                MaxPerBlock = response.MaxPerBlock
+            };
+            return properties;
+        }
+
+        public async Task SetBalanceToMaintain(long balance)
+        {
+            try
+            {
+                var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+                var req = new SetBalanceToMaintainRequest();
+                req.BalanceToMaintain = balance;
+                await client.SetBalanceToMaintainAsync(req);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        public async Task SetMaxFee(long maxFee)
+        {
+            try
+            {
+                var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+                var req = new SetMaxFeeRequest();
+                req.MaxFee = maxFee;
+                await client.SetMaxFeeAsync(req);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        public async Task SetMaxPriceRelative(double maxPriceRelative)
+        {
+            try
+            {
+                var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+                var req = new SetMaxPriceRelativeRequest();
+                req.MaxPriceRelative = maxPriceRelative;
+                await client.SetMaxPriceRelativeAsync(req);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        public async Task SetMaxPriceAbsolute(long maxPriceAbsolute)
+        {
+            try
+            {
+                var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+                var req = new SetMaxPriceAbsoluteRequest();
+                req.MaxPriceAbsolute = maxPriceAbsolute;
+                await client.SetMaxPriceAbsoluteAsync(req);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        public async Task SetTicketAddress(string ticketAddress)
+        {
+            try
+            {
+                var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+                var req = new SetTicketAddressRequest();
+                req.TicketAddress = ticketAddress;
+                await client.SetTicketAddressAsync(req);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+
+        public async Task SetPoolAddress(string poolAddress)
+        {
+            try
+            {
+                var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+                var req = new SetPoolAddressRequest();
+                req.PoolAddress = poolAddress;
+                await client.SetPoolAddressAsync(req);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+        }
+
+        public async Task SetPoolFees(double poolFees)
+        {
+            try
+            {
+                var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+                var req = new SetPoolFeesRequest();
+                req.PoolFees = poolFees;
+                await client.SetPoolFeesAsync(req);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+        }
+
+        public async Task SetMaxPerBlock(long maxPerBlock)
+        {
+            try
+            {
+                var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
+                var req = new SetMaxPerBlockRequest();
+                req.MaxPerBlock = maxPerBlock;
+                await client.SetMaxPerBlockAsync(req);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+        }
     }
 }

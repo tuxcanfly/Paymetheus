@@ -3,6 +3,7 @@
 
 using Paymetheus.Decred.Wallet;
 using Paymetheus.Framework;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Paymetheus.ViewModels
@@ -38,6 +39,57 @@ namespace Paymetheus.ViewModels
         private async void StopAutoBuyerAction()
         {
             await App.Current.Synchronizer.WalletRpcClient.StopAutoBuyer();
+        }
+
+        private async Task<AutoBuyerProperties> GetAutoBuyerProperties()
+        {
+            AutoBuyerProperties autobuyerProperites = await App.Current.Synchronizer.WalletRpcClient.AutoBuyerPropertiesAsync();
+            return autobuyerProperites;
+        }
+
+        private async void SetAccountName(string accountName)
+        {
+            await App.Current.Synchronizer.WalletRpcClient.SetAccountName(accountName);
+        }
+
+        private async void SetBalanceToMaintain(long balance)
+        {
+            await App.Current.Synchronizer.WalletRpcClient.SetBalanceToMaintain(balance);
+        }
+
+        private async void SetMaxFee(long maxFee)
+        {
+            await App.Current.Synchronizer.WalletRpcClient.SetMaxFee(maxFee);
+        }
+
+        private async void SetMaxPriceRelative(double maxPriceRelative)
+        {
+            await App.Current.Synchronizer.WalletRpcClient.SetMaxPriceRelative(maxPriceRelative);
+        }
+
+        private async void MaxPriceAbsolute(long maxPriceAbsolute)
+        {
+            await App.Current.Synchronizer.WalletRpcClient.SetMaxPriceAbsolute(maxPriceAbsolute);
+        }
+
+        private async void SetTicketAddress(string ticketAddress)
+        {
+            await App.Current.Synchronizer.WalletRpcClient.SetTicketAddress(ticketAddress);
+        }
+
+        private async void SetPoolAddress(string poolAddress)
+        {
+            await App.Current.Synchronizer.WalletRpcClient.SetPoolAddress(poolAddress);
+        }
+
+        private async void SetPoolFees(double poolFees)
+        {
+            await App.Current.Synchronizer.WalletRpcClient.SetPoolFees(poolFees);
+        }
+
+        private async void SetMaxPerBlock(long maxPerBlock)
+        {
+            await App.Current.Synchronizer.WalletRpcClient.SetMaxPerBlock(maxPerBlock);
         }
     }
 }
