@@ -19,7 +19,7 @@ namespace Paymetheus.Decred
         public static readonly BlockChainIdentity TestNet = new BlockChainIdentity
         (
             name: "testnet",
-            network: 0x0709000b,
+            network: 0x48e7a065,
             maturity: 16,
             coinType: 11
         );
