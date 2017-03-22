@@ -8,10 +8,10 @@ namespace Paymetheus.Decred.Wallet
     {
         public byte[] Passphrase { get; set; }
         public uint Account { get; set; }
-        public long BalanceToMaintain { get; set; }
-        public long MaxFeePerKb { get; set; }
+        public Amount BalanceToMaintain { get; set; }
+        public Amount MaxFeePerKb { get; set; }
         public double MaxPriceRelative { get; set; }
-        public long MaxPriceAbsolute { get; set; }
+        public Amount MaxPriceAbsolute { get; set; }
         public string VotingAddress { get; set; }
         public string PoolAddress { get; set; }
         public double PoolFees { get; set; }
