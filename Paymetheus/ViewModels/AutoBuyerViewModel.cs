@@ -14,8 +14,8 @@ namespace Paymetheus.ViewModels
         {
             _autoBuyerProperties = properties;
 
-            StartAutoBuyerCommand = new DelegateCommand(StartAutoBuyerAction);
-            StopAutoBuyerCommand = new DelegateCommand(StopAutoBuyerAction);
+            StartAutoBuyerCommand = new DelegateCommandAsync(StartAutoBuyerAction);
+            StopAutoBuyerCommand = new DelegateCommandAsync(StopAutoBuyerAction);
         }
 
         public AutoBuyerViewModel AutoBuyer { get; }
@@ -28,68 +28,22 @@ namespace Paymetheus.ViewModels
             internal set { _autoBuyerProperties = value; RaisePropertyChanged(); }
         }
 
-        public ICommand StartAutoBuyerCommand { get; }
-        public DelegateCommand StopAutoBuyerCommand { get; private set; }
+        public DelegateCommandAsync StartAutoBuyerCommand { get; }
+        public DelegateCommandAsync StopAutoBuyerCommand { get; }
 
-        private async void StartAutoBuyerAction()
+        private async Task StartAutoBuyerAction()
         {
             await App.Current.Synchronizer.WalletRpcClient.StartAutoBuyer(AutoBuyerProperties);
         }
 
-        private async void StopAutoBuyerAction()
+        private async Task StopAutoBuyerAction()
         {
             await App.Current.Synchronizer.WalletRpcClient.StopAutoBuyer();
         }
 
         private async Task<AutoBuyerProperties> GetAutoBuyerProperties()
         {
-            AutoBuyerProperties autobuyerProperites = await App.Current.Synchronizer.WalletRpcClient.AutoBuyerPropertiesAsync();
-            return autobuyerProperites;
-        }
-
-        private async void SetAccoun(uint account)
-        {
-            await App.Current.Synchronizer.WalletRpcClient.SetAccount(account);
-        }
-
-        private async void SetBalanceToMaintain(long balance)
-        {
-            await App.Current.Synchronizer.WalletRpcClient.SetBalanceToMaintain(balance);
-        }
-
-        private async void SetMaxFee(long maxFee)
-        {
-            await App.Current.Synchronizer.WalletRpcClient.SetMaxFee(maxFee);
-        }
-
-        private async void SetMaxPriceRelative(double maxPriceRelative)
-        {
-            await App.Current.Synchronizer.WalletRpcClient.SetMaxPriceRelative(maxPriceRelative);
-        }
-
-        private async void MaxPriceAbsolute(long maxPriceAbsolute)
-        {
-            await App.Current.Synchronizer.WalletRpcClient.SetMaxPriceAbsolute(maxPriceAbsolute);
-        }
-
-        private async void SetTicketAddress(string ticketAddress)
-        {
-            await App.Current.Synchronizer.WalletRpcClient.SetTicketAddress(ticketAddress);
-        }
-
-        private async void SetPoolAddress(string poolAddress)
-        {
-            await App.Current.Synchronizer.WalletRpcClient.SetPoolAddress(poolAddress);
-        }
-
-        private async void SetPoolFees(double poolFees)
-        {
-            await App.Current.Synchronizer.WalletRpcClient.SetPoolFees(poolFees);
-        }
-
-        private async void SetMaxPerBlock(long maxPerBlock)
-        {
-            await App.Current.Synchronizer.WalletRpcClient.SetMaxPerBlock(maxPerBlock);
+            return await App.Current.Synchronizer.WalletRpcClient.AutoBuyerPropertiesAsync();
         }
     }
 }
