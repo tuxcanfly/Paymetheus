@@ -31,19 +31,10 @@ namespace Paymetheus.ViewModels
         public DelegateCommandAsync StartAutoBuyerCommand { get; }
         public DelegateCommandAsync StopAutoBuyerCommand { get; }
 
-        private async Task StartAutoBuyerAction()
-        {
-            await App.Current.Synchronizer.WalletRpcClient.StartAutoBuyer(AutoBuyerProperties);
-        }
+        private Task StartAutoBuyerAction() => App.Current.Synchronizer.WalletRpcClient.StartAutoBuyer(AutoBuyerProperties);
 
-        private async Task StopAutoBuyerAction()
-        {
-            await App.Current.Synchronizer.WalletRpcClient.StopAutoBuyer();
-        }
+        private Task StopAutoBuyerAction() => App.Current.Synchronizer.WalletRpcClient.StopAutoBuyer();
 
-        private async Task<AutoBuyerProperties> GetAutoBuyerProperties()
-        {
-            return await App.Current.Synchronizer.WalletRpcClient.AutoBuyerPropertiesAsync();
-        }
+        private Task<AutoBuyerProperties> GetAutoBuyerProperties() => App.Current.Synchronizer.WalletRpcClient.AutoBuyerPropertiesAsync();
     }
 }
