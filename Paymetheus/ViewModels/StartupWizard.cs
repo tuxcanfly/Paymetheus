@@ -5,7 +5,6 @@
 using Grpc.Core;
 using IniParser;
 using IniParser.Model;
-using IniParser.Parser;
 using Paymetheus.Decred;
 using Paymetheus.Decred.Util;
 using Paymetheus.Decred.Wallet;
@@ -115,16 +114,28 @@ namespace Paymetheus.ViewModels
                 await Task.Run(() =>
                 {
                     // save defaults to a file so that the user doesn't have to type this information again
-                    var ini = new IniData();
-                    ini.Sections.AddSection("Application Options");
-                    ini["Application Options"]["rpcuser"] = ConsensusServerRpcUsername;
-                    ini["Application Options"]["rpcpass"] = ConsensusServerRpcPassword;
-                    ini["Application Options"]["rpclisten"] = ConsensusServerNetworkAddress;
-                    ini["Application Options"]["rpccert"] = ConsensusServerCertificateFile;
+                    var iniParser = new FileIniDataParser();
+                    IniData config = null;
                     var appDataDir = Portability.LocalAppData(Environment.OSVersion.Platform,
                                         AssemblyResources.Organization, AssemblyResources.ProductName);
+                    string defaultsFile = Path.Combine(appDataDir, "defaults.ini");
+                    if (File.Exists(defaultsFile))
+                    {
+                        config = iniParser.ReadFile(defaultsFile);
+                    }
+                    if (config == null)
+                    {
+                        config = new IniData();
+                        config.Sections.AddSection("Application Options");
+                    }
+                    var section = config["Application Options"];
+                    section["rpcuser"] = ConsensusServerRpcUsername;
+                    section["rpcpass"] = ConsensusServerRpcPassword;
+                    section["rpclisten"] = ConsensusServerNetworkAddress;
+                    section["rpccert"] = ConsensusServerCertificateFile;
+
                     var parser = new FileIniDataParser();
-                    parser.WriteFile(Path.Combine(appDataDir, "defaults.ini"), ini);
+                    parser.WriteFile(Path.Combine(appDataDir, "defaults.ini"), config);
                 });
 
                 var walletExists = await App.Current.Synchronizer.WalletRpcClient.WalletExistsAsync();

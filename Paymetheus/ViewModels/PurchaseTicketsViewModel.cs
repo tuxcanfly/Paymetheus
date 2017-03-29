@@ -17,6 +17,9 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 using Paymetheus.Decred.Util;
+using IniParser;
+using IniParser.Model;
+using Paymetheus.Rpc;
 
 namespace Paymetheus.ViewModels
 {
@@ -85,6 +88,8 @@ namespace Paymetheus.ViewModels
 
             _purchaseTickets = new DelegateCommand(PurchaseTicketsAction);
             _purchaseTickets.Executable = false;
+
+            ToggleAutoBuyerCommand = new DelegateCommandAsync(ToggleAutoBuyerAction);
         }
 
         public async Task RunActivityAsync()
@@ -526,6 +531,39 @@ namespace Paymetheus.ViewModels
 
             ResponseString = "Success! Ticket hashes:\n" + string.Join("\n", purchaseResponse);
             return true;
+        }
+
+        private bool _autoBuyerEnabled = false;
+        public bool AutoBuyerEnabled
+        {
+            get { return _autoBuyerEnabled; }
+            set { _autoBuyerEnabled = value; ToggleAutoBuyerAction(); }
+        }
+
+        public DelegateCommandAsync ToggleAutoBuyerCommand { get; set; }
+        private Task ToggleAutoBuyerAction() {
+            return Task.Run(() =>
+            {
+                var iniParser = new FileIniDataParser();
+                IniData config = null;
+                var appDataDir = Portability.LocalAppData(Environment.OSVersion.Platform, AssemblyResources.Organization, AssemblyResources.ProductName);
+                string defaultsFile = Path.Combine(appDataDir, "defaults.ini");
+                if (File.Exists(defaultsFile))
+                {
+                    config = iniParser.ReadFile(defaultsFile);
+                }
+
+                if (config != null)
+                {
+                    var section = config["Application Options"];
+                    if (section == null)
+                        section = config.Global;
+
+                    if (_autoBuyerEnabled) { section["enableticketbuyer"] = "1"; } else { section.RemoveKey("enableticketbuyer"); }
+                    var parser = new FileIniDataParser();
+                    parser.WriteFile(Path.Combine(appDataDir, "defaults.ini"), config);
+                }
+            });
         }
     }
 }

@@ -124,14 +124,20 @@
                          MinWidth="250" HorizontalContentAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="7" Text="Pool fee address" Visibility="{Binding ManualPoolOptionsVisibility}"/>
-                <TextBox Grid.Row="7" Grid.Column="1" Visibility="{Binding ManualPoolOptionsVisibility}"
+                <TextBlock Grid.Row="7" Text="Enable AutoBuyer" Visibility="{Binding VotingAddressOptionVisibility}"/>
+                <CheckBox Grid.Row="7" Grid.Column="1" Visibility="{Binding VotingAddressOptionVisibility}" IsChecked="{Binding AutoBuyerEnabled, Mode=OneWayToSource}">
+                    <TextBlock>Enable AutoBuyer</TextBlock>
+                </CheckBox>
+
+
+                <TextBlock Grid.Row="8" Text="Pool fee address" Visibility="{Binding ManualPoolOptionsVisibility}"/>
+                <TextBox Grid.Row="8" Grid.Column="1" Visibility="{Binding ManualPoolOptionsVisibility}"
                          Text="{Binding PoolFeeAddress, Mode=OneWayToSource, ValidatesOnExceptions=True}"
                          MinWidth="250" HorizontalAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="8" Text="Pool fees (%)" Visibility="{Binding ManualPoolOptionsVisibility}"/>
-                <TextBox Grid.Row="8" Grid.Column="1" Visibility="{Binding ManualPoolOptionsVisibility}"
+                <TextBlock Grid.Row="9" Text="Pool fees (%)" Visibility="{Binding ManualPoolOptionsVisibility}"/>
+                <TextBox Grid.Row="9" Grid.Column="1" Visibility="{Binding ManualPoolOptionsVisibility}"
                          Text="{Binding PoolFees, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
             </Grid>
