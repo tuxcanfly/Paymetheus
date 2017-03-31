@@ -149,7 +149,14 @@ namespace Paymetheus.ViewModels
                     // public passphrase prompt is needed before the wallet can be opened.  If it
                     // does not, then the wallet can be opened directly here instead of creating
                     // another dialog.
-                    _wizard.CurrentDialog = new PromptPublicPassphraseDialog(Wizard);
+                    if (App.Current.AutoBuyerEnabled)
+                    {
+                        _wizard.CurrentDialog = new AutoBuyerDialog(Wizard);
+                    }
+                    else
+                    {
+                        _wizard.CurrentDialog = new PromptPublicPassphraseDialog(Wizard);
+                    }
 
                     //await _walletClient.OpenWallet("public");
                 }
@@ -468,8 +475,23 @@ namespace Paymetheus.ViewModels
         }
     }
 
-    // Action string constants to display while waiting for the wallet to open.
-    internal static class ActionStrings
+    sealed class AutoBuyerDialog : ConnectionWizardDialog
+    {
+        public AutoBuyerDialog(StartupWizard wizard) : base(wizard)
+        {
+            ContinueCommand = new DelegateCommand(Continue);
+        }
+
+        public string PrivatePassphrase { get; set; } = "";
+
+        public DelegateCommand ContinueCommand { get; }
+        private void Continue() {
+            Wizard.CurrentDialog = new PromptPublicPassphraseDialog(Wizard);
+        }
+    }
+
+        // Action string constants to display while waiting for the wallet to open.
+        internal static class ActionStrings
     {
         internal const string DiscoveringAddresses = "discovering addresses";
         internal const string FetchingHeaders = "fetching headers";

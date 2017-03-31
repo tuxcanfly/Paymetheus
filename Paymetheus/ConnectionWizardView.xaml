@@ -23,6 +23,9 @@
         <DataTemplate DataType="{x:Type vm:PromptPublicPassphraseDialog}">
             <local:PublicPassphrasePromptView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AutoBuyerDialog}">
+            <local:AutoBuyerDialog/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type vm:ConfirmSeedBackupDialog}">
             <local:ConfirmSeedView/>
         </DataTemplate>

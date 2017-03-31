@@ -168,6 +168,9 @@
     <Compile Include="Accounts.xaml.cs">
       <DependentUpon>Accounts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AutoBuyerDialog.xaml.cs">
+      <DependentUpon>AutoBuyerDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Commands.cs" />
     <Compile Include="AccountToNameConverter.cs" />
     <Compile Include="ImportScriptDialogView.xaml.cs">
@@ -282,6 +285,10 @@
     </Compile>
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Page Include="Accounts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AutoBuyerDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
