@@ -90,6 +90,7 @@ namespace Paymetheus.ViewModels
             _purchaseTickets.Executable = false;
 
             ToggleAutoBuyerCommand = new DelegateCommandAsync(ToggleAutoBuyerAction);
+            AutoBuyerEnabled = App.Current.AutoBuyerEnabled;
         }
 
         public async Task RunActivityAsync()

@@ -125,7 +125,7 @@
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
                 <TextBlock Grid.Row="7" Text="Enable AutoBuyer" Visibility="{Binding VotingAddressOptionVisibility}"/>
-                <CheckBox Grid.Row="7" Grid.Column="1" Visibility="{Binding VotingAddressOptionVisibility}" IsChecked="{Binding AutoBuyerEnabled, Mode=OneWayToSource}">
+                <CheckBox Grid.Row="7" Grid.Column="1" Visibility="{Binding VotingAddressOptionVisibility}" IsChecked="{Binding AutoBuyerEnabled}">
                     <TextBlock>Enable AutoBuyer</TextBlock>
                 </CheckBox>
 
