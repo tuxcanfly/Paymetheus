@@ -76,6 +76,7 @@ namespace Paymetheus
 
         public ConsensusServerRpcOptions DefaultCSRPO { get; private set; }
         public bool AutoBuyerEnabled { get; private set; }
+        public string PrivatePassphrase { get; internal set; }
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {

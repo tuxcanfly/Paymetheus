@@ -487,6 +487,7 @@ namespace Paymetheus.ViewModels
         public DelegateCommand ContinueCommand { get; }
         private void Continue() {
             Wizard.CurrentDialog = new PromptPublicPassphraseDialog(Wizard);
+            App.Current.PrivatePassphrase = PrivatePassphrase;
         }
     }
 

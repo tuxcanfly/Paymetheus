@@ -534,7 +534,7 @@ namespace Paymetheus.ViewModels
             return true;
         }
 
-        private bool _autoBuyerEnabled = false;
+        private bool _autoBuyerEnabled;
         public bool AutoBuyerEnabled
         {
             get { return _autoBuyerEnabled; }
@@ -563,6 +563,30 @@ namespace Paymetheus.ViewModels
                     if (_autoBuyerEnabled) { section["enableticketbuyer"] = "1"; } else { section.RemoveKey("enableticketbuyer"); }
                     var parser = new FileIniDataParser();
                     parser.WriteFile(Path.Combine(appDataDir, "defaults.ini"), config);
+                }
+
+                var autoBuyerProperties = new AutoBuyerProperties {
+                    Passphrase = Encoding.UTF8.GetBytes(App.Current?.PrivatePassphrase ?? ""),
+                    VotingAddress = _votingAddress?.ToString() ?? "",
+                    PoolAddress = _poolFeeAddress?.ToString() ?? "",
+                    PoolFees = (double) _poolFees,
+                    MaxFeePerKb = maxFeePerKb,
+                };
+                var autoBuyerViewModel = new AutoBuyerViewModel(autoBuyerProperties);
+
+                if (_autoBuyerEnabled)
+                {
+                    if (autoBuyerViewModel.StartAutoBuyerCommand.CanExecute(null))
+                    {
+                        autoBuyerViewModel.StartAutoBuyerCommand.Execute(null);
+                    }
+                }
+                else
+                {
+                    if (autoBuyerViewModel.StopAutoBuyerCommand.CanExecute(null))
+                    {
+                        autoBuyerViewModel.StopAutoBuyerCommand.Execute(null);
+                    }
                 }
             });
         }
