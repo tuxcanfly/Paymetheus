@@ -90,7 +90,8 @@ namespace Paymetheus.ViewModels
             _purchaseTickets.Executable = false;
 
             ToggleAutoBuyerCommand = new DelegateCommandAsync(ToggleAutoBuyerAction);
-            AutoBuyerEnabled = App.Current.AutoBuyerEnabled;
+            // Trigger StartAutoBuyer if autobuyer is enabled
+            if (App.Current.AutoBuyerEnabled) AutoBuyerEnabled = true; else _autoBuyerEnabled = false;
         }
 
         public async Task RunActivityAsync()
@@ -578,7 +579,28 @@ namespace Paymetheus.ViewModels
                 {
                     if (autoBuyerViewModel.StartAutoBuyerCommand.CanExecute(null))
                     {
-                        autoBuyerViewModel.StartAutoBuyerCommand.Execute(null);
+                        if (App.Current.PrivatePassphrase == null)
+                        {
+                            var shell = ViewModelLocator.ShellViewModel as ShellViewModel;
+                            if (shell != null)
+                            {
+                                Func<string, Task<bool>> action =
+                                    passphrase => Task.Run(() =>
+                                    {
+                                        autoBuyerProperties.Passphrase = Encoding.UTF8.GetBytes(passphrase);
+                                        autoBuyerViewModel.StartAutoBuyerCommand.Execute(null);
+                                        return true;
+                                    });
+                                shell.VisibleDialogContent = new PassphraseDialogViewModel(shell,
+                                    "Enter passphrase to start autobuyer",
+                                    "START",
+                                    action);
+                            }
+                        }
+                        else
+                        {
+                            autoBuyerViewModel.StartAutoBuyerCommand.Execute(null);
+                        }
                     }
                 }
                 else
