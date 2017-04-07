@@ -146,7 +146,7 @@ namespace Paymetheus
                         {
                             App.Current.AutoBuyerProperties = new AutoBuyerProperties
                             {
-                                // Account
+                                Account = new Account(Convert.ToUInt32((ticketbuyerSection["account"]))),
                                 BalanceToMaintain = Denomination.Decred.AmountFromString(ticketbuyerSection["balancetomaintainabsolute"] ?? ""),
                                 MaxFeePerKb = Denomination.Decred.AmountFromString(ticketbuyerSection["maxfee"] ?? ""),
                                 // MaxPriceRelative

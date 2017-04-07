@@ -357,6 +357,7 @@ namespace Paymetheus.ViewModels
                 finally
                 {
                     EnableOrDisableSendCommand();
+                    EnableOrDisableAutoBuyer();
                 }
             }
         }
@@ -379,6 +380,7 @@ namespace Paymetheus.ViewModels
                 finally
                 {
                     EnableOrDisableSendCommand();
+                    EnableOrDisableAutoBuyer();
                 }
             }
         }
@@ -403,6 +405,7 @@ namespace Paymetheus.ViewModels
                 finally
                 {
                     EnableOrDisableSendCommand();
+                    EnableOrDisableAutoBuyer();
                 }
             }
         }
@@ -456,6 +459,49 @@ namespace Paymetheus.ViewModels
 
             _purchaseTickets.Executable = true;
         }
+
+        private void EnableOrDisableAutoBuyer()
+        {
+            if (_selectedSourceAccount == null)
+            {
+                AutoBuyerValidate = false;
+                return;
+            }
+
+
+            if (_balanceToMaintain < 0)
+            {
+                AutoBuyerValidate = false;
+                return;
+            }
+
+            if (_maxFee < 0)
+            {
+                AutoBuyerValidate = false;
+                return;
+            }
+
+            if (_maxPrice < 0)
+            {
+                AutoBuyerValidate = false;
+                return;
+            }
+
+            if (_poolFees == 0 && _poolFeeAddress != null)
+            {
+                AutoBuyerValidate = false;
+                return;
+            }
+
+            if (_poolFees != 0 && _poolFeeAddress == null)
+            {
+                AutoBuyerValidate = false;
+                return;
+            }
+
+            AutoBuyerValidate = true;
+        }
+
 
         private StakeDifficultyProperties _stakeDifficultyProperties;
         public StakeDifficultyProperties StakeDifficultyProperties
@@ -579,6 +625,13 @@ namespace Paymetheus.ViewModels
             set { _autoBuyerEnabled = value; ToggleAutoBuyerAction(); }
         }
 
+        private bool _autoBuyerValidate;
+        public bool AutoBuyerValidate
+        {
+            get { return _autoBuyerValidate; }
+            set { _autoBuyerValidate = value; }
+        }
+
         private Amount _balanceToMaintain, _maxPrice, _maxFee;
         private long _maxPerBlock;
         public string BalanceToMaintain {
@@ -591,7 +644,7 @@ namespace Paymetheus.ViewModels
                 }
                 finally
                 {
-                    EnableOrDisableSendCommand();
+                    EnableOrDisableAutoBuyer();
                 }
             }
         }
@@ -605,7 +658,7 @@ namespace Paymetheus.ViewModels
                 }
                 finally
                 {
-                    EnableOrDisableSendCommand();
+                    EnableOrDisableAutoBuyer();
                 }
             }
         }
@@ -620,7 +673,7 @@ namespace Paymetheus.ViewModels
                 }
                 finally
                 {
-                    EnableOrDisableSendCommand();
+                    EnableOrDisableAutoBuyer();
                 }
             }
         }
@@ -635,7 +688,7 @@ namespace Paymetheus.ViewModels
                 }
                 finally
                 {
-                    EnableOrDisableSendCommand();
+                    EnableOrDisableAutoBuyer();
                 }
             }
         }
@@ -663,6 +716,7 @@ namespace Paymetheus.ViewModels
                     {
                         section["enableticketbuyer"] = "1";
                         config.Sections.AddSection("ticketbuyer");
+                        config.Sections["ticketbuyer"]["account"] = _selectedSourceAccount.AccountNumber.ToString();
                         config.Sections["ticketbuyer"]["balancetomaintainabsolute"] = _balanceToMaintain.ToString();
                         config.Sections["ticketbuyer"]["maxfee"] = _maxFee.ToString();
                         config.Sections["ticketbuyer"]["maxpriceabsolute"] = _maxPrice.ToString();
@@ -673,7 +727,7 @@ namespace Paymetheus.ViewModels
 
                         App.Current.AutoBuyerProperties = new AutoBuyerProperties
                         {
-                            // Account
+                            Account = _selectedSourceAccount.Account,
                             BalanceToMaintain = _balanceToMaintain,
                             MaxFeePerKb = _maxFee,
                             // MaxPriceRelative
