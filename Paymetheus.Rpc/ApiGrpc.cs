@@ -1206,8 +1206,8 @@ namespace Walletrpc {
     static readonly Marshaller<global::Walletrpc.SetMaxPriceRelativeResponse> __Marshaller_SetMaxPriceRelativeResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetMaxPriceRelativeResponse.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.SetMaxPriceAbsoluteRequest> __Marshaller_SetMaxPriceAbsoluteRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetMaxPriceAbsoluteRequest.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.SetMaxPriceAbsoluteResponse> __Marshaller_SetMaxPriceAbsoluteResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetMaxPriceAbsoluteResponse.Parser.ParseFrom);
-    static readonly Marshaller<global::Walletrpc.SetTicketAddressRequest> __Marshaller_SetTicketAddressRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetTicketAddressRequest.Parser.ParseFrom);
-    static readonly Marshaller<global::Walletrpc.SetTicketAddressResponse> __Marshaller_SetTicketAddressResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetTicketAddressResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetVotingAddressRequest> __Marshaller_SetVotingAddressRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetVotingAddressRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Walletrpc.SetVotingAddressResponse> __Marshaller_SetVotingAddressResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetVotingAddressResponse.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.SetPoolAddressRequest> __Marshaller_SetPoolAddressRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetPoolAddressRequest.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.SetPoolAddressResponse> __Marshaller_SetPoolAddressResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetPoolAddressResponse.Parser.ParseFrom);
     static readonly Marshaller<global::Walletrpc.SetPoolFeesRequest> __Marshaller_SetPoolFeesRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Walletrpc.SetPoolFeesRequest.Parser.ParseFrom);
@@ -1271,12 +1271,12 @@ namespace Walletrpc {
         __Marshaller_SetMaxPriceAbsoluteRequest,
         __Marshaller_SetMaxPriceAbsoluteResponse);
 
-    static readonly Method<global::Walletrpc.SetTicketAddressRequest, global::Walletrpc.SetTicketAddressResponse> __Method_SetTicketAddress = new Method<global::Walletrpc.SetTicketAddressRequest, global::Walletrpc.SetTicketAddressResponse>(
+    static readonly Method<global::Walletrpc.SetVotingAddressRequest, global::Walletrpc.SetVotingAddressResponse> __Method_SetVotingAddress = new Method<global::Walletrpc.SetVotingAddressRequest, global::Walletrpc.SetVotingAddressResponse>(
         MethodType.Unary,
         __ServiceName,
-        "SetTicketAddress",
-        __Marshaller_SetTicketAddressRequest,
-        __Marshaller_SetTicketAddressResponse);
+        "SetVotingAddress",
+        __Marshaller_SetVotingAddressRequest,
+        __Marshaller_SetVotingAddressResponse);
 
     static readonly Method<global::Walletrpc.SetPoolAddressRequest, global::Walletrpc.SetPoolAddressResponse> __Method_SetPoolAddress = new Method<global::Walletrpc.SetPoolAddressRequest, global::Walletrpc.SetPoolAddressResponse>(
         MethodType.Unary,
@@ -1348,7 +1348,7 @@ namespace Walletrpc {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.SetTicketAddressResponse> SetTicketAddress(global::Walletrpc.SetTicketAddressRequest request, ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Walletrpc.SetVotingAddressResponse> SetVotingAddress(global::Walletrpc.SetVotingAddressRequest request, ServerCallContext context)
       {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
       }
@@ -1521,21 +1521,21 @@ namespace Walletrpc {
       {
         return CallInvoker.AsyncUnaryCall(__Method_SetMaxPriceAbsolute, null, options, request);
       }
-      public virtual global::Walletrpc.SetTicketAddressResponse SetTicketAddress(global::Walletrpc.SetTicketAddressRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public virtual global::Walletrpc.SetVotingAddressResponse SetVotingAddress(global::Walletrpc.SetVotingAddressRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
-        return SetTicketAddress(request, new CallOptions(headers, deadline, cancellationToken));
+        return SetVotingAddress(request, new CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::Walletrpc.SetTicketAddressResponse SetTicketAddress(global::Walletrpc.SetTicketAddressRequest request, CallOptions options)
+      public virtual global::Walletrpc.SetVotingAddressResponse SetVotingAddress(global::Walletrpc.SetVotingAddressRequest request, CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_SetTicketAddress, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_SetVotingAddress, null, options, request);
       }
-      public virtual AsyncUnaryCall<global::Walletrpc.SetTicketAddressResponse> SetTicketAddressAsync(global::Walletrpc.SetTicketAddressRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public virtual AsyncUnaryCall<global::Walletrpc.SetVotingAddressResponse> SetVotingAddressAsync(global::Walletrpc.SetVotingAddressRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
-        return SetTicketAddressAsync(request, new CallOptions(headers, deadline, cancellationToken));
+        return SetVotingAddressAsync(request, new CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual AsyncUnaryCall<global::Walletrpc.SetTicketAddressResponse> SetTicketAddressAsync(global::Walletrpc.SetTicketAddressRequest request, CallOptions options)
+      public virtual AsyncUnaryCall<global::Walletrpc.SetVotingAddressResponse> SetVotingAddressAsync(global::Walletrpc.SetVotingAddressRequest request, CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_SetTicketAddress, null, options, request);
+        return CallInvoker.AsyncUnaryCall(__Method_SetVotingAddress, null, options, request);
       }
       public virtual global::Walletrpc.SetPoolAddressResponse SetPoolAddress(global::Walletrpc.SetPoolAddressRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
@@ -1603,7 +1603,7 @@ namespace Walletrpc {
           .AddMethod(__Method_SetMaxFee, serviceImpl.SetMaxFee)
           .AddMethod(__Method_SetMaxPriceRelative, serviceImpl.SetMaxPriceRelative)
           .AddMethod(__Method_SetMaxPriceAbsolute, serviceImpl.SetMaxPriceAbsolute)
-          .AddMethod(__Method_SetTicketAddress, serviceImpl.SetTicketAddress)
+          .AddMethod(__Method_SetVotingAddress, serviceImpl.SetVotingAddress)
           .AddMethod(__Method_SetPoolAddress, serviceImpl.SetPoolAddress)
           .AddMethod(__Method_SetPoolFees, serviceImpl.SetPoolFees)
           .AddMethod(__Method_SetMaxPerBlock, serviceImpl.SetMaxPerBlock).Build();

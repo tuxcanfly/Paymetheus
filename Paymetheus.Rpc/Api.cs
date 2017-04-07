@@ -190,116 +190,117 @@ namespace Walletrpc {
             "Em1heF9wcmljZV9hYnNvbHV0ZRgOIAEoAxIaChJtYXhfcHJpY2VfcmVsYXRp",
             "dmUYDyABKAESFgoObWF4X2luX21lbXBvb2wYESABKAMSFAoMcG9vbF9hZGRy",
             "ZXNzGBIgASgJEhEKCXBvb2xfZmVlcxgTIAEoARIfChdzcHJlYWRfdGlja2V0",
-            "X3B1cmNoYXNlcxgUIAEoCBIWCg50aWNrZXRfYWRkcmVzcxgVIAEoCRIOCgZ0",
+            "X3B1cmNoYXNlcxgUIAEoCBIWCg52b3RpbmdfYWRkcmVzcxgVIAEoCRIOCgZ0",
             "eF9mZWUYFiABKAMiJAoRU2V0QWNjb3VudFJlcXVlc3QSDwoHYWNjb3VudBgB",
             "IAEoDSIUChJTZXRBY2NvdW50UmVzcG9uc2UiOgobU2V0QmFsYW5jZVRvTWFp",
             "bnRhaW5SZXF1ZXN0EhsKE2JhbGFuY2VfdG9fbWFpbnRhaW4YASABKAMiHgoc",
-            "U2V0QmFsYW5jZVRvTWFpbnRhaW5SZXNwb25zZSIjChBTZXRNYXhGZWVSZXF1",
-            "ZXN0Eg8KB21heF9mZWUYASABKAMiEwoRU2V0TWF4RmVlUmVzcG9uc2UiOAoa",
-            "U2V0TWF4UHJpY2VSZWxhdGl2ZVJlcXVlc3QSGgoSbWF4X3ByaWNlX3JlbGF0",
-            "aXZlGAEgASgBIh0KG1NldE1heFByaWNlUmVsYXRpdmVSZXNwb25zZSI4ChpT",
-            "ZXRNYXhQcmljZUFic29sdXRlUmVxdWVzdBIaChJtYXhfcHJpY2VfYWJzb2x1",
-            "dGUYASABKAMiHQobU2V0TWF4UHJpY2VBYnNvbHV0ZVJlc3BvbnNlIjEKF1Nl",
-            "dFRpY2tldEFkZHJlc3NSZXF1ZXN0EhYKDnRpY2tldF9hZGRyZXNzGAEgASgJ",
-            "IhoKGFNldFRpY2tldEFkZHJlc3NSZXNwb25zZSItChVTZXRQb29sQWRkcmVz",
-            "c1JlcXVlc3QSFAoMcG9vbF9hZGRyZXNzGAEgASgJIhgKFlNldFBvb2xBZGRy",
-            "ZXNzUmVzcG9uc2UiJwoSU2V0UG9vbEZlZXNSZXF1ZXN0EhEKCXBvb2xfZmVl",
-            "cxgBIAEoASIVChNTZXRQb29sRmVlc1Jlc3BvbnNlIi4KFVNldE1heFBlckJs",
-            "b2NrUmVxdWVzdBIVCg1tYXhfcGVyX2Jsb2NrGAEgASgDIhgKFlNldE1heFBl",
-            "ckJsb2NrUmVzcG9uc2UyUgoOVmVyc2lvblNlcnZpY2USQAoHVmVyc2lvbhIZ",
-            "LndhbGxldHJwYy5WZXJzaW9uUmVxdWVzdBoaLndhbGxldHJwYy5WZXJzaW9u",
-            "UmVzcG9uc2UyrBAKDVdhbGxldFNlcnZpY2USNwoEUGluZxIWLndhbGxldHJw",
-            "Yy5QaW5nUmVxdWVzdBoXLndhbGxldHJwYy5QaW5nUmVzcG9uc2USQAoHTmV0",
-            "d29yaxIZLndhbGxldHJwYy5OZXR3b3JrUmVxdWVzdBoaLndhbGxldHJwYy5O",
-            "ZXR3b3JrUmVzcG9uc2USUgoNQWNjb3VudE51bWJlchIfLndhbGxldHJwYy5B",
-            "Y2NvdW50TnVtYmVyUmVxdWVzdBogLndhbGxldHJwYy5BY2NvdW50TnVtYmVy",
-            "UmVzcG9uc2USQwoIQWNjb3VudHMSGi53YWxsZXRycGMuQWNjb3VudHNSZXF1",
-            "ZXN0Ghsud2FsbGV0cnBjLkFjY291bnRzUmVzcG9uc2USQAoHQmFsYW5jZRIZ",
-            "LndhbGxldHJwYy5CYWxhbmNlUmVxdWVzdBoaLndhbGxldHJwYy5CYWxhbmNl",
-            "UmVzcG9uc2USWgoPR2V0VHJhbnNhY3Rpb25zEiEud2FsbGV0cnBjLkdldFRy",
-            "YW5zYWN0aW9uc1JlcXVlc3QaIi53YWxsZXRycGMuR2V0VHJhbnNhY3Rpb25z",
-            "UmVzcG9uc2UwARJMCgtUaWNrZXRQcmljZRIdLndhbGxldHJwYy5UaWNrZXRQ",
-            "cmljZVJlcXVlc3QaHi53YWxsZXRycGMuVGlja2V0UHJpY2VSZXNwb25zZRJG",
-            "CglTdGFrZUluZm8SGy53YWxsZXRycGMuU3Rha2VJbmZvUmVxdWVzdBocLndh",
-            "bGxldHJwYy5TdGFrZUluZm9SZXNwb25zZRJ1ChhUcmFuc2FjdGlvbk5vdGlm",
-            "aWNhdGlvbnMSKi53YWxsZXRycGMuVHJhbnNhY3Rpb25Ob3RpZmljYXRpb25z",
-            "UmVxdWVzdBorLndhbGxldHJwYy5UcmFuc2FjdGlvbk5vdGlmaWNhdGlvbnNS",
-            "ZXNwb25zZTABEm8KFlNwZW50bmVzc05vdGlmaWNhdGlvbnMSKC53YWxsZXRy",
-            "cGMuU3BlbnRuZXNzTm90aWZpY2F0aW9uc1JlcXVlc3QaKS53YWxsZXRycGMu",
-            "U3BlbnRuZXNzTm90aWZpY2F0aW9uc1Jlc3BvbnNlMAESaQoUQWNjb3VudE5v",
-            "dGlmaWNhdGlvbnMSJi53YWxsZXRycGMuQWNjb3VudE5vdGlmaWNhdGlvbnNS",
-            "ZXF1ZXN0Gicud2FsbGV0cnBjLkFjY291bnROb3RpZmljYXRpb25zUmVzcG9u",
-            "c2UwARJbChBDaGFuZ2VQYXNzcGhyYXNlEiIud2FsbGV0cnBjLkNoYW5nZVBh",
-            "c3NwaHJhc2VSZXF1ZXN0GiMud2FsbGV0cnBjLkNoYW5nZVBhc3NwaHJhc2VS",
-            "ZXNwb25zZRJSCg1SZW5hbWVBY2NvdW50Eh8ud2FsbGV0cnBjLlJlbmFtZUFj",
-            "Y291bnRSZXF1ZXN0GiAud2FsbGV0cnBjLlJlbmFtZUFjY291bnRSZXNwb25z",
-            "ZRI/CgZSZXNjYW4SGC53YWxsZXRycGMuUmVzY2FuUmVxdWVzdBoZLndhbGxl",
-            "dHJwYy5SZXNjYW5SZXNwb25zZTABEkwKC05leHRBY2NvdW50Eh0ud2FsbGV0",
-            "cnBjLk5leHRBY2NvdW50UmVxdWVzdBoeLndhbGxldHJwYy5OZXh0QWNjb3Vu",
-            "dFJlc3BvbnNlEkwKC05leHRBZGRyZXNzEh0ud2FsbGV0cnBjLk5leHRBZGRy",
-            "ZXNzUmVxdWVzdBoeLndhbGxldHJwYy5OZXh0QWRkcmVzc1Jlc3BvbnNlElsK",
-            "EEltcG9ydFByaXZhdGVLZXkSIi53YWxsZXRycGMuSW1wb3J0UHJpdmF0ZUtl",
-            "eVJlcXVlc3QaIy53YWxsZXRycGMuSW1wb3J0UHJpdmF0ZUtleVJlc3BvbnNl",
-            "Ek8KDEltcG9ydFNjcmlwdBIeLndhbGxldHJwYy5JbXBvcnRTY3JpcHRSZXF1",
-            "ZXN0Gh8ud2FsbGV0cnBjLkltcG9ydFNjcmlwdFJlc3BvbnNlElgKD0Z1bmRU",
-            "cmFuc2FjdGlvbhIhLndhbGxldHJwYy5GdW5kVHJhbnNhY3Rpb25SZXF1ZXN0",
-            "GiIud2FsbGV0cnBjLkZ1bmRUcmFuc2FjdGlvblJlc3BvbnNlEmcKFENvbnN0",
-            "cnVjdFRyYW5zYWN0aW9uEiYud2FsbGV0cnBjLkNvbnN0cnVjdFRyYW5zYWN0",
-            "aW9uUmVxdWVzdBonLndhbGxldHJwYy5Db25zdHJ1Y3RUcmFuc2FjdGlvblJl",
-            "c3BvbnNlElgKD1NpZ25UcmFuc2FjdGlvbhIhLndhbGxldHJwYy5TaWduVHJh",
-            "bnNhY3Rpb25SZXF1ZXN0GiIud2FsbGV0cnBjLlNpZ25UcmFuc2FjdGlvblJl",
-            "c3BvbnNlEmEKElB1Ymxpc2hUcmFuc2FjdGlvbhIkLndhbGxldHJwYy5QdWJs",
-            "aXNoVHJhbnNhY3Rpb25SZXF1ZXN0GiUud2FsbGV0cnBjLlB1Ymxpc2hUcmFu",
-            "c2FjdGlvblJlc3BvbnNlElgKD1B1cmNoYXNlVGlja2V0cxIhLndhbGxldHJw",
-            "Yy5QdXJjaGFzZVRpY2tldHNSZXF1ZXN0GiIud2FsbGV0cnBjLlB1cmNoYXNl",
-            "VGlja2V0c1Jlc3BvbnNlEmoKFUxvYWRBY3RpdmVEYXRhRmlsdGVycxInLndh",
-            "bGxldHJwYy5Mb2FkQWN0aXZlRGF0YUZpbHRlcnNSZXF1ZXN0Gigud2FsbGV0",
-            "cnBjLkxvYWRBY3RpdmVEYXRhRmlsdGVyc1Jlc3BvbnNlMuYFChNXYWxsZXRM",
-            "b2FkZXJTZXJ2aWNlEk8KDFdhbGxldEV4aXN0cxIeLndhbGxldHJwYy5XYWxs",
-            "ZXRFeGlzdHNSZXF1ZXN0Gh8ud2FsbGV0cnBjLldhbGxldEV4aXN0c1Jlc3Bv",
-            "bnNlEk8KDENyZWF0ZVdhbGxldBIeLndhbGxldHJwYy5DcmVhdGVXYWxsZXRS",
-            "ZXF1ZXN0Gh8ud2FsbGV0cnBjLkNyZWF0ZVdhbGxldFJlc3BvbnNlEkkKCk9w",
-            "ZW5XYWxsZXQSHC53YWxsZXRycGMuT3BlbldhbGxldFJlcXVlc3QaHS53YWxs",
-            "ZXRycGMuT3BlbldhbGxldFJlc3BvbnNlEkwKC0Nsb3NlV2FsbGV0Eh0ud2Fs",
-            "bGV0cnBjLkNsb3NlV2FsbGV0UmVxdWVzdBoeLndhbGxldHJwYy5DbG9zZVdh",
-            "bGxldFJlc3BvbnNlEl4KEVN0YXJ0Q29uc2Vuc3VzUnBjEiMud2FsbGV0cnBj",
-            "LlN0YXJ0Q29uc2Vuc3VzUnBjUmVxdWVzdBokLndhbGxldHJwYy5TdGFydENv",
-            "bnNlbnN1c1JwY1Jlc3BvbnNlEl4KEURpc2NvdmVyQWRkcmVzc2VzEiMud2Fs",
-            "bGV0cnBjLkRpc2NvdmVyQWRkcmVzc2VzUmVxdWVzdBokLndhbGxldHJwYy5E",
-            "aXNjb3ZlckFkZHJlc3Nlc1Jlc3BvbnNlEoIBCh1TdWJzY3JpYmVUb0Jsb2Nr",
-            "Tm90aWZpY2F0aW9ucxIvLndhbGxldHJwYy5TdWJzY3JpYmVUb0Jsb2NrTm90",
-            "aWZpY2F0aW9uc1JlcXVlc3QaMC53YWxsZXRycGMuU3Vic2NyaWJlVG9CbG9j",
-            "a05vdGlmaWNhdGlvbnNSZXNwb25zZRJPCgxGZXRjaEhlYWRlcnMSHi53YWxs",
-            "ZXRycGMuRmV0Y2hIZWFkZXJzUmVxdWVzdBofLndhbGxldHJwYy5GZXRjaEhl",
-            "YWRlcnNSZXNwb25zZTLACAoSVGlja2V0QnV5ZXJTZXJ2aWNlElUKDlN0YXJ0",
-            "QXV0b0J1eWVyEiAud2FsbGV0cnBjLlN0YXJ0QXV0b0J1eWVyUmVxdWVzdBoh",
-            "LndhbGxldHJwYy5TdGFydEF1dG9CdXllclJlc3BvbnNlElIKDVN0b3BBdXRv",
-            "QnV5ZXISHy53YWxsZXRycGMuU3RvcEF1dG9CdXllclJlcXVlc3QaIC53YWxs",
-            "ZXRycGMuU3RvcEF1dG9CdXllclJlc3BvbnNlEl4KEVRpY2tldEJ1eWVyQ29u",
-            "ZmlnEiMud2FsbGV0cnBjLlRpY2tldEJ1eWVyQ29uZmlnUmVxdWVzdBokLndh",
-            "bGxldHJwYy5UaWNrZXRCdXllckNvbmZpZ1Jlc3BvbnNlEkkKClNldEFjY291",
-            "bnQSHC53YWxsZXRycGMuU2V0QWNjb3VudFJlcXVlc3QaHS53YWxsZXRycGMu",
-            "U2V0QWNjb3VudFJlc3BvbnNlEmcKFFNldEJhbGFuY2VUb01haW50YWluEiYu",
-            "d2FsbGV0cnBjLlNldEJhbGFuY2VUb01haW50YWluUmVxdWVzdBonLndhbGxl",
-            "dHJwYy5TZXRCYWxhbmNlVG9NYWludGFpblJlc3BvbnNlEkYKCVNldE1heEZl",
-            "ZRIbLndhbGxldHJwYy5TZXRNYXhGZWVSZXF1ZXN0Ghwud2FsbGV0cnBjLlNl",
-            "dE1heEZlZVJlc3BvbnNlEmQKE1NldE1heFByaWNlUmVsYXRpdmUSJS53YWxs",
-            "ZXRycGMuU2V0TWF4UHJpY2VSZWxhdGl2ZVJlcXVlc3QaJi53YWxsZXRycGMu",
-            "U2V0TWF4UHJpY2VSZWxhdGl2ZVJlc3BvbnNlEmQKE1NldE1heFByaWNlQWJz",
-            "b2x1dGUSJS53YWxsZXRycGMuU2V0TWF4UHJpY2VBYnNvbHV0ZVJlcXVlc3Qa",
-            "Ji53YWxsZXRycGMuU2V0TWF4UHJpY2VBYnNvbHV0ZVJlc3BvbnNlElsKEFNl",
-            "dFRpY2tldEFkZHJlc3MSIi53YWxsZXRycGMuU2V0VGlja2V0QWRkcmVzc1Jl",
-            "cXVlc3QaIy53YWxsZXRycGMuU2V0VGlja2V0QWRkcmVzc1Jlc3BvbnNlElUK",
-            "DlNldFBvb2xBZGRyZXNzEiAud2FsbGV0cnBjLlNldFBvb2xBZGRyZXNzUmVx",
-            "dWVzdBohLndhbGxldHJwYy5TZXRQb29sQWRkcmVzc1Jlc3BvbnNlEkwKC1Nl",
-            "dFBvb2xGZWVzEh0ud2FsbGV0cnBjLlNldFBvb2xGZWVzUmVxdWVzdBoeLndh",
-            "bGxldHJwYy5TZXRQb29sRmVlc1Jlc3BvbnNlElUKDlNldE1heFBlckJsb2Nr",
-            "EiAud2FsbGV0cnBjLlNldE1heFBlckJsb2NrUmVxdWVzdBohLndhbGxldHJw",
-            "Yy5TZXRNYXhQZXJCbG9ja1Jlc3BvbnNlMrsBCgtTZWVkU2VydmljZRJhChJH",
-            "ZW5lcmF0ZVJhbmRvbVNlZWQSJC53YWxsZXRycGMuR2VuZXJhdGVSYW5kb21T",
-            "ZWVkUmVxdWVzdBolLndhbGxldHJwYy5HZW5lcmF0ZVJhbmRvbVNlZWRSZXNw",
-            "b25zZRJJCgpEZWNvZGVTZWVkEhwud2FsbGV0cnBjLkRlY29kZVNlZWRSZXF1",
-            "ZXN0Gh0ud2FsbGV0cnBjLkRlY29kZVNlZWRSZXNwb25zZWIGcHJvdG8z"));
+            "U2V0QmFsYW5jZVRvTWFpbnRhaW5SZXNwb25zZSIqChBTZXRNYXhGZWVSZXF1",
+            "ZXN0EhYKDm1heF9mZWVfcGVyX2tiGAEgASgDIhMKEVNldE1heEZlZVJlc3Bv",
+            "bnNlIjgKGlNldE1heFByaWNlUmVsYXRpdmVSZXF1ZXN0EhoKEm1heF9wcmlj",
+            "ZV9yZWxhdGl2ZRgBIAEoASIdChtTZXRNYXhQcmljZVJlbGF0aXZlUmVzcG9u",
+            "c2UiOAoaU2V0TWF4UHJpY2VBYnNvbHV0ZVJlcXVlc3QSGgoSbWF4X3ByaWNl",
+            "X2Fic29sdXRlGAEgASgDIh0KG1NldE1heFByaWNlQWJzb2x1dGVSZXNwb25z",
+            "ZSIxChdTZXRWb3RpbmdBZGRyZXNzUmVxdWVzdBIWCg52b3RpbmdfYWRkcmVz",
+            "cxgBIAEoCSIaChhTZXRWb3RpbmdBZGRyZXNzUmVzcG9uc2UiLQoVU2V0UG9v",
+            "bEFkZHJlc3NSZXF1ZXN0EhQKDHBvb2xfYWRkcmVzcxgBIAEoCSIYChZTZXRQ",
+            "b29sQWRkcmVzc1Jlc3BvbnNlIicKElNldFBvb2xGZWVzUmVxdWVzdBIRCglw",
+            "b29sX2ZlZXMYASABKAEiFQoTU2V0UG9vbEZlZXNSZXNwb25zZSIuChVTZXRN",
+            "YXhQZXJCbG9ja1JlcXVlc3QSFQoNbWF4X3Blcl9ibG9jaxgBIAEoAyIYChZT",
+            "ZXRNYXhQZXJCbG9ja1Jlc3BvbnNlMlIKDlZlcnNpb25TZXJ2aWNlEkAKB1Zl",
+            "cnNpb24SGS53YWxsZXRycGMuVmVyc2lvblJlcXVlc3QaGi53YWxsZXRycGMu",
+            "VmVyc2lvblJlc3BvbnNlMqwQCg1XYWxsZXRTZXJ2aWNlEjcKBFBpbmcSFi53",
+            "YWxsZXRycGMuUGluZ1JlcXVlc3QaFy53YWxsZXRycGMuUGluZ1Jlc3BvbnNl",
+            "EkAKB05ldHdvcmsSGS53YWxsZXRycGMuTmV0d29ya1JlcXVlc3QaGi53YWxs",
+            "ZXRycGMuTmV0d29ya1Jlc3BvbnNlElIKDUFjY291bnROdW1iZXISHy53YWxs",
+            "ZXRycGMuQWNjb3VudE51bWJlclJlcXVlc3QaIC53YWxsZXRycGMuQWNjb3Vu",
+            "dE51bWJlclJlc3BvbnNlEkMKCEFjY291bnRzEhoud2FsbGV0cnBjLkFjY291",
+            "bnRzUmVxdWVzdBobLndhbGxldHJwYy5BY2NvdW50c1Jlc3BvbnNlEkAKB0Jh",
+            "bGFuY2USGS53YWxsZXRycGMuQmFsYW5jZVJlcXVlc3QaGi53YWxsZXRycGMu",
+            "QmFsYW5jZVJlc3BvbnNlEloKD0dldFRyYW5zYWN0aW9ucxIhLndhbGxldHJw",
+            "Yy5HZXRUcmFuc2FjdGlvbnNSZXF1ZXN0GiIud2FsbGV0cnBjLkdldFRyYW5z",
+            "YWN0aW9uc1Jlc3BvbnNlMAESTAoLVGlja2V0UHJpY2USHS53YWxsZXRycGMu",
+            "VGlja2V0UHJpY2VSZXF1ZXN0Gh4ud2FsbGV0cnBjLlRpY2tldFByaWNlUmVz",
+            "cG9uc2USRgoJU3Rha2VJbmZvEhsud2FsbGV0cnBjLlN0YWtlSW5mb1JlcXVl",
+            "c3QaHC53YWxsZXRycGMuU3Rha2VJbmZvUmVzcG9uc2USdQoYVHJhbnNhY3Rp",
+            "b25Ob3RpZmljYXRpb25zEioud2FsbGV0cnBjLlRyYW5zYWN0aW9uTm90aWZp",
+            "Y2F0aW9uc1JlcXVlc3QaKy53YWxsZXRycGMuVHJhbnNhY3Rpb25Ob3RpZmlj",
+            "YXRpb25zUmVzcG9uc2UwARJvChZTcGVudG5lc3NOb3RpZmljYXRpb25zEigu",
+            "d2FsbGV0cnBjLlNwZW50bmVzc05vdGlmaWNhdGlvbnNSZXF1ZXN0Gikud2Fs",
+            "bGV0cnBjLlNwZW50bmVzc05vdGlmaWNhdGlvbnNSZXNwb25zZTABEmkKFEFj",
+            "Y291bnROb3RpZmljYXRpb25zEiYud2FsbGV0cnBjLkFjY291bnROb3RpZmlj",
+            "YXRpb25zUmVxdWVzdBonLndhbGxldHJwYy5BY2NvdW50Tm90aWZpY2F0aW9u",
+            "c1Jlc3BvbnNlMAESWwoQQ2hhbmdlUGFzc3BocmFzZRIiLndhbGxldHJwYy5D",
+            "aGFuZ2VQYXNzcGhyYXNlUmVxdWVzdBojLndhbGxldHJwYy5DaGFuZ2VQYXNz",
+            "cGhyYXNlUmVzcG9uc2USUgoNUmVuYW1lQWNjb3VudBIfLndhbGxldHJwYy5S",
+            "ZW5hbWVBY2NvdW50UmVxdWVzdBogLndhbGxldHJwYy5SZW5hbWVBY2NvdW50",
+            "UmVzcG9uc2USPwoGUmVzY2FuEhgud2FsbGV0cnBjLlJlc2NhblJlcXVlc3Qa",
+            "GS53YWxsZXRycGMuUmVzY2FuUmVzcG9uc2UwARJMCgtOZXh0QWNjb3VudBId",
+            "LndhbGxldHJwYy5OZXh0QWNjb3VudFJlcXVlc3QaHi53YWxsZXRycGMuTmV4",
+            "dEFjY291bnRSZXNwb25zZRJMCgtOZXh0QWRkcmVzcxIdLndhbGxldHJwYy5O",
+            "ZXh0QWRkcmVzc1JlcXVlc3QaHi53YWxsZXRycGMuTmV4dEFkZHJlc3NSZXNw",
+            "b25zZRJbChBJbXBvcnRQcml2YXRlS2V5EiIud2FsbGV0cnBjLkltcG9ydFBy",
+            "aXZhdGVLZXlSZXF1ZXN0GiMud2FsbGV0cnBjLkltcG9ydFByaXZhdGVLZXlS",
+            "ZXNwb25zZRJPCgxJbXBvcnRTY3JpcHQSHi53YWxsZXRycGMuSW1wb3J0U2Ny",
+            "aXB0UmVxdWVzdBofLndhbGxldHJwYy5JbXBvcnRTY3JpcHRSZXNwb25zZRJY",
+            "Cg9GdW5kVHJhbnNhY3Rpb24SIS53YWxsZXRycGMuRnVuZFRyYW5zYWN0aW9u",
+            "UmVxdWVzdBoiLndhbGxldHJwYy5GdW5kVHJhbnNhY3Rpb25SZXNwb25zZRJn",
+            "ChRDb25zdHJ1Y3RUcmFuc2FjdGlvbhImLndhbGxldHJwYy5Db25zdHJ1Y3RU",
+            "cmFuc2FjdGlvblJlcXVlc3QaJy53YWxsZXRycGMuQ29uc3RydWN0VHJhbnNh",
+            "Y3Rpb25SZXNwb25zZRJYCg9TaWduVHJhbnNhY3Rpb24SIS53YWxsZXRycGMu",
+            "U2lnblRyYW5zYWN0aW9uUmVxdWVzdBoiLndhbGxldHJwYy5TaWduVHJhbnNh",
+            "Y3Rpb25SZXNwb25zZRJhChJQdWJsaXNoVHJhbnNhY3Rpb24SJC53YWxsZXRy",
+            "cGMuUHVibGlzaFRyYW5zYWN0aW9uUmVxdWVzdBolLndhbGxldHJwYy5QdWJs",
+            "aXNoVHJhbnNhY3Rpb25SZXNwb25zZRJYCg9QdXJjaGFzZVRpY2tldHMSIS53",
+            "YWxsZXRycGMuUHVyY2hhc2VUaWNrZXRzUmVxdWVzdBoiLndhbGxldHJwYy5Q",
+            "dXJjaGFzZVRpY2tldHNSZXNwb25zZRJqChVMb2FkQWN0aXZlRGF0YUZpbHRl",
+            "cnMSJy53YWxsZXRycGMuTG9hZEFjdGl2ZURhdGFGaWx0ZXJzUmVxdWVzdBoo",
+            "LndhbGxldHJwYy5Mb2FkQWN0aXZlRGF0YUZpbHRlcnNSZXNwb25zZTLmBQoT",
+            "V2FsbGV0TG9hZGVyU2VydmljZRJPCgxXYWxsZXRFeGlzdHMSHi53YWxsZXRy",
+            "cGMuV2FsbGV0RXhpc3RzUmVxdWVzdBofLndhbGxldHJwYy5XYWxsZXRFeGlz",
+            "dHNSZXNwb25zZRJPCgxDcmVhdGVXYWxsZXQSHi53YWxsZXRycGMuQ3JlYXRl",
+            "V2FsbGV0UmVxdWVzdBofLndhbGxldHJwYy5DcmVhdGVXYWxsZXRSZXNwb25z",
+            "ZRJJCgpPcGVuV2FsbGV0Ehwud2FsbGV0cnBjLk9wZW5XYWxsZXRSZXF1ZXN0",
+            "Gh0ud2FsbGV0cnBjLk9wZW5XYWxsZXRSZXNwb25zZRJMCgtDbG9zZVdhbGxl",
+            "dBIdLndhbGxldHJwYy5DbG9zZVdhbGxldFJlcXVlc3QaHi53YWxsZXRycGMu",
+            "Q2xvc2VXYWxsZXRSZXNwb25zZRJeChFTdGFydENvbnNlbnN1c1JwYxIjLndh",
+            "bGxldHJwYy5TdGFydENvbnNlbnN1c1JwY1JlcXVlc3QaJC53YWxsZXRycGMu",
+            "U3RhcnRDb25zZW5zdXNScGNSZXNwb25zZRJeChFEaXNjb3ZlckFkZHJlc3Nl",
+            "cxIjLndhbGxldHJwYy5EaXNjb3ZlckFkZHJlc3Nlc1JlcXVlc3QaJC53YWxs",
+            "ZXRycGMuRGlzY292ZXJBZGRyZXNzZXNSZXNwb25zZRKCAQodU3Vic2NyaWJl",
+            "VG9CbG9ja05vdGlmaWNhdGlvbnMSLy53YWxsZXRycGMuU3Vic2NyaWJlVG9C",
+            "bG9ja05vdGlmaWNhdGlvbnNSZXF1ZXN0GjAud2FsbGV0cnBjLlN1YnNjcmli",
+            "ZVRvQmxvY2tOb3RpZmljYXRpb25zUmVzcG9uc2USTwoMRmV0Y2hIZWFkZXJz",
+            "Eh4ud2FsbGV0cnBjLkZldGNoSGVhZGVyc1JlcXVlc3QaHy53YWxsZXRycGMu",
+            "RmV0Y2hIZWFkZXJzUmVzcG9uc2UywAgKElRpY2tldEJ1eWVyU2VydmljZRJV",
+            "Cg5TdGFydEF1dG9CdXllchIgLndhbGxldHJwYy5TdGFydEF1dG9CdXllclJl",
+            "cXVlc3QaIS53YWxsZXRycGMuU3RhcnRBdXRvQnV5ZXJSZXNwb25zZRJSCg1T",
+            "dG9wQXV0b0J1eWVyEh8ud2FsbGV0cnBjLlN0b3BBdXRvQnV5ZXJSZXF1ZXN0",
+            "GiAud2FsbGV0cnBjLlN0b3BBdXRvQnV5ZXJSZXNwb25zZRJeChFUaWNrZXRC",
+            "dXllckNvbmZpZxIjLndhbGxldHJwYy5UaWNrZXRCdXllckNvbmZpZ1JlcXVl",
+            "c3QaJC53YWxsZXRycGMuVGlja2V0QnV5ZXJDb25maWdSZXNwb25zZRJJCgpT",
+            "ZXRBY2NvdW50Ehwud2FsbGV0cnBjLlNldEFjY291bnRSZXF1ZXN0Gh0ud2Fs",
+            "bGV0cnBjLlNldEFjY291bnRSZXNwb25zZRJnChRTZXRCYWxhbmNlVG9NYWlu",
+            "dGFpbhImLndhbGxldHJwYy5TZXRCYWxhbmNlVG9NYWludGFpblJlcXVlc3Qa",
+            "Jy53YWxsZXRycGMuU2V0QmFsYW5jZVRvTWFpbnRhaW5SZXNwb25zZRJGCglT",
+            "ZXRNYXhGZWUSGy53YWxsZXRycGMuU2V0TWF4RmVlUmVxdWVzdBocLndhbGxl",
+            "dHJwYy5TZXRNYXhGZWVSZXNwb25zZRJkChNTZXRNYXhQcmljZVJlbGF0aXZl",
+            "EiUud2FsbGV0cnBjLlNldE1heFByaWNlUmVsYXRpdmVSZXF1ZXN0GiYud2Fs",
+            "bGV0cnBjLlNldE1heFByaWNlUmVsYXRpdmVSZXNwb25zZRJkChNTZXRNYXhQ",
+            "cmljZUFic29sdXRlEiUud2FsbGV0cnBjLlNldE1heFByaWNlQWJzb2x1dGVS",
+            "ZXF1ZXN0GiYud2FsbGV0cnBjLlNldE1heFByaWNlQWJzb2x1dGVSZXNwb25z",
+            "ZRJbChBTZXRWb3RpbmdBZGRyZXNzEiIud2FsbGV0cnBjLlNldFZvdGluZ0Fk",
+            "ZHJlc3NSZXF1ZXN0GiMud2FsbGV0cnBjLlNldFZvdGluZ0FkZHJlc3NSZXNw",
+            "b25zZRJVCg5TZXRQb29sQWRkcmVzcxIgLndhbGxldHJwYy5TZXRQb29sQWRk",
+            "cmVzc1JlcXVlc3QaIS53YWxsZXRycGMuU2V0UG9vbEFkZHJlc3NSZXNwb25z",
+            "ZRJMCgtTZXRQb29sRmVlcxIdLndhbGxldHJwYy5TZXRQb29sRmVlc1JlcXVl",
+            "c3QaHi53YWxsZXRycGMuU2V0UG9vbEZlZXNSZXNwb25zZRJVCg5TZXRNYXhQ",
+            "ZXJCbG9jaxIgLndhbGxldHJwYy5TZXRNYXhQZXJCbG9ja1JlcXVlc3QaIS53",
+            "YWxsZXRycGMuU2V0TWF4UGVyQmxvY2tSZXNwb25zZTK7AQoLU2VlZFNlcnZp",
+            "Y2USYQoSR2VuZXJhdGVSYW5kb21TZWVkEiQud2FsbGV0cnBjLkdlbmVyYXRl",
+            "UmFuZG9tU2VlZFJlcXVlc3QaJS53YWxsZXRycGMuR2VuZXJhdGVSYW5kb21T",
+            "ZWVkUmVzcG9uc2USSQoKRGVjb2RlU2VlZBIcLndhbGxldHJwYy5EZWNvZGVT",
+            "ZWVkUmVxdWVzdBodLndhbGxldHJwYy5EZWNvZGVTZWVkUmVzcG9uc2ViBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -383,19 +384,19 @@ namespace Walletrpc {
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.StopAutoBuyerRequest), global::Walletrpc.StopAutoBuyerRequest.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.StopAutoBuyerResponse), global::Walletrpc.StopAutoBuyerResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.TicketBuyerConfigRequest), global::Walletrpc.TicketBuyerConfigRequest.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.TicketBuyerConfigResponse), global::Walletrpc.TicketBuyerConfigResponse.Parser, new[]{ "Account", "AvgPriceMode", "AvgPriceVWAPDelta", "BalanceToMaintain", "BlocksToAvg", "DontWaitForTickets", "ExpiryDelta", "FeeSource", "FeeTargetScaling", "MinFee", "MaxFee", "MaxPerBlock", "MaxPriceAbsolute", "MaxPriceRelative", "MaxInMempool", "PoolAddress", "PoolFees", "SpreadTicketPurchases", "TicketAddress", "TxFee" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.TicketBuyerConfigResponse), global::Walletrpc.TicketBuyerConfigResponse.Parser, new[]{ "Account", "AvgPriceMode", "AvgPriceVWAPDelta", "BalanceToMaintain", "BlocksToAvg", "DontWaitForTickets", "ExpiryDelta", "FeeSource", "FeeTargetScaling", "MinFee", "MaxFee", "MaxPerBlock", "MaxPriceAbsolute", "MaxPriceRelative", "MaxInMempool", "PoolAddress", "PoolFees", "SpreadTicketPurchases", "VotingAddress", "TxFee" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetAccountRequest), global::Walletrpc.SetAccountRequest.Parser, new[]{ "Account" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetAccountResponse), global::Walletrpc.SetAccountResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetBalanceToMaintainRequest), global::Walletrpc.SetBalanceToMaintainRequest.Parser, new[]{ "BalanceToMaintain" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetBalanceToMaintainResponse), global::Walletrpc.SetBalanceToMaintainResponse.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxFeeRequest), global::Walletrpc.SetMaxFeeRequest.Parser, new[]{ "MaxFee" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxFeeRequest), global::Walletrpc.SetMaxFeeRequest.Parser, new[]{ "MaxFeePerKb" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxFeeResponse), global::Walletrpc.SetMaxFeeResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxPriceRelativeRequest), global::Walletrpc.SetMaxPriceRelativeRequest.Parser, new[]{ "MaxPriceRelative" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxPriceRelativeResponse), global::Walletrpc.SetMaxPriceRelativeResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxPriceAbsoluteRequest), global::Walletrpc.SetMaxPriceAbsoluteRequest.Parser, new[]{ "MaxPriceAbsolute" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetMaxPriceAbsoluteResponse), global::Walletrpc.SetMaxPriceAbsoluteResponse.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetTicketAddressRequest), global::Walletrpc.SetTicketAddressRequest.Parser, new[]{ "TicketAddress" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetTicketAddressResponse), global::Walletrpc.SetTicketAddressResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetVotingAddressRequest), global::Walletrpc.SetVotingAddressRequest.Parser, new[]{ "VotingAddress" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetVotingAddressResponse), global::Walletrpc.SetVotingAddressResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetPoolAddressRequest), global::Walletrpc.SetPoolAddressRequest.Parser, new[]{ "PoolAddress" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetPoolAddressResponse), global::Walletrpc.SetPoolAddressResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Walletrpc.SetPoolFeesRequest), global::Walletrpc.SetPoolFeesRequest.Parser, new[]{ "PoolFees" }, null, null, null),
@@ -11903,7 +11904,7 @@ namespace Walletrpc {
       poolAddress_ = other.poolAddress_;
       poolFees_ = other.poolFees_;
       spreadTicketPurchases_ = other.spreadTicketPurchases_;
-      ticketAddress_ = other.ticketAddress_;
+      votingAddress_ = other.votingAddress_;
       txFee_ = other.txFee_;
     }
 
@@ -12091,13 +12092,13 @@ namespace Walletrpc {
       }
     }
 
-    /// <summary>Field number for the "ticket_address" field.</summary>
-    public const int TicketAddressFieldNumber = 21;
-    private string ticketAddress_ = "";
-    public string TicketAddress {
-      get { return ticketAddress_; }
+    /// <summary>Field number for the "voting_address" field.</summary>
+    public const int VotingAddressFieldNumber = 21;
+    private string votingAddress_ = "";
+    public string VotingAddress {
+      get { return votingAddress_; }
       set {
-        ticketAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        votingAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -12140,7 +12141,7 @@ namespace Walletrpc {
       if (PoolAddress != other.PoolAddress) return false;
       if (PoolFees != other.PoolFees) return false;
       if (SpreadTicketPurchases != other.SpreadTicketPurchases) return false;
-      if (TicketAddress != other.TicketAddress) return false;
+      if (VotingAddress != other.VotingAddress) return false;
       if (TxFee != other.TxFee) return false;
       return true;
     }
@@ -12165,7 +12166,7 @@ namespace Walletrpc {
       if (PoolAddress.Length != 0) hash ^= PoolAddress.GetHashCode();
       if (PoolFees != 0D) hash ^= PoolFees.GetHashCode();
       if (SpreadTicketPurchases != false) hash ^= SpreadTicketPurchases.GetHashCode();
-      if (TicketAddress.Length != 0) hash ^= TicketAddress.GetHashCode();
+      if (VotingAddress.Length != 0) hash ^= VotingAddress.GetHashCode();
       if (TxFee != 0L) hash ^= TxFee.GetHashCode();
       return hash;
     }
@@ -12247,9 +12248,9 @@ namespace Walletrpc {
         output.WriteRawTag(160, 1);
         output.WriteBool(SpreadTicketPurchases);
       }
-      if (TicketAddress.Length != 0) {
+      if (VotingAddress.Length != 0) {
         output.WriteRawTag(170, 1);
-        output.WriteString(TicketAddress);
+        output.WriteString(VotingAddress);
       }
       if (TxFee != 0L) {
         output.WriteRawTag(176, 1);
@@ -12313,8 +12314,8 @@ namespace Walletrpc {
       if (SpreadTicketPurchases != false) {
         size += 2 + 1;
       }
-      if (TicketAddress.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(TicketAddress);
+      if (VotingAddress.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(VotingAddress);
       }
       if (TxFee != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(TxFee);
@@ -12380,8 +12381,8 @@ namespace Walletrpc {
       if (other.SpreadTicketPurchases != false) {
         SpreadTicketPurchases = other.SpreadTicketPurchases;
       }
-      if (other.TicketAddress.Length != 0) {
-        TicketAddress = other.TicketAddress;
+      if (other.VotingAddress.Length != 0) {
+        VotingAddress = other.VotingAddress;
       }
       if (other.TxFee != 0L) {
         TxFee = other.TxFee;
@@ -12468,7 +12469,7 @@ namespace Walletrpc {
             break;
           }
           case 170: {
-            TicketAddress = input.ReadString();
+            VotingAddress = input.ReadString();
             break;
           }
           case 176: {
@@ -12859,20 +12860,20 @@ namespace Walletrpc {
     partial void OnConstruction();
 
     public SetMaxFeeRequest(SetMaxFeeRequest other) : this() {
-      maxFee_ = other.maxFee_;
+      maxFeePerKb_ = other.maxFeePerKb_;
     }
 
     public SetMaxFeeRequest Clone() {
       return new SetMaxFeeRequest(this);
     }
 
-    /// <summary>Field number for the "max_fee" field.</summary>
-    public const int MaxFeeFieldNumber = 1;
-    private long maxFee_;
-    public long MaxFee {
-      get { return maxFee_; }
+    /// <summary>Field number for the "max_fee_per_kb" field.</summary>
+    public const int MaxFeePerKbFieldNumber = 1;
+    private long maxFeePerKb_;
+    public long MaxFeePerKb {
+      get { return maxFeePerKb_; }
       set {
-        maxFee_ = value;
+        maxFeePerKb_ = value;
       }
     }
 
@@ -12887,13 +12888,13 @@ namespace Walletrpc {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MaxFee != other.MaxFee) return false;
+      if (MaxFeePerKb != other.MaxFeePerKb) return false;
       return true;
     }
 
     public override int GetHashCode() {
       int hash = 1;
-      if (MaxFee != 0L) hash ^= MaxFee.GetHashCode();
+      if (MaxFeePerKb != 0L) hash ^= MaxFeePerKb.GetHashCode();
       return hash;
     }
 
@@ -12902,16 +12903,16 @@ namespace Walletrpc {
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      if (MaxFee != 0L) {
+      if (MaxFeePerKb != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt64(MaxFee);
+        output.WriteInt64(MaxFeePerKb);
       }
     }
 
     public int CalculateSize() {
       int size = 0;
-      if (MaxFee != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxFee);
+      if (MaxFeePerKb != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxFeePerKb);
       }
       return size;
     }
@@ -12920,8 +12921,8 @@ namespace Walletrpc {
       if (other == null) {
         return;
       }
-      if (other.MaxFee != 0L) {
-        MaxFee = other.MaxFee;
+      if (other.MaxFeePerKb != 0L) {
+        MaxFeePerKb = other.MaxFeePerKb;
       }
     }
 
@@ -12933,7 +12934,7 @@ namespace Walletrpc {
             input.SkipLastField();
             break;
           case 8: {
-            MaxFee = input.ReadInt64();
+            MaxFeePerKb = input.ReadInt64();
             break;
           }
         }
@@ -13377,9 +13378,9 @@ namespace Walletrpc {
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-  public sealed partial class SetTicketAddressRequest : pb::IMessage<SetTicketAddressRequest> {
-    private static readonly pb::MessageParser<SetTicketAddressRequest> _parser = new pb::MessageParser<SetTicketAddressRequest>(() => new SetTicketAddressRequest());
-    public static pb::MessageParser<SetTicketAddressRequest> Parser { get { return _parser; } }
+  public sealed partial class SetVotingAddressRequest : pb::IMessage<SetVotingAddressRequest> {
+    private static readonly pb::MessageParser<SetVotingAddressRequest> _parser = new pb::MessageParser<SetVotingAddressRequest>(() => new SetVotingAddressRequest());
+    public static pb::MessageParser<SetVotingAddressRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
       get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[89]; }
@@ -13389,48 +13390,48 @@ namespace Walletrpc {
       get { return Descriptor; }
     }
 
-    public SetTicketAddressRequest() {
+    public SetVotingAddressRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
-    public SetTicketAddressRequest(SetTicketAddressRequest other) : this() {
-      ticketAddress_ = other.ticketAddress_;
+    public SetVotingAddressRequest(SetVotingAddressRequest other) : this() {
+      votingAddress_ = other.votingAddress_;
     }
 
-    public SetTicketAddressRequest Clone() {
-      return new SetTicketAddressRequest(this);
+    public SetVotingAddressRequest Clone() {
+      return new SetVotingAddressRequest(this);
     }
 
-    /// <summary>Field number for the "ticket_address" field.</summary>
-    public const int TicketAddressFieldNumber = 1;
-    private string ticketAddress_ = "";
-    public string TicketAddress {
-      get { return ticketAddress_; }
+    /// <summary>Field number for the "voting_address" field.</summary>
+    public const int VotingAddressFieldNumber = 1;
+    private string votingAddress_ = "";
+    public string VotingAddress {
+      get { return votingAddress_; }
       set {
-        ticketAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        votingAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     public override bool Equals(object other) {
-      return Equals(other as SetTicketAddressRequest);
+      return Equals(other as SetVotingAddressRequest);
     }
 
-    public bool Equals(SetTicketAddressRequest other) {
+    public bool Equals(SetVotingAddressRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (TicketAddress != other.TicketAddress) return false;
+      if (VotingAddress != other.VotingAddress) return false;
       return true;
     }
 
     public override int GetHashCode() {
       int hash = 1;
-      if (TicketAddress.Length != 0) hash ^= TicketAddress.GetHashCode();
+      if (VotingAddress.Length != 0) hash ^= VotingAddress.GetHashCode();
       return hash;
     }
 
@@ -13439,26 +13440,26 @@ namespace Walletrpc {
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      if (TicketAddress.Length != 0) {
+      if (VotingAddress.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(TicketAddress);
+        output.WriteString(VotingAddress);
       }
     }
 
     public int CalculateSize() {
       int size = 0;
-      if (TicketAddress.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(TicketAddress);
+      if (VotingAddress.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(VotingAddress);
       }
       return size;
     }
 
-    public void MergeFrom(SetTicketAddressRequest other) {
+    public void MergeFrom(SetVotingAddressRequest other) {
       if (other == null) {
         return;
       }
-      if (other.TicketAddress.Length != 0) {
-        TicketAddress = other.TicketAddress;
+      if (other.VotingAddress.Length != 0) {
+        VotingAddress = other.VotingAddress;
       }
     }
 
@@ -13470,7 +13471,7 @@ namespace Walletrpc {
             input.SkipLastField();
             break;
           case 10: {
-            TicketAddress = input.ReadString();
+            VotingAddress = input.ReadString();
             break;
           }
         }
@@ -13480,9 +13481,9 @@ namespace Walletrpc {
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-  public sealed partial class SetTicketAddressResponse : pb::IMessage<SetTicketAddressResponse> {
-    private static readonly pb::MessageParser<SetTicketAddressResponse> _parser = new pb::MessageParser<SetTicketAddressResponse>(() => new SetTicketAddressResponse());
-    public static pb::MessageParser<SetTicketAddressResponse> Parser { get { return _parser; } }
+  public sealed partial class SetVotingAddressResponse : pb::IMessage<SetVotingAddressResponse> {
+    private static readonly pb::MessageParser<SetVotingAddressResponse> _parser = new pb::MessageParser<SetVotingAddressResponse>(() => new SetVotingAddressResponse());
+    public static pb::MessageParser<SetVotingAddressResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
       get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[90]; }
@@ -13492,24 +13493,24 @@ namespace Walletrpc {
       get { return Descriptor; }
     }
 
-    public SetTicketAddressResponse() {
+    public SetVotingAddressResponse() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
-    public SetTicketAddressResponse(SetTicketAddressResponse other) : this() {
+    public SetVotingAddressResponse(SetVotingAddressResponse other) : this() {
     }
 
-    public SetTicketAddressResponse Clone() {
-      return new SetTicketAddressResponse(this);
+    public SetVotingAddressResponse Clone() {
+      return new SetVotingAddressResponse(this);
     }
 
     public override bool Equals(object other) {
-      return Equals(other as SetTicketAddressResponse);
+      return Equals(other as SetVotingAddressResponse);
     }
 
-    public bool Equals(SetTicketAddressResponse other) {
+    public bool Equals(SetVotingAddressResponse other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -13536,7 +13537,7 @@ namespace Walletrpc {
       return size;
     }
 
-    public void MergeFrom(SetTicketAddressResponse other) {
+    public void MergeFrom(SetVotingAddressResponse other) {
       if (other == null) {
         return;
       }

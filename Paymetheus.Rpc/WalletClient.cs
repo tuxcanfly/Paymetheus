@@ -691,7 +691,7 @@ namespace Paymetheus.Rpc
                 MaxFeePerKb = response.MaxFee,
                 MaxPriceRelative = response.MaxPriceRelative,
                 MaxPriceAbsolute = response.MaxPriceAbsolute,
-                VotingAddress = response.TicketAddress,
+                VotingAddress = response.VotingAddress,
                 PoolAddress = response.PoolAddress,
                 PoolFees = response.PoolFees,
                 MaxPerBlock = response.MaxPerBlock
@@ -714,7 +714,7 @@ namespace Paymetheus.Rpc
             var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
             var req = new SetMaxFeeRequest
             {
-                MaxFee = maxFee
+                MaxFeePerKb = maxFee
             };
             await client.SetMaxFeeAsync(req);
         }
@@ -742,11 +742,11 @@ namespace Paymetheus.Rpc
         public async Task SetTicketAddress(string ticketAddress)
         {
             var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
-            var req = new SetTicketAddressRequest
+            var req = new SetVotingAddressRequest
             {
-                TicketAddress = ticketAddress
+                VotingAddress = ticketAddress
             };
-            await client.SetTicketAddressAsync(req);
+            await client.SetVotingAddressAsync(req);
         }
 
         public async Task SetPoolAddress(string poolAddress)
