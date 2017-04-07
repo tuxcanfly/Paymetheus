@@ -102,12 +102,19 @@ namespace Paymetheus.ViewModels
                 _balanceToMaintain = App.Current.AutoBuyerProperties.BalanceToMaintain;
                 _maxFee = App.Current.AutoBuyerProperties.MaxFeePerKb;
                 _maxPrice = App.Current.AutoBuyerProperties.MaxPriceAbsolute;
-                _votingAddress = Address.Decode(App.Current.AutoBuyerProperties.VotingAddress);
-                _poolFeeAddress = Address.Decode(App.Current.AutoBuyerProperties.PoolAddress);
+                if (App.Current.AutoBuyerProperties?.VotingAddress?.Length > 0)
+                {
+                    _votingAddress = Address.Decode(App.Current.AutoBuyerProperties.VotingAddress);
+                }
+                if (App.Current.AutoBuyerProperties?.PoolAddress?.Length > 0)
+                {
+                    _poolFeeAddress = Address.Decode(App.Current.AutoBuyerProperties.PoolAddress);
+                }
                 _poolFees = (decimal) App.Current.AutoBuyerProperties.PoolFees;
                 _maxPerBlock = App.Current.AutoBuyerProperties.MaxPerBlock;
 
                 _selectedStakePool = ConfiguredStakePools[2];
+                AutoBuyerValidate = true;
             }
             else
             {
@@ -443,6 +450,12 @@ namespace Paymetheus.ViewModels
                 return;
             }
 
+            if (SelectedStakePool is AutoBuyer)
+            {
+                _purchaseTickets.Executable = false;
+                return;
+            }
+
             // Not enough funds.
             //if ((_stakeDifficultyProperties.NextTicketPrice * (Amount)_ticketsToPurchase) > _selectedSourceAccount.Balances.SpendableBalance)
             //{
@@ -629,7 +642,7 @@ namespace Paymetheus.ViewModels
         public bool AutoBuyerValidate
         {
             get { return _autoBuyerValidate; }
-            set { _autoBuyerValidate = value; }
+            set { _autoBuyerValidate = value; RaisePropertyChanged(); }
         }
 
         private Amount _balanceToMaintain, _maxPrice, _maxFee;
