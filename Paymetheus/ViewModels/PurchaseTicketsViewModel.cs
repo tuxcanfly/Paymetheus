@@ -619,7 +619,23 @@ namespace Paymetheus.ViewModels
                     if (section == null)
                         section = config.Global;
 
-                    if (_autoBuyerEnabled) { section["enableticketbuyer"] = "1"; } else { section.RemoveKey("enableticketbuyer"); }
+                    if (_autoBuyerEnabled)
+                    {
+                        section["enableticketbuyer"] = "1";
+                        config.Sections.AddSection("ticketbuyer");
+                        config.Sections["ticketbuyer"]["balancetomaintainabsolute"] = _balanceToMaintain.ToString();
+                        config.Sections["ticketbuyer"]["maxfee"] = maxFeePerKb.ToString();
+                        config.Sections["ticketbuyer"]["maxpriceabsolute"] = _maxPrice.ToString();
+                        config.Sections["ticketbuyer"]["ticketaddress"] = _votingAddress?.ToString() ?? "";
+                        config.Sections["ticketbuyer"]["pooladdress"] = _poolFeeAddress?.ToString() ?? "";
+                        config.Sections["ticketbuyer"]["poolfees"] = _poolFees.ToString();
+                        config.Sections["ticketbuyer"]["maxperblock"] = _maxPerBlock.ToString();
+                    }
+                    else
+                    {
+                        section.RemoveKey("enableticketbuyer");
+                        config.Sections.RemoveSection("ticketbuyer");
+                    }
                     var parser = new FileIniDataParser();
                     parser.WriteFile(Path.Combine(appDataDir, "defaults.ini"), config);
                 }
