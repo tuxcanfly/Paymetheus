@@ -542,6 +542,64 @@ namespace Paymetheus.ViewModels
             set { _autoBuyerEnabled = value; ToggleAutoBuyerAction(); }
         }
 
+        private Amount _balanceToMaintain, _maxPrice;
+        private long _maxPerBlock;
+        public string BalanceToMaintain {
+            get { return _balanceToMaintain.ToString(); }
+            set
+            {
+                try
+                {
+                    _balanceToMaintain = Denomination.Decred.AmountFromString(value); ;
+                }
+                catch
+                {
+                    _balanceToMaintain = 0;
+                }
+                finally
+                {
+                    EnableOrDisableSendCommand();
+                }
+            }
+        }
+        public string MaxPrice {
+            get { return _maxPrice.ToString(); }
+            set
+            {
+                try
+                {
+                    _maxPrice = Denomination.Decred.AmountFromString(value); ;
+                }
+                catch
+                {
+                    _maxPrice = 0;
+                }
+                finally
+                {
+                    EnableOrDisableSendCommand();
+                }
+            }
+        }
+        public string MaxPerBlock
+        {
+            get { return _maxPerBlock.ToString(); }
+            set
+            {
+                try
+                {
+                    _maxPerBlock = Convert.ToInt64(value);
+                }
+                catch
+                {
+                    _maxPerBlock = 0;
+                }
+                finally
+                {
+                    EnableOrDisableSendCommand();
+                }
+            }
+        }
+
         public DelegateCommandAsync ToggleAutoBuyerCommand { get; set; }
         private Task ToggleAutoBuyerAction() {
             return Task.Run(() =>
@@ -568,10 +626,15 @@ namespace Paymetheus.ViewModels
 
                 var autoBuyerProperties = new AutoBuyerProperties {
                     Passphrase = Encoding.UTF8.GetBytes(App.Current?.PrivatePassphrase ?? ""),
+                    // Account
+                    BalanceToMaintain = _balanceToMaintain,
+                    MaxFeePerKb = maxFeePerKb,
+                    // MaxPriceRelative
+                    MaxPriceAbsolute = _maxPrice,
                     VotingAddress = _votingAddress?.ToString() ?? "",
                     PoolAddress = _poolFeeAddress?.ToString() ?? "",
-                    PoolFees = (double) _poolFees,
-                    MaxFeePerKb = maxFeePerKb,
+                    PoolFees = (double)_poolFees,
+                    MaxPerBlock = _maxPerBlock
                 };
                 var autoBuyerViewModel = new AutoBuyerViewModel(autoBuyerProperties);
 
