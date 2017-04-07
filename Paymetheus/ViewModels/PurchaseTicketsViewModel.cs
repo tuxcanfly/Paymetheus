@@ -38,6 +38,11 @@ namespace Paymetheus.ViewModels
         public string DisplayName => "Manual entry";
     }
 
+    public class AutoBuyer : IStakePoolSelection
+    {
+        public string DisplayName => "Auto Buyer";
+    }
+
     public class StakePoolSelection : IStakePoolSelection
     {
         public StakePoolInfo PoolInfo { get; }
@@ -77,6 +82,7 @@ namespace Paymetheus.ViewModels
             {
                 new NoStakePool(),
                 new ManualStakePool(),
+                new AutoBuyer(),
             });
             _selectedStakePool = ConfiguredStakePools[0];
 
@@ -193,6 +199,13 @@ namespace Paymetheus.ViewModels
             set { _manualPoolOptionsVisibility = value; RaisePropertyChanged(); }
         }
 
+        private Visibility _autoBuyerOptionVisibility = Visibility.Visible;
+        public Visibility AutoBuyerOptionVisibility
+        {
+            get { return _autoBuyerOptionVisibility;  }
+            set { _autoBuyerOptionVisibility = value; RaisePropertyChanged(); }
+        }
+
         private IStakePoolSelection _selectedStakePool;
         public IStakePoolSelection SelectedStakePool
         {
@@ -206,16 +219,25 @@ namespace Paymetheus.ViewModels
                 {
                     VotingAddressOptionVisibility = Visibility.Visible;
                     ManualPoolOptionsVisibility = Visibility.Collapsed;
+                    AutoBuyerOptionVisibility = Visibility.Collapsed;
                 }
                 else if (value is ManualStakePool)
                 {
                     VotingAddressOptionVisibility = Visibility.Visible;
                     ManualPoolOptionsVisibility = Visibility.Visible;
+                    AutoBuyerOptionVisibility = Visibility.Collapsed;
+                }
+                else if (value is AutoBuyer)
+                {
+                    VotingAddressOptionVisibility = Visibility.Visible;
+                    ManualPoolOptionsVisibility = Visibility.Visible;
+                    AutoBuyerOptionVisibility = Visibility.Visible;
                 }
                 else if (value is StakePoolSelection)
                 {
                     VotingAddressOptionVisibility = Visibility.Collapsed;
                     ManualPoolOptionsVisibility = Visibility.Collapsed;
+                    AutoBuyerOptionVisibility = Visibility.Collapsed;
                 }
 
                 EnableOrDisableSendCommand();
@@ -542,7 +564,7 @@ namespace Paymetheus.ViewModels
             set { _autoBuyerEnabled = value; ToggleAutoBuyerAction(); }
         }
 
-        private Amount _balanceToMaintain, _maxPrice;
+        private Amount _balanceToMaintain, _maxPrice, _maxFee;
         private long _maxPerBlock;
         public string BalanceToMaintain {
             get { return _balanceToMaintain.ToString(); }
@@ -573,6 +595,25 @@ namespace Paymetheus.ViewModels
                 catch
                 {
                     _maxPrice = 0;
+                }
+                finally
+                {
+                    EnableOrDisableSendCommand();
+                }
+            }
+        }
+        public string MaxFee
+        {
+            get { return _maxFee.ToString(); }
+            set
+            {
+                try
+                {
+                    _maxFee = Denomination.Decred.AmountFromString(value); ;
+                }
+                catch
+                {
+                    _maxFee = 0;
                 }
                 finally
                 {
@@ -624,7 +665,7 @@ namespace Paymetheus.ViewModels
                         section["enableticketbuyer"] = "1";
                         config.Sections.AddSection("ticketbuyer");
                         config.Sections["ticketbuyer"]["balancetomaintainabsolute"] = _balanceToMaintain.ToString();
-                        config.Sections["ticketbuyer"]["maxfee"] = maxFeePerKb.ToString();
+                        config.Sections["ticketbuyer"]["maxfee"] = _maxFee.ToString();
                         config.Sections["ticketbuyer"]["maxpriceabsolute"] = _maxPrice.ToString();
                         config.Sections["ticketbuyer"]["ticketaddress"] = _votingAddress?.ToString() ?? "";
                         config.Sections["ticketbuyer"]["pooladdress"] = _poolFeeAddress?.ToString() ?? "";
@@ -644,7 +685,7 @@ namespace Paymetheus.ViewModels
                     Passphrase = Encoding.UTF8.GetBytes(App.Current?.PrivatePassphrase ?? ""),
                     // Account
                     BalanceToMaintain = _balanceToMaintain,
-                    MaxFeePerKb = maxFeePerKb,
+                    MaxFeePerKb = _maxFee,
                     // MaxPriceRelative
                     MaxPriceAbsolute = _maxPrice,
                     VotingAddress = _votingAddress?.ToString() ?? "",

@@ -129,29 +129,29 @@
                          MinWidth="250" HorizontalContentAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="7" Text="Balance To Maintain" Visibility="{Binding VotingAddressOptionVisibility}"/>
-                <TextBox Grid.Row="7" Grid.Column="1" Visibility="{Binding VotingAddressOptionVisibility}"
+                <TextBlock Grid.Row="7" Text="Balance To Maintain" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="7" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding BalanceToMaintain, Mode=OneWayToSource, ValidatesOnExceptions=True}"
                          MinWidth="250" HorizontalContentAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="8" Text="Max Price" Visibility="{Binding VotingAddressOptionVisibility}"/>
-                <TextBox Grid.Row="8" Grid.Column="1" Visibility="{Binding VotingAddressOptionVisibility}"
+                <TextBlock Grid.Row="8" Text="Max Fee" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="8" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                         Text="{Binding MaxFee, Mode=OneWayToSource, ValidatesOnExceptions=True}"
+                         MinWidth="250" HorizontalContentAlignment="Left"
+                         f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
+
+                <TextBlock Grid.Row="9" Text="Max Price" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="9" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding MaxPrice, Mode=OneWayToSource, ValidatesOnExceptions=True}"
                          MinWidth="250" HorizontalContentAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="9" Text="Max Per Block" Visibility="{Binding VotingAddressOptionVisibility}"/>
-                <TextBox Grid.Row="9" Grid.Column="1" Visibility="{Binding VotingAddressOptionVisibility}"
+                <TextBlock Grid.Row="10" Text="Max Per Block" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="10" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding MaxPerBlock, Mode=OneWayToSource, ValidatesOnExceptions=True}"
                          MinWidth="250" HorizontalContentAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
-
-                <TextBlock Grid.Row="10" Text="Enable AutoBuyer" Visibility="{Binding VotingAddressOptionVisibility}"/>
-                <CheckBox Grid.Row="10" Grid.Column="1" Visibility="{Binding VotingAddressOptionVisibility}" IsChecked="{Binding AutoBuyerEnabled}">
-                    <TextBlock>Enable AutoBuyer</TextBlock>
-                </CheckBox>
-
 
                 <TextBlock Grid.Row="11" Text="Pool fee address" Visibility="{Binding ManualPoolOptionsVisibility}"/>
                 <TextBox Grid.Row="11" Grid.Column="1" Visibility="{Binding ManualPoolOptionsVisibility}"
@@ -163,6 +163,11 @@
                 <TextBox Grid.Row="12" Grid.Column="1" Visibility="{Binding ManualPoolOptionsVisibility}"
                          Text="{Binding PoolFees, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
+
+                <TextBlock Grid.Row="13" Text="Enable AutoBuyer" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <CheckBox Grid.Row="13" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}" IsChecked="{Binding AutoBuyerEnabled}">
+                    <TextBlock>Enable AutoBuyer</TextBlock>
+                </CheckBox>
             </Grid>
 
             <Button Style="{DynamicResource ButtonBlue}" Margin="0 20 0 0" Content="PURCHASE" HorizontalAlignment="Left" Command="{Binding Execute}" Width="100"/>
