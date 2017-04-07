@@ -343,6 +343,15 @@ namespace Paymetheus.ViewModels
             RaisePropertyChanged(nameof(AccountNames));
             overviewViewModel.AccountsCount = accountViewModels.Count();
 
+            if (App.Current.AutoBuyerProperties != null)
+            {
+                var autoBuyerViewModel = new AutoBuyerViewModel(App.Current.AutoBuyerProperties);
+                if (autoBuyerViewModel.StartAutoBuyerCommand.CanExecute(null))
+                {
+                    autoBuyerViewModel.StartAutoBuyerCommand.Execute(null);
+                }
+            }
+
             var shell = (ShellViewModel)ViewModelLocator.ShellViewModel;
             shell.StartupWizardVisible = false;
         }

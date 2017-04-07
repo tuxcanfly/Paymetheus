@@ -125,42 +125,38 @@
 
                 <TextBlock Grid.Row="6" Text="Voting address" Visibility="{Binding VotingAddressOptionVisibility}"/>
                 <TextBox Grid.Row="6" Grid.Column="1" Visibility="{Binding VotingAddressOptionVisibility}"
-                         Text="{Binding VotingAddress, Mode=OneWayToSource, ValidatesOnExceptions=True}"
+                         Text="{Binding VotingAddress, ValidatesOnExceptions=True}"
                          MinWidth="250" HorizontalContentAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
                 <TextBlock Grid.Row="7" Text="Balance To Maintain" Visibility="{Binding AutoBuyerOptionVisibility}"/>
                 <TextBox Grid.Row="7" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
-                         Text="{Binding BalanceToMaintain, Mode=OneWayToSource, ValidatesOnExceptions=True}"
-                         MinWidth="250" HorizontalContentAlignment="Left"
+                         Text="{Binding BalanceToMaintain, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
                 <TextBlock Grid.Row="8" Text="Max Fee" Visibility="{Binding AutoBuyerOptionVisibility}"/>
                 <TextBox Grid.Row="8" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
-                         Text="{Binding MaxFee, Mode=OneWayToSource, ValidatesOnExceptions=True}"
-                         MinWidth="250" HorizontalContentAlignment="Left"
+                         Text="{Binding MaxFee, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
                 <TextBlock Grid.Row="9" Text="Max Price" Visibility="{Binding AutoBuyerOptionVisibility}"/>
                 <TextBox Grid.Row="9" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
-                         Text="{Binding MaxPrice, Mode=OneWayToSource, ValidatesOnExceptions=True}"
-                         MinWidth="250" HorizontalContentAlignment="Left"
+                         Text="{Binding MaxPrice, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
                 <TextBlock Grid.Row="10" Text="Max Per Block" Visibility="{Binding AutoBuyerOptionVisibility}"/>
                 <TextBox Grid.Row="10" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
-                         Text="{Binding MaxPerBlock, Mode=OneWayToSource, ValidatesOnExceptions=True}"
-                         MinWidth="250" HorizontalContentAlignment="Left"
+                         Text="{Binding MaxPerBlock, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="11" Text="Pool fee address" Visibility="{Binding ManualPoolOptionsVisibility}"/>
-                <TextBox Grid.Row="11" Grid.Column="1" Visibility="{Binding ManualPoolOptionsVisibility}"
-                         Text="{Binding PoolFeeAddress, Mode=OneWayToSource, ValidatesOnExceptions=True}"
+                <TextBlock Grid.Row="11" Text="Pool fee address" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="11" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                         Text="{Binding PoolFeeAddress, ValidatesOnExceptions=True}"
                          MinWidth="250" HorizontalAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="12" Text="Pool fees (%)" Visibility="{Binding ManualPoolOptionsVisibility}"/>
-                <TextBox Grid.Row="12" Grid.Column="1" Visibility="{Binding ManualPoolOptionsVisibility}"
+                <TextBlock Grid.Row="12" Text="Pool fees (%)" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="12" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding PoolFees, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 

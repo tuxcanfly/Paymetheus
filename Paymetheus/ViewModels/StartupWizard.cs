@@ -12,6 +12,7 @@ using Paymetheus.Framework;
 using Paymetheus.Rpc;
 using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -149,7 +150,7 @@ namespace Paymetheus.ViewModels
                     // public passphrase prompt is needed before the wallet can be opened.  If it
                     // does not, then the wallet can be opened directly here instead of creating
                     // another dialog.
-                    if (App.Current.AutoBuyerEnabled)
+                    if (App.Current.AutoBuyerProperties != null)
                     {
                         _wizard.CurrentDialog = new AutoBuyerDialog(Wizard);
                     }
@@ -487,7 +488,7 @@ namespace Paymetheus.ViewModels
         public DelegateCommand ContinueCommand { get; }
         private void Continue() {
             Wizard.CurrentDialog = new PromptPublicPassphraseDialog(Wizard);
-            App.Current.PrivatePassphrase = PrivatePassphrase;
+            App.Current.AutoBuyerProperties.Passphrase = Encoding.UTF8.GetBytes(PrivatePassphrase);
         }
     }
 

@@ -96,8 +96,23 @@ namespace Paymetheus.ViewModels
             _purchaseTickets.Executable = false;
 
             ToggleAutoBuyerCommand = new DelegateCommandAsync(ToggleAutoBuyerAction);
-            // Trigger StartAutoBuyer if autobuyer is enabled
-            if (App.Current.AutoBuyerEnabled) AutoBuyerEnabled = true; else _autoBuyerEnabled = false;
+            if (App.Current.AutoBuyerProperties != null)
+            {
+                _autoBuyerEnabled = true;
+                _balanceToMaintain = App.Current.AutoBuyerProperties.BalanceToMaintain;
+                _maxFee = App.Current.AutoBuyerProperties.MaxFeePerKb;
+                _maxPrice = App.Current.AutoBuyerProperties.MaxPriceAbsolute;
+                _votingAddress = Address.Decode(App.Current.AutoBuyerProperties.VotingAddress);
+                _poolFeeAddress = Address.Decode(App.Current.AutoBuyerProperties.PoolAddress);
+                _poolFees = (decimal) App.Current.AutoBuyerProperties.PoolFees;
+                _maxPerBlock = App.Current.AutoBuyerProperties.MaxPerBlock;
+
+                _selectedStakePool = ConfiguredStakePools[2];
+            }
+            else
+            {
+                _autoBuyerEnabled = false;
+            }
         }
 
         public async Task RunActivityAsync()
@@ -127,7 +142,7 @@ namespace Paymetheus.ViewModels
                         ConfiguredStakePools.Add(stakePoolSelection);
 
                         // If only one pool is saved, use this as the default.
-                        if (config.Entries.Length == 1)
+                        if (App.Current.AutoBuyerProperties == null && config.Entries.Length == 1)
                         {
                             SelectedStakePool = stakePoolSelection;
                         }
@@ -574,10 +589,6 @@ namespace Paymetheus.ViewModels
                 {
                     _balanceToMaintain = Denomination.Decred.AmountFromString(value); ;
                 }
-                catch
-                {
-                    _balanceToMaintain = 0;
-                }
                 finally
                 {
                     EnableOrDisableSendCommand();
@@ -591,10 +602,6 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _maxPrice = Denomination.Decred.AmountFromString(value); ;
-                }
-                catch
-                {
-                    _maxPrice = 0;
                 }
                 finally
                 {
@@ -611,10 +618,6 @@ namespace Paymetheus.ViewModels
                 {
                     _maxFee = Denomination.Decred.AmountFromString(value); ;
                 }
-                catch
-                {
-                    _maxFee = 0;
-                }
                 finally
                 {
                     EnableOrDisableSendCommand();
@@ -629,10 +632,6 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _maxPerBlock = Convert.ToInt64(value);
-                }
-                catch
-                {
-                    _maxPerBlock = 0;
                 }
                 finally
                 {
@@ -671,6 +670,19 @@ namespace Paymetheus.ViewModels
                         config.Sections["ticketbuyer"]["pooladdress"] = _poolFeeAddress?.ToString() ?? "";
                         config.Sections["ticketbuyer"]["poolfees"] = _poolFees.ToString();
                         config.Sections["ticketbuyer"]["maxperblock"] = _maxPerBlock.ToString();
+
+                        App.Current.AutoBuyerProperties = new AutoBuyerProperties
+                        {
+                            // Account
+                            BalanceToMaintain = _balanceToMaintain,
+                            MaxFeePerKb = _maxFee,
+                            // MaxPriceRelative
+                            MaxPriceAbsolute = _maxPrice,
+                            VotingAddress = _votingAddress?.ToString() ?? "",
+                            PoolAddress = _poolFeeAddress?.ToString() ?? "",
+                            PoolFees = (double)_poolFees,
+                            MaxPerBlock = _maxPerBlock,
+                        };
                     }
                     else
                     {
@@ -681,25 +693,13 @@ namespace Paymetheus.ViewModels
                     parser.WriteFile(Path.Combine(appDataDir, "defaults.ini"), config);
                 }
 
-                var autoBuyerProperties = new AutoBuyerProperties {
-                    Passphrase = Encoding.UTF8.GetBytes(App.Current?.PrivatePassphrase ?? ""),
-                    // Account
-                    BalanceToMaintain = _balanceToMaintain,
-                    MaxFeePerKb = _maxFee,
-                    // MaxPriceRelative
-                    MaxPriceAbsolute = _maxPrice,
-                    VotingAddress = _votingAddress?.ToString() ?? "",
-                    PoolAddress = _poolFeeAddress?.ToString() ?? "",
-                    PoolFees = (double)_poolFees,
-                    MaxPerBlock = _maxPerBlock
-                };
-                var autoBuyerViewModel = new AutoBuyerViewModel(autoBuyerProperties);
+                var autoBuyerViewModel = new AutoBuyerViewModel(App.Current.AutoBuyerProperties);
 
                 if (_autoBuyerEnabled)
                 {
                     if (autoBuyerViewModel.StartAutoBuyerCommand.CanExecute(null))
                     {
-                        if (App.Current.PrivatePassphrase == null)
+                        if (App.Current.AutoBuyerProperties.Passphrase == null)
                         {
                             var shell = ViewModelLocator.ShellViewModel as ShellViewModel;
                             if (shell != null)
@@ -707,7 +707,7 @@ namespace Paymetheus.ViewModels
                                 Func<string, Task<bool>> action =
                                     passphrase => Task.Run(() =>
                                     {
-                                        autoBuyerProperties.Passphrase = Encoding.UTF8.GetBytes(passphrase);
+                                        App.Current.AutoBuyerProperties.Passphrase = Encoding.UTF8.GetBytes(passphrase);
                                         autoBuyerViewModel.StartAutoBuyerCommand.Execute(null);
                                         return true;
                                     });

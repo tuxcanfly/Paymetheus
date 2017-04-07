@@ -5,6 +5,7 @@
 using IniParser;
 using IniParser.Model;
 using Paymetheus.Decred;
+using Paymetheus.Decred.Wallet;
 using Paymetheus.Framework;
 using Paymetheus.Rpc;
 using Paymetheus.ViewModels;
@@ -75,8 +76,7 @@ namespace Paymetheus
         }
 
         public ConsensusServerRpcOptions DefaultCSRPO { get; private set; }
-        public bool AutoBuyerEnabled { get; private set; }
-        public string PrivatePassphrase { get; internal set; }
+        public AutoBuyerProperties AutoBuyerProperties { get; set; }
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
@@ -141,8 +141,23 @@ namespace Paymetheus
                     }
 
                     if (section["enableticketbuyer"] == "1") {
-                        AutoBuyerEnabled = true;
-                    }
+                        var ticketbuyerSection = config.Sections["ticketbuyer"];
+                        if (ticketbuyerSection != null)
+                        {
+                            App.Current.AutoBuyerProperties = new AutoBuyerProperties
+                            {
+                                // Account
+                                BalanceToMaintain = Denomination.Decred.AmountFromString(ticketbuyerSection["balancetomaintainabsolute"] ?? ""),
+                                MaxFeePerKb = Denomination.Decred.AmountFromString(ticketbuyerSection["maxfee"] ?? ""),
+                                // MaxPriceRelative
+                                MaxPriceAbsolute = Denomination.Decred.AmountFromString(ticketbuyerSection["maxpriceabsolute"] ?? ""),
+                                VotingAddress = ticketbuyerSection["ticketaddress"] ?? "",
+                                PoolAddress = ticketbuyerSection["pooladdress"] ?? "",
+                                PoolFees = Convert.ToDouble(ticketbuyerSection["poolfees"] ?? ""),
+                                MaxPerBlock = Convert.ToInt64(ticketbuyerSection["maxperblock"] ?? "")
+                            };
+                        }
+                    };
 
                     DefaultCSRPO = new ConsensusServerRpcOptions(rpcListen, rpcUser, rpcPass, rpcCert);
                 }
