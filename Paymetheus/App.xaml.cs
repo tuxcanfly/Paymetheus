@@ -149,8 +149,8 @@ namespace Paymetheus
                                 Account = new Account(Convert.ToUInt32((ticketbuyerSection["account"]))),
                                 BalanceToMaintain = Denomination.Decred.AmountFromString(ticketbuyerSection["balancetomaintainabsolute"] ?? ""),
                                 MaxFeePerKb = Denomination.Decred.AmountFromString(ticketbuyerSection["maxfee"] ?? ""),
-                                // MaxPriceRelative
                                 MaxPriceAbsolute = Denomination.Decred.AmountFromString(ticketbuyerSection["maxpriceabsolute"] ?? ""),
+                                MaxPriceRelative = Convert.ToDouble(ticketbuyerSection["maxpricerelative"] ?? ""),
                                 VotingAddress = ticketbuyerSection["ticketaddress"] ?? "",
                                 PoolAddress = ticketbuyerSection["pooladdress"] ?? "",
                                 PoolFees = Convert.ToDouble(ticketbuyerSection["poolfees"] ?? ""),

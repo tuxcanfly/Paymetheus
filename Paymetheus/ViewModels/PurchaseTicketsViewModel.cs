@@ -101,7 +101,8 @@ namespace Paymetheus.ViewModels
                 _autoBuyerEnabled = true;
                 _balanceToMaintain = App.Current.AutoBuyerProperties.BalanceToMaintain;
                 _maxFee = App.Current.AutoBuyerProperties.MaxFeePerKb;
-                _maxPrice = App.Current.AutoBuyerProperties.MaxPriceAbsolute;
+                _maxPriceAbsolute = App.Current.AutoBuyerProperties.MaxPriceAbsolute;
+                _maxPriceRelative = App.Current.AutoBuyerProperties.MaxPriceRelative;
                 if (App.Current.AutoBuyerProperties?.VotingAddress?.Length > 0)
                 {
                     _votingAddress = Address.Decode(App.Current.AutoBuyerProperties.VotingAddress);
@@ -494,7 +495,13 @@ namespace Paymetheus.ViewModels
                 return;
             }
 
-            if (_maxPrice < 0)
+            if (_maxPriceAbsolute < 0)
+            {
+                AutoBuyerValidate = false;
+                return;
+            }
+
+            if (_maxPriceRelative < 0)
             {
                 AutoBuyerValidate = false;
                 return;
@@ -645,15 +652,16 @@ namespace Paymetheus.ViewModels
             set { _autoBuyerValidate = value; RaisePropertyChanged(); }
         }
 
-        private Amount _balanceToMaintain, _maxPrice, _maxFee;
+        private Amount _balanceToMaintain, _maxPriceAbsolute, _maxFee;
         private long _maxPerBlock;
+        private double _maxPriceRelative;
         public string BalanceToMaintain {
             get { return _balanceToMaintain.ToString(); }
             set
             {
                 try
                 {
-                    _balanceToMaintain = Denomination.Decred.AmountFromString(value); ;
+                    _balanceToMaintain = Denomination.Decred.AmountFromString(value);
                 }
                 finally
                 {
@@ -661,13 +669,28 @@ namespace Paymetheus.ViewModels
                 }
             }
         }
-        public string MaxPrice {
-            get { return _maxPrice.ToString(); }
+        public string MaxPriceAbsolute {
+            get { return _maxPriceAbsolute.ToString(); }
             set
             {
                 try
                 {
-                    _maxPrice = Denomination.Decred.AmountFromString(value); ;
+                    _maxPriceAbsolute = Denomination.Decred.AmountFromString(value);
+                }
+                finally
+                {
+                    EnableOrDisableAutoBuyer();
+                }
+            }
+        }
+        public string MaxPriceRelative
+        {
+            get { return _maxPriceRelative.ToString();  }
+            set
+            {
+                try
+                {
+                    _maxPriceRelative = Convert.ToDouble(value);
                 }
                 finally
                 {
@@ -682,7 +705,7 @@ namespace Paymetheus.ViewModels
             {
                 try
                 {
-                    _maxFee = Denomination.Decred.AmountFromString(value); ;
+                    _maxFee = Denomination.Decred.AmountFromString(value);
                 }
                 finally
                 {
@@ -732,7 +755,8 @@ namespace Paymetheus.ViewModels
                         config.Sections["ticketbuyer"]["account"] = _selectedSourceAccount.AccountNumber.ToString();
                         config.Sections["ticketbuyer"]["balancetomaintainabsolute"] = _balanceToMaintain.ToString();
                         config.Sections["ticketbuyer"]["maxfee"] = _maxFee.ToString();
-                        config.Sections["ticketbuyer"]["maxpriceabsolute"] = _maxPrice.ToString();
+                        config.Sections["ticketbuyer"]["maxpriceabsolute"] = _maxPriceAbsolute.ToString();
+                        config.Sections["ticketbuyer"]["maxpricerelative"] = _maxPriceRelative.ToString();
                         config.Sections["ticketbuyer"]["ticketaddress"] = _votingAddress?.ToString() ?? "";
                         config.Sections["ticketbuyer"]["pooladdress"] = _poolFeeAddress?.ToString() ?? "";
                         config.Sections["ticketbuyer"]["poolfees"] = _poolFees.ToString();
@@ -743,8 +767,8 @@ namespace Paymetheus.ViewModels
                             Account = _selectedSourceAccount.Account,
                             BalanceToMaintain = _balanceToMaintain,
                             MaxFeePerKb = _maxFee,
-                            // MaxPriceRelative
-                            MaxPriceAbsolute = _maxPrice,
+                            MaxPriceAbsolute = _maxPriceAbsolute,
+                            MaxPriceRelative = _maxPriceRelative,
                             VotingAddress = _votingAddress?.ToString() ?? "",
                             PoolAddress = _poolFeeAddress?.ToString() ?? "",
                             PoolFees = (double)_poolFees,

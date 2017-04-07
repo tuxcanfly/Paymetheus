@@ -80,6 +80,7 @@
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="170"/>
@@ -139,29 +140,34 @@
                          Text="{Binding MaxFee, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="9" Text="Max Price" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBlock Grid.Row="9" Text="Max Price Absolute" Visibility="{Binding AutoBuyerOptionVisibility}"/>
                 <TextBox Grid.Row="9" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
-                         Text="{Binding MaxPrice, ValidatesOnExceptions=True}"
+                         Text="{Binding MaxPriceAbsolute, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="10" Text="Max Per Block" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBlock Grid.Row="10" Text="Max Price Relative" Visibility="{Binding AutoBuyerOptionVisibility}"/>
                 <TextBox Grid.Row="10" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                         Text="{Binding MaxPriceRelative, ValidatesOnExceptions=True}"
+                         f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
+
+                <TextBlock Grid.Row="11" Text="Max Per Block" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="11" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding MaxPerBlock, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="11" Text="Pool fee address" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <TextBox Grid.Row="11" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                <TextBlock Grid.Row="12" Text="Pool fee address" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="12" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding PoolFeeAddress, ValidatesOnExceptions=True}"
                          MinWidth="250" HorizontalAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="12" Text="Pool fees (%)" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <TextBox Grid.Row="12" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                <TextBlock Grid.Row="13" Text="Pool fees (%)" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="13" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding PoolFees, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="13" Text="Enable AutoBuyer" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <CheckBox Grid.Row="13" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}" IsChecked="{Binding AutoBuyerEnabled}" IsEnabled="{Binding AutoBuyerValidate}">
+                <TextBlock Grid.Row="14" Text="Enable AutoBuyer" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <CheckBox Grid.Row="14" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}" IsChecked="{Binding AutoBuyerEnabled}" IsEnabled="{Binding AutoBuyerValidate}">
                     <TextBlock>Enable AutoBuyer</TextBlock>
                 </CheckBox>
             </Grid>
