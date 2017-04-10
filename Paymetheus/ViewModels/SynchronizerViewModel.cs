@@ -343,15 +343,13 @@ namespace Paymetheus.ViewModels
             RaisePropertyChanged(nameof(AccountNames));
             overviewViewModel.AccountsCount = accountViewModels.Count();
 
-            if (App.Current.AutoBuyerProperties != null)
-            {
-                App.Current.Dispatcher.Invoke(() =>
-                    App.Current.Synchronizer.WalletRpcClient.StartAutoBuyer(App.Current.AutoBuyerProperties)
-                );
-            }
+            App.Current.Dispatcher.InvokeAsync(() =>
+                PurchaseTicketsViewModel.StartAutoBuyer(App.Current.AutoBuyerProperties.Passphrase)
+            );
 
             var shell = (ShellViewModel)ViewModelLocator.ShellViewModel;
             shell.StartupWizardVisible = false;
+
         }
     }
 }

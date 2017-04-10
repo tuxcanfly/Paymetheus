@@ -732,8 +732,7 @@ namespace Paymetheus.ViewModels
             }
         }
 
-
-        private async Task<bool> StartAutoBuyer(string passphrase)
+        public static async Task<bool> StartAutoBuyer(string passphrase)
         {
             App.Current.AutoBuyerProperties.Passphrase = passphrase;
             var walletClient = App.Current.Synchronizer.WalletRpcClient;
