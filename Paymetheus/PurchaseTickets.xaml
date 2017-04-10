@@ -167,7 +167,8 @@
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
                 <TextBlock Grid.Row="14" Text="Enable AutoBuyer" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <CheckBox Grid.Row="14" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}" IsChecked="{Binding AutoBuyerEnabled}" IsEnabled="{Binding AutoBuyerValidate}">
+                <CheckBox Grid.Row="14" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}" IsChecked="{Binding AutoBuyerEnabled}"
+                          IsEnabled="{Binding AutoBuyerValidate}" Command="{Binding ToggleAutoBuyerCommand}">
                     <TextBlock>Enable AutoBuyer</TextBlock>
                 </CheckBox>
             </Grid>

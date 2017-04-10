@@ -6,7 +6,7 @@ namespace Paymetheus.Decred.Wallet
 {
     public sealed class AutoBuyerProperties
     {
-        public byte[] Passphrase { get; set; }
+        public string Passphrase { get; set; }
         public Account Account { get; set; }
         public Amount BalanceToMaintain { get; set; }
         public Amount MaxFeePerKb { get; set; }

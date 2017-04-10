@@ -20,6 +20,7 @@ using Paymetheus.Decred.Util;
 using IniParser;
 using IniParser.Model;
 using Paymetheus.Rpc;
+using Grpc.Core;
 
 namespace Paymetheus.ViewModels
 {
@@ -111,7 +112,7 @@ namespace Paymetheus.ViewModels
                 {
                     _poolFeeAddress = Address.Decode(App.Current.AutoBuyerProperties.PoolAddress);
                 }
-                _poolFees = (decimal) App.Current.AutoBuyerProperties.PoolFees;
+                _poolFees = (decimal)App.Current.AutoBuyerProperties.PoolFees;
                 _maxPerBlock = App.Current.AutoBuyerProperties.MaxPerBlock;
 
                 _selectedStakePool = ConfiguredStakePools[2];
@@ -225,7 +226,7 @@ namespace Paymetheus.ViewModels
         private Visibility _autoBuyerOptionVisibility = Visibility.Visible;
         public Visibility AutoBuyerOptionVisibility
         {
-            get { return _autoBuyerOptionVisibility;  }
+            get { return _autoBuyerOptionVisibility; }
             set { _autoBuyerOptionVisibility = value; RaisePropertyChanged(); }
         }
 
@@ -642,7 +643,7 @@ namespace Paymetheus.ViewModels
         public bool AutoBuyerEnabled
         {
             get { return _autoBuyerEnabled; }
-            set { _autoBuyerEnabled = value; ToggleAutoBuyerAction(); }
+            set { _autoBuyerEnabled = value; }
         }
 
         private bool _autoBuyerValidate;
@@ -655,7 +656,8 @@ namespace Paymetheus.ViewModels
         private Amount _balanceToMaintain, _maxPriceAbsolute, _maxFee;
         private long _maxPerBlock;
         private double _maxPriceRelative;
-        public string BalanceToMaintain {
+        public string BalanceToMaintain
+        {
             get { return _balanceToMaintain.ToString(); }
             set
             {
@@ -669,7 +671,8 @@ namespace Paymetheus.ViewModels
                 }
             }
         }
-        public string MaxPriceAbsolute {
+        public string MaxPriceAbsolute
+        {
             get { return _maxPriceAbsolute.ToString(); }
             set
             {
@@ -685,7 +688,7 @@ namespace Paymetheus.ViewModels
         }
         public string MaxPriceRelative
         {
-            get { return _maxPriceRelative.ToString();  }
+            get { return _maxPriceRelative.ToString(); }
             set
             {
                 try
@@ -729,99 +732,112 @@ namespace Paymetheus.ViewModels
             }
         }
 
-        public DelegateCommandAsync ToggleAutoBuyerCommand { get; set; }
-        private Task ToggleAutoBuyerAction() {
-            return Task.Run(() =>
+
+        private async Task<bool> StartAutoBuyer(string passphrase)
+        {
+            App.Current.AutoBuyerProperties.Passphrase = passphrase;
+            var walletClient = App.Current.Synchronizer.WalletRpcClient;
+            try
             {
-                var iniParser = new FileIniDataParser();
-                IniData config = null;
-                var appDataDir = Portability.LocalAppData(Environment.OSVersion.Platform, AssemblyResources.Organization, AssemblyResources.ProductName);
-                string defaultsFile = Path.Combine(appDataDir, "defaults.ini");
-                if (File.Exists(defaultsFile))
+                await walletClient.StartAutoBuyer(App.Current.AutoBuyerProperties);
+            }
+            catch (RpcException ex) when (ex.Status.StatusCode == Grpc.Core.StatusCode.InvalidArgument)
+            {
+                MessageBox.Show(ex.Status.Detail);
+                return false;
+            }
+            return true;
+        }
+
+        private void UpdateIniData(bool autoBuyerEnabled)
+        {
+            var iniParser = new FileIniDataParser();
+            IniData config = null;
+            var appDataDir = Portability.LocalAppData(Environment.OSVersion.Platform, AssemblyResources.Organization, AssemblyResources.ProductName);
+            string defaultsFile = Path.Combine(appDataDir, "defaults.ini");
+            if (File.Exists(defaultsFile))
+            {
+                config = iniParser.ReadFile(defaultsFile);
+            }
+
+            if (config == null)
+            {
+                return;
+            }
+
+            var section = config["Application Options"];
+            if (section == null)
+                section = config.Global;
+
+            if (!autoBuyerEnabled)
+            {
+                section.RemoveKey("enableticketbuyer");
+                config.Sections.RemoveSection("ticketbuyer");
+            }
+            else
+            {
+                section["enableticketbuyer"] = "1";
+                config.Sections.AddSection("ticketbuyer");
+                var ticketbuyerSection = config.Sections["ticketbuyer"];
+
+                ticketbuyerSection["account"] = _selectedSourceAccount.AccountNumber.ToString();
+                ticketbuyerSection["balancetomaintainabsolute"] = _balanceToMaintain.ToString();
+                ticketbuyerSection["maxfee"] = _maxFee.ToString();
+                ticketbuyerSection["maxpriceabsolute"] = _maxPriceAbsolute.ToString();
+                ticketbuyerSection["maxpricerelative"] = _maxPriceRelative.ToString();
+                ticketbuyerSection["ticketaddress"] = _votingAddress?.ToString() ?? "";
+                ticketbuyerSection["pooladdress"] = _poolFeeAddress?.ToString() ?? "";
+                ticketbuyerSection["poolfees"] = _poolFees.ToString();
+                ticketbuyerSection["maxperblock"] = _maxPerBlock.ToString();
+            }
+
+            iniParser.WriteFile(Path.Combine(appDataDir, "defaults.ini"), config);
+        }
+
+        public DelegateCommandAsync ToggleAutoBuyerCommand { get; set; }
+        private async Task ToggleAutoBuyerAction()
+        {
+            UpdateIniData(_autoBuyerEnabled);
+
+            if (!_autoBuyerEnabled)
+            {
+                await App.Current.Synchronizer.WalletRpcClient.StopAutoBuyer();
+                return;
+            }
+
+            var passphrase = App.Current.AutoBuyerProperties?.Passphrase ?? "";
+
+            App.Current.AutoBuyerProperties = new AutoBuyerProperties
+            {
+                Passphrase = passphrase,
+                Account = _selectedSourceAccount.Account,
+                BalanceToMaintain = _balanceToMaintain,
+                MaxFeePerKb = _maxFee,
+                MaxPriceAbsolute = _maxPriceAbsolute,
+                MaxPriceRelative = _maxPriceRelative,
+                VotingAddress = _votingAddress?.ToString() ?? "",
+                PoolAddress = _poolFeeAddress?.ToString() ?? "",
+                PoolFees = (double)_poolFees,
+                MaxPerBlock = _maxPerBlock,
+            };
+
+            if (passphrase.Length == 0)
+            {
+                var shell = ViewModelLocator.ShellViewModel as ShellViewModel;
+                if (shell != null)
                 {
-                    config = iniParser.ReadFile(defaultsFile);
+                    Func<string, Task<bool>> action =
+                        pass => StartAutoBuyer(pass);
+                    shell.VisibleDialogContent = new PassphraseDialogViewModel(shell,
+                        "Enter passphrase to start Auto Buyer",
+                        "START",
+                        action);
                 }
+                return;
+            }
 
-                if (config != null)
-                {
-                    var section = config["Application Options"];
-                    if (section == null)
-                        section = config.Global;
-
-                    if (_autoBuyerEnabled)
-                    {
-                        section["enableticketbuyer"] = "1";
-                        config.Sections.AddSection("ticketbuyer");
-                        config.Sections["ticketbuyer"]["account"] = _selectedSourceAccount.AccountNumber.ToString();
-                        config.Sections["ticketbuyer"]["balancetomaintainabsolute"] = _balanceToMaintain.ToString();
-                        config.Sections["ticketbuyer"]["maxfee"] = _maxFee.ToString();
-                        config.Sections["ticketbuyer"]["maxpriceabsolute"] = _maxPriceAbsolute.ToString();
-                        config.Sections["ticketbuyer"]["maxpricerelative"] = _maxPriceRelative.ToString();
-                        config.Sections["ticketbuyer"]["ticketaddress"] = _votingAddress?.ToString() ?? "";
-                        config.Sections["ticketbuyer"]["pooladdress"] = _poolFeeAddress?.ToString() ?? "";
-                        config.Sections["ticketbuyer"]["poolfees"] = _poolFees.ToString();
-                        config.Sections["ticketbuyer"]["maxperblock"] = _maxPerBlock.ToString();
-
-                        App.Current.AutoBuyerProperties = new AutoBuyerProperties
-                        {
-                            Account = _selectedSourceAccount.Account,
-                            BalanceToMaintain = _balanceToMaintain,
-                            MaxFeePerKb = _maxFee,
-                            MaxPriceAbsolute = _maxPriceAbsolute,
-                            MaxPriceRelative = _maxPriceRelative,
-                            VotingAddress = _votingAddress?.ToString() ?? "",
-                            PoolAddress = _poolFeeAddress?.ToString() ?? "",
-                            PoolFees = (double)_poolFees,
-                            MaxPerBlock = _maxPerBlock,
-                        };
-                    }
-                    else
-                    {
-                        section.RemoveKey("enableticketbuyer");
-                        config.Sections.RemoveSection("ticketbuyer");
-                    }
-                    var parser = new FileIniDataParser();
-                    parser.WriteFile(Path.Combine(appDataDir, "defaults.ini"), config);
-                }
-
-                var autoBuyerViewModel = new AutoBuyerViewModel(App.Current.AutoBuyerProperties);
-
-                if (_autoBuyerEnabled)
-                {
-                    if (autoBuyerViewModel.StartAutoBuyerCommand.CanExecute(null))
-                    {
-                        if (App.Current.AutoBuyerProperties.Passphrase == null)
-                        {
-                            var shell = ViewModelLocator.ShellViewModel as ShellViewModel;
-                            if (shell != null)
-                            {
-                                Func<string, Task<bool>> action =
-                                    passphrase => Task.Run(() =>
-                                    {
-                                        App.Current.AutoBuyerProperties.Passphrase = Encoding.UTF8.GetBytes(passphrase);
-                                        autoBuyerViewModel.StartAutoBuyerCommand.Execute(null);
-                                        return true;
-                                    });
-                                shell.VisibleDialogContent = new PassphraseDialogViewModel(shell,
-                                    "Enter passphrase to start autobuyer",
-                                    "START",
-                                    action);
-                            }
-                        }
-                        else
-                        {
-                            autoBuyerViewModel.StartAutoBuyerCommand.Execute(null);
-                        }
-                    }
-                }
-                else
-                {
-                    if (autoBuyerViewModel.StopAutoBuyerCommand.CanExecute(null))
-                    {
-                        autoBuyerViewModel.StopAutoBuyerCommand.Execute(null);
-                    }
-                }
-            });
+            await StartAutoBuyer(passphrase);
+            return;
         }
     }
 }

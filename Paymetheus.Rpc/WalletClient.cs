@@ -649,7 +649,7 @@ namespace Paymetheus.Rpc
             var client = new TicketBuyerService.TicketBuyerServiceClient(_channel);
             var req = new StartAutoBuyerRequest
             {
-                Passphrase = ByteString.CopyFrom(properties.Passphrase),
+                Passphrase = ByteString.CopyFromUtf8(properties.Passphrase),
                 Account = properties.Account.AccountNumber,
                 BalanceToMaintain = properties.BalanceToMaintain,
                 MaxFeePerKb = properties.MaxFeePerKb,

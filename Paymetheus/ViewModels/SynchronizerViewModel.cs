@@ -345,11 +345,9 @@ namespace Paymetheus.ViewModels
 
             if (App.Current.AutoBuyerProperties != null)
             {
-                var autoBuyerViewModel = new AutoBuyerViewModel(App.Current.AutoBuyerProperties);
-                if (autoBuyerViewModel.StartAutoBuyerCommand.CanExecute(null))
-                {
-                    autoBuyerViewModel.StartAutoBuyerCommand.Execute(null);
-                }
+                App.Current.Dispatcher.Invoke(() =>
+                    App.Current.Synchronizer.WalletRpcClient.StartAutoBuyer(App.Current.AutoBuyerProperties)
+                );
             }
 
             var shell = (ShellViewModel)ViewModelLocator.ShellViewModel;
