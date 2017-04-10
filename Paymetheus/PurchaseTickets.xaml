@@ -95,8 +95,8 @@
                           ItemTemplate="{StaticResource ComboBoxAccountDataTemplate}"
                           Style="{DynamicResource ComboBoxStyleWithCurrency}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}"/>
 
-                <TextBlock Grid.Row="1" Style="{StaticResource shellDescriptionTextBlockStyle}" Text="Tickets to purchase"/>
-                <TextBox Grid.Row="1" Grid.Column="1"
+                <TextBlock Grid.Row="1" Style="{StaticResource shellDescriptionTextBlockStyle}" Visibility="{Binding ManualOptionVisibility}" Text="Tickets to purchase"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Visibility="{Binding ManualOptionVisibility}"
                          Text="{Binding TicketsToPurchase, ValidatesOnExceptions=True}" Height="22" Margin="0,1,0,0" VerticalAlignment="Top"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 

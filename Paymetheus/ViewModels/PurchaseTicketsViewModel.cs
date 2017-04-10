@@ -226,6 +226,13 @@ namespace Paymetheus.ViewModels
             set { _autoBuyerOptionVisibility = value; RaisePropertyChanged(); }
         }
 
+        private Visibility _manualOptionVisibility = Visibility.Visible;
+        public Visibility ManualOptionVisibility
+        {
+            get { return _manualOptionVisibility;  }
+            set { _manualOptionVisibility = value; RaisePropertyChanged(); }
+        }
+
         private IStakePoolSelection _selectedStakePool;
         public IStakePoolSelection SelectedStakePool
         {
@@ -636,12 +643,20 @@ namespace Paymetheus.ViewModels
                 if (value)
                 {
                     AutoBuyerOptionVisibility = Visibility.Visible;
+                    ManualOptionVisibility = Visibility.Collapsed;
                     _purchaseTickets.Executable= false;
                 }
                 else
                 {
                     AutoBuyerOptionVisibility = Visibility.Collapsed;
+                    ManualOptionVisibility = Visibility.Visible;
                     _purchaseTickets.Executable = true;
+
+                    if (_autoBuyerEnabled)
+                    {
+                        AutoBuyerEnabled = false;
+                        ToggleAutoBuyerCommand.Execute(null);
+                    }
                 }
             }
 
@@ -651,7 +666,7 @@ namespace Paymetheus.ViewModels
         public bool AutoBuyerEnabled
         {
             get { return _autoBuyerEnabled; }
-            set { _autoBuyerEnabled = value; }
+            set { _autoBuyerEnabled = value; RaisePropertyChanged(); }
         }
 
         private bool _autoBuyerValidate;
@@ -672,8 +687,11 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _balanceToMaintain = Denomination.Decred.AmountFromString(value);
-                    var walletClient = App.Current.Synchronizer.WalletRpcClient;
-                    Task.Run(() => walletClient.SetBalanceToMaintain(_balanceToMaintain));
+                    if (_autoBuyerEnabled)
+                    {
+                        var walletClient = App.Current.Synchronizer.WalletRpcClient;
+                        Task.Run(() => walletClient.SetBalanceToMaintain(_balanceToMaintain));
+                    }
                 }
                 finally
                 {
@@ -689,8 +707,11 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _maxPriceAbsolute = Denomination.Decred.AmountFromString(value);
-                    var walletClient = App.Current.Synchronizer.WalletRpcClient;
-                    Task.Run(() => walletClient.SetMaxPriceAbsolute(_maxPriceAbsolute));
+                    if (_autoBuyerEnabled)
+                    {
+                        var walletClient = App.Current.Synchronizer.WalletRpcClient;
+                        Task.Run(() => walletClient.SetMaxPriceAbsolute(_maxPriceAbsolute));
+                    }
                 }
                 finally
                 {
@@ -706,8 +727,11 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _maxPriceRelative = Convert.ToDouble(value);
-                    var walletClient = App.Current.Synchronizer.WalletRpcClient;
-                    Task.Run(() => walletClient.SetMaxPriceRelative(_maxPriceRelative));
+                    if (_autoBuyerEnabled)
+                    {
+                        var walletClient = App.Current.Synchronizer.WalletRpcClient;
+                        Task.Run(() => walletClient.SetMaxPriceRelative(_maxPriceRelative));
+                    }
                 }
                 finally
                 {
@@ -723,8 +747,11 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _maxFee = Denomination.Decred.AmountFromString(value);
-                    var walletClient = App.Current.Synchronizer.WalletRpcClient;
-                    Task.Run(() => walletClient.SetMaxFee(_maxFee));
+                    if (_autoBuyerEnabled)
+                    {
+                        var walletClient = App.Current.Synchronizer.WalletRpcClient;
+                        Task.Run(() => walletClient.SetMaxFee(_maxFee));
+                    }
                 }
                 finally
                 {
@@ -740,8 +767,11 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _maxPerBlock = Convert.ToInt64(value);
-                    var walletClient = App.Current.Synchronizer.WalletRpcClient;
-                    Task.Run(() => walletClient.SetMaxPerBlock(_maxPerBlock));
+                    if (_autoBuyerEnabled)
+                    {
+                        var walletClient = App.Current.Synchronizer.WalletRpcClient;
+                        Task.Run(() => walletClient.SetMaxPerBlock(_maxPerBlock));
+                    }
                 }
                 finally
                 {
