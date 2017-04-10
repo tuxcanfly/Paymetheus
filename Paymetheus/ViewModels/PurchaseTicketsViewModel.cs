@@ -664,6 +664,8 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _balanceToMaintain = Denomination.Decred.AmountFromString(value);
+                    var walletClient = App.Current.Synchronizer.WalletRpcClient;
+                    Task.Run(() => walletClient.SetBalanceToMaintain(_balanceToMaintain));
                 }
                 finally
                 {
@@ -679,6 +681,8 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _maxPriceAbsolute = Denomination.Decred.AmountFromString(value);
+                    var walletClient = App.Current.Synchronizer.WalletRpcClient;
+                    Task.Run(() => walletClient.SetMaxPriceAbsolute(_maxPriceAbsolute));
                 }
                 finally
                 {
@@ -694,6 +698,8 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _maxPriceRelative = Convert.ToDouble(value);
+                    var walletClient = App.Current.Synchronizer.WalletRpcClient;
+                    Task.Run(() => walletClient.SetMaxPriceRelative(_maxPriceRelative));
                 }
                 finally
                 {
@@ -709,6 +715,8 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _maxFee = Denomination.Decred.AmountFromString(value);
+                    var walletClient = App.Current.Synchronizer.WalletRpcClient;
+                    Task.Run(() => walletClient.SetMaxFee(_maxFee));
                 }
                 finally
                 {
@@ -724,6 +732,8 @@ namespace Paymetheus.ViewModels
                 try
                 {
                     _maxPerBlock = Convert.ToInt64(value);
+                    var walletClient = App.Current.Synchronizer.WalletRpcClient;
+                    Task.Run(() => walletClient.SetMaxPerBlock(_maxPerBlock));
                 }
                 finally
                 {
