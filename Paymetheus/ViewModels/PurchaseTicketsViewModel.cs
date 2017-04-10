@@ -39,11 +39,6 @@ namespace Paymetheus.ViewModels
         public string DisplayName => "Manual entry";
     }
 
-    public class AutoBuyer : IStakePoolSelection
-    {
-        public string DisplayName => "Auto Buyer";
-    }
-
     public class StakePoolSelection : IStakePoolSelection
     {
         public StakePoolInfo PoolInfo { get; }
@@ -83,7 +78,6 @@ namespace Paymetheus.ViewModels
             {
                 new NoStakePool(),
                 new ManualStakePool(),
-                new AutoBuyer(),
             });
             _selectedStakePool = ConfiguredStakePools[0];
 
@@ -115,12 +109,14 @@ namespace Paymetheus.ViewModels
                 _poolFees = (decimal)App.Current.AutoBuyerProperties.PoolFees;
                 _maxPerBlock = App.Current.AutoBuyerProperties.MaxPerBlock;
 
-                _selectedStakePool = ConfiguredStakePools[2];
+                _selectedStakePool = ConfiguredStakePools[1];
                 AutoBuyerValidate = true;
+                AutoBuyerVisible = true;
             }
             else
             {
                 _autoBuyerEnabled = false;
+                AutoBuyerVisible = false;
             }
         }
 
@@ -151,7 +147,7 @@ namespace Paymetheus.ViewModels
                         ConfiguredStakePools.Add(stakePoolSelection);
 
                         // If only one pool is saved, use this as the default.
-                        if (App.Current.AutoBuyerProperties == null && config.Entries.Length == 1)
+                        if (config.Entries.Length == 1)
                         {
                             SelectedStakePool = stakePoolSelection;
                         }
@@ -243,25 +239,16 @@ namespace Paymetheus.ViewModels
                 {
                     VotingAddressOptionVisibility = Visibility.Visible;
                     ManualPoolOptionsVisibility = Visibility.Collapsed;
-                    AutoBuyerOptionVisibility = Visibility.Collapsed;
                 }
                 else if (value is ManualStakePool)
                 {
                     VotingAddressOptionVisibility = Visibility.Visible;
                     ManualPoolOptionsVisibility = Visibility.Visible;
-                    AutoBuyerOptionVisibility = Visibility.Collapsed;
-                }
-                else if (value is AutoBuyer)
-                {
-                    VotingAddressOptionVisibility = Visibility.Visible;
-                    ManualPoolOptionsVisibility = Visibility.Visible;
-                    AutoBuyerOptionVisibility = Visibility.Visible;
                 }
                 else if (value is StakePoolSelection)
                 {
                     VotingAddressOptionVisibility = Visibility.Collapsed;
                     ManualPoolOptionsVisibility = Visibility.Collapsed;
-                    AutoBuyerOptionVisibility = Visibility.Collapsed;
                 }
 
                 EnableOrDisableSendCommand();
@@ -452,7 +439,7 @@ namespace Paymetheus.ViewModels
                 return;
             }
 
-            if (SelectedStakePool is AutoBuyer)
+            if (AutoBuyerVisible)
             {
                 _purchaseTickets.Executable = false;
                 return;
@@ -637,6 +624,27 @@ namespace Paymetheus.ViewModels
 
             ResponseString = "Success! Ticket hashes:\n" + string.Join("\n", purchaseResponse);
             return true;
+        }
+
+        private bool _autoBuyerVisible;
+        public bool AutoBuyerVisible
+        {
+            get { return _autoBuyerVisible; }
+            set
+            {
+                _autoBuyerVisible = value;
+                if (value)
+                {
+                    AutoBuyerOptionVisibility = Visibility.Visible;
+                    _purchaseTickets.Executable= false;
+                }
+                else
+                {
+                    AutoBuyerOptionVisibility = Visibility.Collapsed;
+                    _purchaseTickets.Executable = true;
+                }
+            }
+
         }
 
         private bool _autoBuyerEnabled;

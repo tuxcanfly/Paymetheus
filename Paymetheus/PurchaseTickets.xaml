@@ -81,6 +81,7 @@
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="170"/>
@@ -130,47 +131,53 @@
                          MinWidth="250" HorizontalContentAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="7" Text="Balance To Maintain" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <TextBox Grid.Row="7" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                <TextBlock Grid.Row="7" Text="Enable AutoBuyer"/>
+                <CheckBox Grid.Row="7" Grid.Column="1" IsChecked="{Binding AutoBuyerVisible}">
+                    <TextBlock>Enable AutoBuyer</TextBlock>
+                </CheckBox>
+
+                <TextBlock Grid.Row="8" Text="Balance To Maintain" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="8" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding BalanceToMaintain, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="8" Text="Max Fee" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <TextBox Grid.Row="8" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                <TextBlock Grid.Row="9" Text="Max Fee" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="9" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding MaxFee, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="9" Text="Max Price Absolute" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <TextBox Grid.Row="9" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                <TextBlock Grid.Row="10" Text="Max Price Absolute" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="10" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding MaxPriceAbsolute, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="10" Text="Max Price Relative" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <TextBox Grid.Row="10" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                <TextBlock Grid.Row="11" Text="Max Price Relative" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="11" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding MaxPriceRelative, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="11" Text="Max Per Block" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <TextBox Grid.Row="11" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                <TextBlock Grid.Row="12" Text="Max Per Block" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="12" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding MaxPerBlock, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="12" Text="Pool fee address" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <TextBox Grid.Row="12" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                <TextBlock Grid.Row="13" Text="Pool fee address" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="13" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding PoolFeeAddress, ValidatesOnExceptions=True}"
                          MinWidth="250" HorizontalAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="13" Text="Pool fees (%)" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <TextBox Grid.Row="13" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                <TextBlock Grid.Row="14" Text="Pool fees (%)" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <TextBox Grid.Row="14" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
                          Text="{Binding PoolFees, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="14" Text="Enable AutoBuyer" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <CheckBox Grid.Row="14" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}" IsChecked="{Binding AutoBuyerEnabled}"
+                <TextBlock Grid.Row="15" Text="Toggle AutoBuyer" Visibility="{Binding AutoBuyerOptionVisibility}"/>
+                <CheckBox Grid.Row="15" Grid.Column="1" IsChecked="{Binding AutoBuyerEnabled}" Visibility="{Binding AutoBuyerOptionVisibility}"
                           IsEnabled="{Binding AutoBuyerValidate}" Command="{Binding ToggleAutoBuyerCommand}">
-                    <TextBlock>Enable AutoBuyer</TextBlock>
+                    <TextBlock>Toggle AutoBuyer</TextBlock>
                 </CheckBox>
+
             </Grid>
 
             <Button Style="{DynamicResource ButtonBlue}" Margin="0 20 0 0" Content="PURCHASE" HorizontalAlignment="Left" Command="{Binding Execute}" Width="100"/>
