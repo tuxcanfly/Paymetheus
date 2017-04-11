@@ -150,7 +150,7 @@ namespace Paymetheus.ViewModels
                     // public passphrase prompt is needed before the wallet can be opened.  If it
                     // does not, then the wallet can be opened directly here instead of creating
                     // another dialog.
-                    if (App.Current.AutoBuyerProperties != null)
+                    if (App.Current.AutoBuyerEnabled)
                     {
                         _wizard.CurrentDialog = new AutoBuyerDialog(Wizard);
                     }

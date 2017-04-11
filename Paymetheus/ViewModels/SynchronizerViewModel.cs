@@ -343,7 +343,7 @@ namespace Paymetheus.ViewModels
             RaisePropertyChanged(nameof(AccountNames));
             overviewViewModel.AccountsCount = accountViewModels.Count();
 
-            if (App.Current.AutoBuyerProperties != null)
+            if (App.Current.AutoBuyerEnabled)
             {
                 App.Current.Dispatcher.InvokeAsync(() =>
                     PurchaseTicketsViewModel.StartAutoBuyer(App.Current.AutoBuyerProperties.Passphrase)

@@ -77,6 +77,7 @@ namespace Paymetheus
 
         public ConsensusServerRpcOptions DefaultCSRPO { get; private set; }
         public AutoBuyerProperties AutoBuyerProperties { get; set; }
+        public bool AutoBuyerEnabled { get; set; }
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
@@ -141,23 +142,25 @@ namespace Paymetheus
                     }
 
                     if (section["enableticketbuyer"] == "1") {
-                        var ticketbuyerSection = config.Sections["ticketbuyer"];
-                        if (ticketbuyerSection != null)
+                        App.Current.AutoBuyerEnabled = true;
+                    }
+
+                    var ticketbuyerSection = config.Sections["ticketbuyer"];
+                    if (ticketbuyerSection != null)
+                    {
+                        App.Current.AutoBuyerProperties = new AutoBuyerProperties
                         {
-                            App.Current.AutoBuyerProperties = new AutoBuyerProperties
-                            {
-                                Account = new Account(Convert.ToUInt32((ticketbuyerSection["account"]))),
-                                BalanceToMaintain = Denomination.Decred.AmountFromString(ticketbuyerSection["balancetomaintainabsolute"] ?? ""),
-                                MaxFeePerKb = Denomination.Decred.AmountFromString(ticketbuyerSection["maxfee"] ?? ""),
-                                MaxPriceAbsolute = Denomination.Decred.AmountFromString(ticketbuyerSection["maxpriceabsolute"] ?? ""),
-                                MaxPriceRelative = Convert.ToDouble(ticketbuyerSection["maxpricerelative"] ?? ""),
-                                VotingAddress = ticketbuyerSection["ticketaddress"] ?? "",
-                                PoolAddress = ticketbuyerSection["pooladdress"] ?? "",
-                                PoolFees = Convert.ToDouble(ticketbuyerSection["poolfees"] ?? ""),
-                                MaxPerBlock = Convert.ToInt64(ticketbuyerSection["maxperblock"] ?? "")
-                            };
-                        }
-                    };
+                            Account = new Account(Convert.ToUInt32((ticketbuyerSection["account"]))),
+                            BalanceToMaintain = Denomination.Decred.AmountFromString(ticketbuyerSection["balancetomaintainabsolute"] ?? ""),
+                            MaxFeePerKb = Denomination.Decred.AmountFromString(ticketbuyerSection["maxfee"] ?? ""),
+                            MaxPriceAbsolute = Denomination.Decred.AmountFromString(ticketbuyerSection["maxpriceabsolute"] ?? ""),
+                            MaxPriceRelative = Convert.ToDouble(ticketbuyerSection["maxpricerelative"] ?? ""),
+                            VotingAddress = ticketbuyerSection["ticketaddress"] ?? "",
+                            PoolAddress = ticketbuyerSection["pooladdress"] ?? "",
+                            PoolFees = Convert.ToDouble(ticketbuyerSection["poolfees"] ?? ""),
+                            MaxPerBlock = Convert.ToInt64(ticketbuyerSection["maxperblock"] ?? "")
+                        };
+                    }
 
                     DefaultCSRPO = new ConsensusServerRpcOptions(rpcListen, rpcUser, rpcPass, rpcCert);
                 }

@@ -91,9 +91,20 @@ namespace Paymetheus.ViewModels
             _purchaseTickets.Executable = false;
 
             ToggleAutoBuyerCommand = new DelegateCommandAsync(ToggleAutoBuyerAction);
-            if (App.Current.AutoBuyerProperties != null)
+            if (App.Current.AutoBuyerEnabled)
             {
                 _autoBuyerEnabled = true;
+                AutoBuyerValidate = true;
+                AutoBuyerVisible = true;
+            }
+            else
+            {
+                _autoBuyerEnabled = false;
+                AutoBuyerVisible = false;
+            }
+
+            if (App.Current.AutoBuyerProperties != null)
+            {
                 _balanceToMaintain = App.Current.AutoBuyerProperties.BalanceToMaintain;
                 _maxFee = App.Current.AutoBuyerProperties.MaxFeePerKb;
                 _maxPriceAbsolute = App.Current.AutoBuyerProperties.MaxPriceAbsolute;
@@ -108,15 +119,6 @@ namespace Paymetheus.ViewModels
                 }
                 _poolFees = (decimal)App.Current.AutoBuyerProperties.PoolFees;
                 _maxPerBlock = App.Current.AutoBuyerProperties.MaxPerBlock;
-
-                _selectedStakePool = ConfiguredStakePools[1];
-                AutoBuyerValidate = true;
-                AutoBuyerVisible = true;
-            }
-            else
-            {
-                _autoBuyerEnabled = false;
-                AutoBuyerVisible = false;
             }
         }
 
@@ -658,6 +660,7 @@ namespace Paymetheus.ViewModels
                         ToggleAutoBuyerCommand.Execute(null);
                     }
                 }
+                EnableOrDisableAutoBuyer();
             }
 
         }
@@ -787,11 +790,12 @@ namespace Paymetheus.ViewModels
             try
             {
                 await walletClient.StartAutoBuyer(App.Current.AutoBuyerProperties);
+                App.Current.AutoBuyerEnabled = true;
             }
             catch (RpcException ex) when (ex.Status.StatusCode == Grpc.Core.StatusCode.InvalidArgument)
             {
                 MessageBox.Show(ex.Status.Detail);
-                App.Current.AutoBuyerProperties = null;
+                App.Current.AutoBuyerEnabled = false;
                 return false;
             }
             return true;
@@ -819,8 +823,7 @@ namespace Paymetheus.ViewModels
 
             if (!autoBuyerEnabled)
             {
-                section.RemoveKey("enableticketbuyer");
-                config.Sections.RemoveSection("ticketbuyer");
+                section["enableticketbuyer"] = "0";
             }
             else
             {

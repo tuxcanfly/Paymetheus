@@ -131,9 +131,9 @@
                          MinWidth="250" HorizontalContentAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="7" Text="Enable AutoBuyer"/>
+                <TextBlock Grid.Row="7" Text="Show AutoBuyer options"/>
                 <CheckBox Grid.Row="7" Grid.Column="1" IsChecked="{Binding AutoBuyerVisible}">
-                    <TextBlock>Enable AutoBuyer</TextBlock>
+                    <TextBlock>Show AutoBuyer options</TextBlock>
                 </CheckBox>
 
                 <TextBlock Grid.Row="8" Text="Balance To Maintain" Visibility="{Binding AutoBuyerOptionVisibility}"/>
