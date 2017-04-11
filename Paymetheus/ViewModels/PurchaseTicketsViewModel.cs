@@ -791,6 +791,7 @@ namespace Paymetheus.ViewModels
             catch (RpcException ex) when (ex.Status.StatusCode == Grpc.Core.StatusCode.InvalidArgument)
             {
                 MessageBox.Show(ex.Status.Detail);
+                App.Current.AutoBuyerProperties = null;
                 return false;
             }
             return true;
