@@ -12,22 +12,27 @@ namespace Paymetheus.ViewModels
 {
     sealed class PassphraseDialogViewModel : DialogViewModelBase
     {
-        public PassphraseDialogViewModel(ShellViewModel shell, string header, string buttonText, Func<string, Task<bool>> executeWithPassphrase)
+        public PassphraseDialogViewModel(ShellViewModel shell, string header, string buttonText,
+            Func<string, Task<bool>> executeWithPassphrase, Func<Task> cancel=null)
             : base(shell)
         {
             Header = header;
             ExecuteText = buttonText;
             _execute = executeWithPassphrase;
+            _cancel = cancel;
             Execute = new DelegateCommandAsync(ExecuteAction);
+            Cancel = new DelegateCommandAsync(CancelAction);
         }
 
         private Func<string, Task<bool>> _execute;
+        private Func<Task> _cancel;
 
         public string Header { get; }
         public string ExecuteText { get; }
         public string Passphrase { private get; set; } = "";
 
         public ICommand Execute { get; }
+        public ICommand Cancel { get; }
 
         private async Task ExecuteAction()
         {
@@ -41,6 +46,13 @@ namespace Paymetheus.ViewModels
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private async Task CancelAction()
+        {
+            if (_cancel != null)
+                await _cancel();
+            HideDialog();
         }
     }
 }

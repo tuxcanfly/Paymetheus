@@ -14,7 +14,7 @@
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
         <Button Margin="5" Content="{Binding Path=ExecuteText, FallbackValue='Unlock'}" Command="{Binding Path=Execute}" IsDefault="True"
                 Width="100" Style="{StaticResource ButtonBlue}"/>
-        <Button Margin="5" Content="Cancel" IsCancel="True" Command="{Binding HideDialogCommand}"
+        <Button Margin="5" Content="Cancel" IsCancel="True" Command="{Binding Path=Cancel}"
                 Width="100" Style="{StaticResource ButtonWhite}" />
     </StackPanel>
 </StackPanel>

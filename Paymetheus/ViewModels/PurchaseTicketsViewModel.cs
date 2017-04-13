@@ -877,12 +877,13 @@ namespace Paymetheus.ViewModels
                 var shell = ViewModelLocator.ShellViewModel as ShellViewModel;
                 if (shell != null)
                 {
+                    Func<Task> cancel = () => Task.Run(() => AutoBuyerEnabled = false);
                     Func<string, Task<bool>> action =
                         pass => StartAutoBuyer(pass);
                     shell.VisibleDialogContent = new PassphraseDialogViewModel(shell,
                         "Enter passphrase to start Auto Buyer",
                         "START",
-                        action);
+                        action, cancel);
                 }
                 return;
             }
