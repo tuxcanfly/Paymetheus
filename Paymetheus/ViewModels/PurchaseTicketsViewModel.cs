@@ -883,7 +883,7 @@ namespace Paymetheus.ViewModels
                     shell.VisibleDialogContent = new PassphraseDialogViewModel(shell,
                         "Enter passphrase to start Auto Buyer",
                         "START",
-                        action, cancel);
+                        action, cancel, @"Automatic ticket purchase will continue only as long as the wallet is running.");
                 }
                 return;
             }

@@ -13,10 +13,12 @@ namespace Paymetheus.ViewModels
     sealed class PassphraseDialogViewModel : DialogViewModelBase
     {
         public PassphraseDialogViewModel(ShellViewModel shell, string header, string buttonText,
-            Func<string, Task<bool>> executeWithPassphrase, Func<Task> cancel=null)
+            Func<string, Task<bool>> executeWithPassphrase, Func<Task> cancel=null, string notice="")
             : base(shell)
         {
             Header = header;
+            Notice = notice;
+            if (Notice != "") NoticeVisibility = Visibility.Visible;
             ExecuteText = buttonText;
             _execute = executeWithPassphrase;
             _cancel = cancel;
@@ -30,6 +32,14 @@ namespace Paymetheus.ViewModels
         public string Header { get; }
         public string ExecuteText { get; }
         public string Passphrase { private get; set; } = "";
+        public string Notice { get; }
+
+        private Visibility _noticeVisibility = Visibility.Collapsed;
+        public Visibility NoticeVisibility
+        {
+            get { return _noticeVisibility; }
+            set { _noticeVisibility = value; RaisePropertyChanged(); }
+        }
 
         public ICommand Execute { get; }
         public ICommand Cancel { get; }
