@@ -161,14 +161,14 @@
                          Text="{Binding MaxPerBlock, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="13" Text="Pool fee address" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <TextBox Grid.Row="13" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                <TextBlock Grid.Row="13" Text="Pool fee address" Visibility="{Binding ManualPoolOptionsVisibility}"/>
+                <TextBox Grid.Row="13" Grid.Column="1" Visibility="{Binding ManualPoolOptionsVisibility}"
                          Text="{Binding PoolFeeAddress, ValidatesOnExceptions=True}"
                          MinWidth="250" HorizontalAlignment="Left"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
-                <TextBlock Grid.Row="14" Text="Pool fees (%)" Visibility="{Binding AutoBuyerOptionVisibility}"/>
-                <TextBox Grid.Row="14" Grid.Column="1" Visibility="{Binding AutoBuyerOptionVisibility}"
+                <TextBlock Grid.Row="14" Text="Pool fees (%)" Visibility="{Binding ManualPoolOptionsVisibility}"/>
+                <TextBox Grid.Row="14" Grid.Column="1" Visibility="{Binding ManualPoolOptionsVisibility}"
                          Text="{Binding PoolFees, ValidatesOnExceptions=True}"
                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
 
